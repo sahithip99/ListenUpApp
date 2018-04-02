@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {User } from "../../models/user";
-import {AngularFireAuth } from "angularfire2/auth"
+import {AngularFireAuth } from "angularfire2/auth";
+import{AngularFireDatabase} from 'angularfire2/database';
+
 /**
  * Generated class for the RegisterPage page.
  *
@@ -17,7 +19,7 @@ import {AngularFireAuth } from "angularfire2/auth"
 export class RegisterPage {
   user = {} as User;
   constructor(private afAuth: AngularFireAuth,
-    public navCtrl: NavController, public navParams: NavParams) {
+    public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase) {
   }
 
 
@@ -25,9 +27,19 @@ export class RegisterPage {
   async register(user: User){
     try{
     const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
-    console.log(result);
+    var userObj = {
+      email: user.email,
+      password : user.password,
+      username: user.username,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      id: result.uid
+    };
+    this.afData.database.ref("users").child(userObj.id).update(userObj).then(success =>{
+      console.log("hooray");
+    })
+    console.log(userObj);
       }
-
     catch(e){
       console.error(e);
     }

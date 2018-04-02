@@ -7,6 +7,7 @@ import {AngularFireModule} from "angularfire2";
 import {AngularFireAuth } from "angularfire2/auth";
 import { MyApp } from './app.component';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
+import{AngularFireDatabaseModule} from 'angularfire2/database';
 
 
 @NgModule({
@@ -17,8 +18,7 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-
-
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +29,8 @@ import {FIREBASE_CONFIG} from "./app.firebase.config";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AngularFireAuth
+    AngularFireAuth,
+    AngularFireDatabaseModule
   ]
 })
 export class AppModule {}
