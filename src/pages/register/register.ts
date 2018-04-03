@@ -33,7 +33,8 @@ export class RegisterPage {
       username: user.username,
       firstname: user.firstname,
       lastname: user.lastname,
-      id: result.uid
+      id: result.uid,
+      login: false
     };
     this.afData.database.ref("users").child(userObj.id).update(userObj).then(success =>{
       console.log("hooray");
