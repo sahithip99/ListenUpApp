@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {User } from "../../models/user";
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import {TabsPage} from '../tabs/tabs';
@@ -20,18 +21,23 @@ import {TabsPage} from '../tabs/tabs';
 })
 export class LoginPage {
   usrInfo: any;
+  allUsers: any;
 
   user = {} as User;
   constructor(private afAuth: AngularFireAuth,
-    public navCtrl: NavController, public navParams: NavParams, public uInfo: UserInfoProvider) {
+    public navCtrl: NavController, public navParams: NavParams, public uInfo: UserInfoProvider, public afData: AngularFireDatabase) {
     this.usrInfo = this.uInfo.getUserInfo();
-  }  
+    this.allUsers = this.uInfo.allUsers();
+    this.loadUserInfo();
+  } 
+
   async login(user: User) {
     try {
       const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
       if (result) {
         console.log(result);
         this.navCtrl.setRoot(TabsPage);
+        console.log('user info',this.usrInfo)
       }
     }
   catch(e){
@@ -39,10 +45,20 @@ export class LoginPage {
     }
   }
 
+  loadUserInfo(){
+    this.usrInfo = this.uInfo.getUserInfo();
+    if (this.usrInfo == undefined || this.usrInfo == null){
+      setTimeout(() => {
+        console.log("try again");
+        this.loadUserInfo();
+      },1000);
+    }
+  }
+
   register(){
     this.navCtrl.push('RegisterPage');
-
   }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }

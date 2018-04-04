@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {User } from "../../models/user";
 import {AngularFireAuth } from "angularfire2/auth";
 import{AngularFireDatabase} from 'angularfire2/database';
+import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 
 /**
  * Generated class for the RegisterPage page.
@@ -18,26 +19,21 @@ import{AngularFireDatabase} from 'angularfire2/database';
 })
 export class RegisterPage {
   user = {} as User;
-  errorMessage = ""
-
+  usrNames: any;
+  usrName: any;
   constructor(private afAuth: AngularFireAuth,
-    public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase) {
+    public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase, public uInfo: UserInfoProvider) {
+    this.usrNames = this.uInfo.getUserNames()
+    this.usrNames = Object.keys(this.usrNames).map(key => this.usrNames[key]).map(x => x.substr(0,x.length));
+    console.log("hi there",this.usrNames);
   }
 
-
-
   async register(user: User){
-    if(user.username == null){
-         this.errorMessage = "Please provide a valid username"
-         return
-    }
-    if(user.firstname == null){
-         this.errorMessage = "Please provide a valid firstname"
-         return
-    }
-    if(user.lastname == null){
-         this.errorMessage = "Please provide a valid last name"
-         return
+    for(var i = 0; i <this.usrNames.length; i++){
+      if (this.usrNames[i] == this.user.username){
+        console.log('The User Has Already Been Taken!')
+        return;
+      }
     }
     try{
     const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
@@ -50,29 +46,18 @@ export class RegisterPage {
       id: result.uid,
       login: false
     };
+    var nameObj = {};
+    nameObj[userObj.id] = userObj.username;
     this.afData.database.ref("users").child(userObj.id).update(userObj).then(success =>{
       console.log("hooray");
-      console.log(userObj);
-
-    })
+    });
+    this.afData.database.ref("usernames").update(nameObj).then(success =>{
+      console.log("the username is unique");
+    });
+    console.log(userObj);
       }
     catch(e){
       console.error(e);
-      if(e.code == "auth/argument-error"){
-           this.errorMessage = "Please fill in required boxes"
-         }
-      if(e.code == "auth/invalid-email"){
-           this.errorMessage = "Please provide valid email"
-      }
-      if(e.code == "auth/weak-password"){
-           this.errorMessage = "Password too weak. Passwords must be six characters long or more"
-      }
-      if(e.code == "auth/email-already-in-use"){
-           this.errorMessage = "Email already in use. Please use a different email"
-      }
-
-
-
     }
   }
 }

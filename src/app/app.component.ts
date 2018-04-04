@@ -5,14 +5,25 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
+import { AngularFireAuth } from 'angularfire2/auth';
+import {UserInfoProvider} from '../providers/userInfo/userInfo';
+
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage:any = LoginPage;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, 
+    splashScreen: SplashScreen, private afAuth: AngularFireAuth, private uInfo:UserInfoProvider) {
     platform.ready().then(() => {
+
+      this.afAuth.auth.onAuthStateChanged(user => {
+        this.uInfo.setUserInfo(user);
+        this.rootPage = TabsPage;
+      })
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
