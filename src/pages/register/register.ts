@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {User } from "../../models/user";
 import {AngularFireAuth } from "angularfire2/auth";
 import{AngularFireDatabase} from 'angularfire2/database';
+import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 
 /**
  * Generated class for the RegisterPage page.
@@ -29,8 +30,12 @@ export class RegisterPage {
 
 
   //CONSTRUCTOR: all the things that have to be loaded to run the page
+
   constructor(private afAuth: AngularFireAuth,
-    public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase) {
+    public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase, public uInfo: UserInfoProvider) {
+    this.usrNames = this.uInfo.getUserNames()
+    this.usrNames = Object.keys(this.usrNames).map(key => this.usrNames[key]).map(x => x.substr(0,x.length));
+    console.log("hi there",this.usrNames);
   }
 
 
@@ -71,32 +76,5 @@ registerPeople(){
   }
 
 }
-  /*async register(user: User){ //async: all at once, 2+ simultaneously
-    try{
-    const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password); //because of async, has to be done
-    var userObj = {
-      email: user.email,
-      password : user.password,
-      username: user.username,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      id: result.uid,
-      login: false
-    };
-    this.afData.database.ref("users").child(userObj.id).update(userObj).then(success =>{
-      for (var i in userObj){
-        if (userObj[i]=''){
-          console.log(i + "field has not been filled out.");
-          console.error(e);
-        }
-        else {console.log("hooray");}
-      }
 
-    })
-    console.log(userObj);
-      }
-    catch(e){
-      console.error(e);
-    }
-  }*/
 }
