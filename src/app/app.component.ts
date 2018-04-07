@@ -20,8 +20,14 @@ export class MyApp {
     platform.ready().then(() => {
 
       this.afAuth.auth.onAuthStateChanged(user => {
-        this.uInfo.setUserInfo(user);
+        if(user){
+          this.uInfo.setUserInfo(user);
         this.rootPage = TabsPage;
+        }
+        else{
+          this.rootPage = LoginPage;
+        }
+        
       })
 
       // Okay, so the platform is ready and our plugins are available.

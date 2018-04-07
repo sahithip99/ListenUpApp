@@ -27,7 +27,7 @@ export class RegisterPage {
     firstname: "",
     lastname: "",
   }
-
+  usrNames:any;
 
   //CONSTRUCTOR: all the things that have to be loaded to run the page
 
