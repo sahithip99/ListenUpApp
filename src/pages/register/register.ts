@@ -29,8 +29,9 @@ export class RegisterPage {
   }
 
   async register(user: User){
+    
     for(var i = 0; i <this.usrNames.length; i++){
-      if (this.usrNames[i] == this.user.username){
+      if (this.usrNames[i] == this.user.username.toUpperCase() || this.usrNames[i] == this.user.username.toLowerCase()){
         console.log('The User Has Already Been Taken!')
         return;
       }

@@ -18,10 +18,15 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, 
     splashScreen: SplashScreen, private afAuth: AngularFireAuth, private uInfo:UserInfoProvider) {
     platform.ready().then(() => {
-
       this.afAuth.auth.onAuthStateChanged(user => {
-        this.uInfo.setUserInfo(user);
-        this.rootPage = TabsPage;
+        if(user){
+          console.log("logged in");
+          this.uInfo.setUserInfo(user);
+          this.rootPage = TabsPage;
+        }
+        else{
+          console.log("logged out");
+        }
       })
 
       // Okay, so the platform is ready and our plugins are available.

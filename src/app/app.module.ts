@@ -9,11 +9,13 @@ import { MyApp } from './app.component';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
 import{AngularFireDatabaseModule} from 'angularfire2/database';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { FeedbackPage } from '../pages/feedback/feedback';
+import { MessagePage } from '../pages/message/message';
+import { ProfilePage } from '../pages/profile/profile';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
+
+import {HeaderMenuComponent} from '../components/header-menu/header-menu';
 
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
 
@@ -22,11 +24,12 @@ import { UserInfoProvider } from '../providers/userInfo/userInfo';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    FeedbackPage,
+    MessagePage,
+    ProfilePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    HeaderMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +40,9 @@ import { UserInfoProvider } from '../providers/userInfo/userInfo';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    FeedbackPage,
+    MessagePage,
+    ProfilePage,
     TabsPage,
     LoginPage
   ],
