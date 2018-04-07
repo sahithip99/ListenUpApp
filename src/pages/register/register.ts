@@ -26,8 +26,9 @@ export class RegisterPage {
     username: "",
     firstname: "",
     lastname: "",
+    username: "",
   }
-  usrNames:any;
+
 
   //CONSTRUCTOR: all the things that have to be loaded to run the page
 
@@ -37,7 +38,6 @@ export class RegisterPage {
     this.usrNames = Object.keys(this.usrNames).map(key => this.usrNames[key]).map(x => x.substr(0,x.length));
     console.log("hi there",this.usrNames);
   }
-
 
 
 //FUNCTIONS
@@ -63,7 +63,8 @@ registerPeople(){
       id: success.uid,
       firstname: this.user.firstname,
       lastname: this.user.lastname,
-      email: this.user.email
+      email: this.user.email,
+      username: this.user.username
     }).then(winning => {
       //donald trump
       console.log("all is done");
@@ -77,5 +78,4 @@ registerPeople(){
   }
 
 }
-
 }
