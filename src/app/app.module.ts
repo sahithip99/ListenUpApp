@@ -14,6 +14,7 @@ import { MessagePage } from '../pages/message/message';
 import { ProfilePage } from '../pages/profile/profile';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
+import {RegisterPage} from '../pages/register/register';
 
 import {HeaderMenuComponent} from '../components/header-menu/header-menu';
 
@@ -27,6 +28,7 @@ import { UserInfoProvider } from '../providers/userInfo/userInfo';
     FeedbackPage,
     MessagePage,
     ProfilePage,
+    RegisterPage,
     TabsPage,
     LoginPage,
     HeaderMenuComponent
@@ -43,6 +45,7 @@ import { UserInfoProvider } from '../providers/userInfo/userInfo';
     FeedbackPage,
     MessagePage,
     ProfilePage,
+    RegisterPage,
     TabsPage,
     LoginPage
   ],

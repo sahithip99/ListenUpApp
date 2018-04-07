@@ -7,6 +7,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import {TabsPage} from '../tabs/tabs';
+import {RegisterPage} from '../register/register';
 /**
  * Generated class for the LoginPage page.
  *
@@ -56,7 +57,7 @@ export class LoginPage {
   }
 
   register(){
-    this.navCtrl.push('RegisterPage');
+    this.navCtrl.push(RegisterPage);
   }
 
   ionViewDidLoad() {
