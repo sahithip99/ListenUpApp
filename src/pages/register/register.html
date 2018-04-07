@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar>
     <ion-title>Register</ion-title>
   </ion-navbar>
 
@@ -14,7 +14,6 @@
 
 
 <ion-content padding>
-  <p class="error-message">{{errorMessage}}</p>
 
   <ion-item>
   <ion-label floating>Email Address</ion-label>
@@ -41,7 +40,7 @@
   <ion-input type = "text" [(ngModel)] = "user.lastname"></ion-input>
   </ion-item>
 
-  <button ion-button (click)="register(user)">Register</button>
+  <button ion-button (click)="registerPeople()">Register</button>
 
 
 </ion-content>

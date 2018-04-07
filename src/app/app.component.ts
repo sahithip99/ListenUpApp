@@ -26,7 +26,10 @@ export class MyApp {
         }
         else{
           console.log("logged out");
+          this.rootPage = LoginPage;
+
         }
+                  
       })
 
       // Okay, so the platform is ready and our plugins are available.

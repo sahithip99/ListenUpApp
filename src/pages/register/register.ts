@@ -18,9 +18,19 @@ import {UserInfoProvider} from '../../providers/userInfo/userInfo';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-  user = {} as User;
-  usrNames: any;
-  usrName: any;
+
+  //VARIABLES TO BE USED
+  user:any = {
+    email: "",
+    password : "",
+    username: "",
+    firstname: "",
+    lastname: "",
+  }
+  usrNames:any;
+
+  //CONSTRUCTOR: all the things that have to be loaded to run the page
+
   constructor(private afAuth: AngularFireAuth,
     public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase, public uInfo: UserInfoProvider) {
     this.usrNames = this.uInfo.getUserNames()
@@ -28,37 +38,44 @@ export class RegisterPage {
     console.log("hi there",this.usrNames);
   }
 
-  async register(user: User){
-    
-    for(var i = 0; i <this.usrNames.length; i++){
-      if (this.usrNames[i] == this.user.username.toUpperCase() || this.usrNames[i] == this.user.username.toLowerCase()){
-        console.log('The User Has Already Been Taken!')
-        return;
+
+
+//FUNCTIONS
+
+
+
+registerPeople(){
+  function checkEmpty(user){
+    for(var i in user){
+      if(user[i] == '' || user[i] == " " || !(user[i])){
+        return false;
       }
     }
-    try{
-    const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
-    var userObj = {
-      email: user.email,
-      password : user.password,
-      username: user.username,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      id: result.uid,
-      login: false
-    };
-    var nameObj = {};
-    nameObj[userObj.id] = userObj.username;
-    this.afData.database.ref("users").child(userObj.id).update(userObj).then(success =>{
-      console.log("hooray");
-    });
-    this.afData.database.ref("usernames").update(nameObj).then(success =>{
-      console.log("the username is unique");
-    });
-    console.log(userObj);
-      }
-    catch(e){
-      console.error(e);
-    }
+    return true;
   }
+
+
+  if(checkEmpty(this.user)){
+    //register the d00d
+    this.afAuth.auth.createUserWithEmailAndPassword(this.user.email,this.user.password).then(success => {
+    //woooooo were logged in
+    this.afData.database.ref('users').child(success.uid).update({
+      id: success.uid,
+      firstname: this.user.firstname,
+      lastname: this.user.lastname,
+      email: this.user.email
+    }).then(winning => {
+      //donald trump
+      console.log("all is done");
+      return;
+    })
+  })
+  }
+  else{
+    console.log("something happend! fix itttttt");
+    return;
+  }
+
+}
+
 }
