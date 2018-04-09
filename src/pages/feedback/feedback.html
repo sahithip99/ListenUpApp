@@ -6,26 +6,21 @@
   </ion-navbar>
   <ion-toolbar color = "primary">
   	<ion-segment>
-  		<ion-segment-button style="color: white;" value="Public">Public</ion-segment-button>
+  		<ion-segment-button style="color: white;" value="Public" (click) = "clickPub()">Public</ion-segment-button>
   		<ion-segment-button icon-only style = "color:white;" (click) = "toSendfeed()">
   			<ion-icon name = 'add-circle' center></ion-icon>
   		</ion-segment-button>
-  		<ion-segment-button style="color: white;" value="Anonymous">Anonymous</ion-segment-button>
+  		<ion-segment-button style="color: white;" value="Anonymous" Anonymous (click) = "clickAnnon()"> Anonymous </ion-segment-button>
   	</ion-segment>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
+  <div id = "A">
         <ion-list>
-  
+          <ion-item *ngFor = "let mes of curList">
+            <p><img src = "https://kawaii-mobile.com/wp-content/uploads/2016/10/Re-Zero-Rem.iPhone-6-Plus-wallpaper-1080x1920.jpg"> @{{mes.username}} {{mes.title}} {{mes.message}}</p>
+          </ion-item>
         </ion-list>
-      </ion-col>
-      <ion-col>
-        <ion-list></ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    </div>
 </ion-content>

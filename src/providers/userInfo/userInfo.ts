@@ -15,14 +15,15 @@ export class UserInfoProvider{
 	usrNames: any;
 	usrGroup: any;
 	usrArray: any;
+
 	pubMes: any;
 	annonMes: any;
+	pubArray: any;
+	annonArray: any;
 	constructor(public afAuth: AngularFireAuth, public afData: AngularFireDatabase){
 		console.log('Hello UserInfoProvider Provider');
 		this.setUsers();
 		this.setNameInfo();
-		this.setPublicMes();
-		this.setPrivateMes();
 	}
 
 
@@ -30,8 +31,23 @@ export class UserInfoProvider{
 		await this.afData.database.ref('users/' + user.uid).once('value',dataSnap =>{
 			this.usrData = dataSnap.val();
 			console.log("loaded current user: ", this.usrData);
+
 		});
+		/*
+		await this.afData.database.ref('users').child(this.usrData.id).child('publicfeedbacks').once('value',dataSnap =>{
+			this.pubMes = dataSnap.val();
+		}, fail => {
+			console.log("no public feedbacks available");
+		});
+		//private feedbacks
+		await this.afData.database.ref('users').child(this.usrData.id).child('anonfeedbacks').once('value',dataSnap =>{
+			this.annonMes = dataSnap.val();
+		}, fail => {
+			console.log("no private feedbacks available");
+		});
+		*/
 	}
+
 
 	async setUsers(){
     await this.afData.database.ref('users').once('value',dataSnap =>{
@@ -43,29 +59,12 @@ export class UserInfoProvider{
   	}
     })
   }
-
-	async setNameInfo(){
+  async setNameInfo(){
 		await this.afData.database.ref('usernames').once('value',dataSnap =>{
 			this.usrNames = dataSnap.val();
 		})
 	}
 
-	async setPublicMes(){
-		await this.afData.database.ref('usernames').child('publicfeedbacks').once('value',dataSnap =>{
-			this.pubMes = dataSnap.val();
-		}, fail => {
-			console.log("no public feedbacks available");
-		})
-	}
-
-	async setPrivateMes(){
-			await this.afData.database.ref('usernames').child('anonfeedbacks').once('value',dataSnap =>{
-			this.annonMes = dataSnap.val();
-		}, fail => {
-			console.log("no private feedbacks available");
-		})
-	}
-	
 //-----------------Getters-----------------
 getUserInfo(){
 	return this.usrData;

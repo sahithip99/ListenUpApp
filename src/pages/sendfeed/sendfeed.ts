@@ -41,7 +41,7 @@ export class SendfeedPage {
  		firstname: this.curUser.firstname,
  		lastname: this.curUser.lastname,
  		username: this.curUser.username,
- 		timeSent: timeStamp
+ 		timeStamp: timeStamp
  		//photo url
  	});
  }
