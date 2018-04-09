@@ -49,6 +49,7 @@ export class SendfeedPage {
  		this.afData.database.ref("users").child(this.param.id).child("anonfeedbacks").push({
  		title: this.mesData.title,
  		message: this.mesData.message,
+ 		username: "annonymous",
  		id: this.param.id,
  		firstname: "annonymous",
  		timeSent:timeStamp
