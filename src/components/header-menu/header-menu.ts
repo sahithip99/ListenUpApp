@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {LoginPage} from '../../pages/login/login';
-import { App, Nav, MenuController } from 'ionic-angular';
+import { App,MenuController } from 'ionic-angular';
 /**
  * Generated class for the HeaderMenuComponent component.
  *

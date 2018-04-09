@@ -19,6 +19,7 @@ import {RegisterPage} from '../pages/register/register';
 import {HeaderMenuComponent} from '../components/header-menu/header-menu';
 
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
+import { Camera } from '@ionic-native/camera';
 
 
 
@@ -56,6 +57,7 @@ import { UserInfoProvider } from '../providers/userInfo/userInfo';
     AngularFireAuth,
     AngularFireDatabaseModule,
     UserInfoProvider,
+    Camera
   ]
 })
 export class AppModule {}
