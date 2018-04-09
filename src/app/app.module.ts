@@ -15,10 +15,14 @@ import { ProfilePage } from '../pages/profile/profile';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
+import {SendfeedPage} from '../pages/sendfeed/sendfeed';
+import {SearchuserPage} from '../pages/searchuser/searchuser';
 
 import {HeaderMenuComponent} from '../components/header-menu/header-menu';
 
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
+
+import {PipesModule} from '../pipes/pipes.module';
 
 
 
@@ -31,13 +35,16 @@ import { UserInfoProvider } from '../providers/userInfo/userInfo';
     RegisterPage,
     TabsPage,
     LoginPage,
+    SendfeedPage,
+    SearchuserPage,
     HeaderMenuComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,6 +54,8 @@ import { UserInfoProvider } from '../providers/userInfo/userInfo';
     ProfilePage,
     RegisterPage,
     TabsPage,
+    SendfeedPage,
+    SearchuserPage,
     LoginPage
   ],
   providers: [

@@ -18,7 +18,7 @@ import {UserInfoProvider} from '../../providers/userInfo/userInfo';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-
+usrNames: any;
   //VARIABLES TO BE USED
   user:any = {
     email: "",
@@ -26,7 +26,6 @@ export class RegisterPage {
     username: "",
     firstname: "",
     lastname: "",
-    username: "",
   }
 
 

@@ -14,6 +14,7 @@ export class UserInfoProvider{
 	usrData: any;
 	usrNames: any;
 	usrGroup: any;
+	usrArray: any;
 	constructor(public afAuth: AngularFireAuth, public afData: AngularFireDatabase){
 		console.log('Hello UserInfoProvider Provider');
 		this.setUsers();
@@ -32,6 +33,10 @@ export class UserInfoProvider{
     await this.afData.database.ref('users').once('value',dataSnap =>{
       this.usrGroup = dataSnap.val();
       console.log('All the users:',this.usrGroup);
+      this.usrArray = [];
+      for(var i in this.usrGroup){
+  		this.usrArray.push(this.usrGroup[i]);
+  	}
     })
   }
 
@@ -49,6 +54,9 @@ getUserInfo(){
 
 allUsers(){
 	return this.usrGroup;
+}
+usersArray(){
+	return this.usrArray;
 }
 getUserNames(){
 	return this.usrNames;
