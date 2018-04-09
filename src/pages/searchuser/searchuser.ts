@@ -10,7 +10,6 @@ import{SendfeedPage} from '../sendfeed/sendfeed';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-searchuser',
@@ -19,6 +18,7 @@ import{SendfeedPage} from '../sendfeed/sendfeed';
 export class SearchuserPage {
 
 	userList: any;
+	curUser: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public uInfo: UserInfoProvider) {
   	    this.userList = this.uInfo.usersArray();
@@ -51,9 +51,14 @@ export class SearchuserPage {
   }
 
   goToSend(user){
-  	this.navCtrl.push(SendfeedPage);
-  	return user;
-}
+  	this.navCtrl.push(SendfeedPage,{
+  		param1: user
+  	});
+  	this.curUser = user;
 }
 
+	returnUser(){
+	this.curUser;
+}
+}
 	

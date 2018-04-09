@@ -65,6 +65,7 @@ import {PipesModule} from '../pipes/pipes.module';
     AngularFireAuth,
     AngularFireDatabaseModule,
     UserInfoProvider,
+    SearchuserPage
   ]
 })
 export class AppModule {}
