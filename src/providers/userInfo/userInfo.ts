@@ -15,10 +15,14 @@ export class UserInfoProvider{
 	usrNames: any;
 	usrGroup: any;
 	usrArray: any;
+	pubMes: any;
+	annonMes: any;
 	constructor(public afAuth: AngularFireAuth, public afData: AngularFireDatabase){
 		console.log('Hello UserInfoProvider Provider');
 		this.setUsers();
 		this.setNameInfo();
+		this.setPublicMes();
+		this.setPrivateMes();
 	}
 
 
@@ -46,7 +50,22 @@ export class UserInfoProvider{
 		})
 	}
 
+	async setPublicMes(){
+		await this.afData.database.ref('usernames').child('publicfeedbacks').once('value',dataSnap =>{
+			this.pubMes = dataSnap.val();
+		}, fail => {
+			console.log("no public feedbacks available");
+		})
+	}
 
+	async setPrivateMes(){
+			await this.afData.database.ref('usernames').child('anonfeedbacks').once('value',dataSnap =>{
+			this.annonMes = dataSnap.val();
+		}, fail => {
+			console.log("no private feedbacks available");
+		})
+	}
+	
 //-----------------Getters-----------------
 getUserInfo(){
 	return this.usrData;
@@ -60,5 +79,13 @@ usersArray(){
 }
 getUserNames(){
 	return this.usrNames;
+}
+
+getPubmes(){
+	return this.pubMes;
+}
+
+getAnnonmes(){
+	return this.annonMes;
 }
 }
