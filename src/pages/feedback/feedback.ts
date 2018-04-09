@@ -4,6 +4,8 @@ import { NavController } from 'ionic-angular';
 import {SearchuserPage} from '../searchuser/searchuser';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 
+import { AngularFireDatabase } from 'angularfire2/database';
+
 @Component({
   selector: 'page-feedback',
   templateUrl: 'feedback.html'
@@ -13,12 +15,16 @@ export class FeedbackPage {
   annonMes: any;
   pubArray: any;
   annonArray: any;
+  usrId: any;
   curList = [];
+  usrData:any;
 
-  constructor(public navCtrl: NavController, public uInfo: UserInfoProvider) {
+  constructor(public navCtrl: NavController, public uInfo: UserInfoProvider, public afData: AngularFireDatabase) {
   	//this.loadFeedInfo();
-  	this.pubMes = this.uInfo.getUserInfo().publicfeedbacks;
-  	this.annonMes = this.uInfo.getUserInfo().anonfeedbacks;
+  	this.usrData = this.uInfo.getUserInfo();
+  	this.pubMes = this.usrData.publicfeedbacks;
+  	this.annonMes = this.usrData.anonfeedbacks;
+  	this.usrId = this.usrData.id;
   	this.setFeedback();
 
   }
@@ -60,4 +66,24 @@ clickPub(){
 clickAnnon(){
 	this.curList = this.annonArray
 }
+//refresh message
+async setUserInfo(){
+		await this.afData.database.ref('users/' + this.usrId).once('value',dataSnap =>{
+			this.usrData = dataSnap.val();
+			console.log("reloading data", this.usrData);
+
+		});
+}
+ doRefresh(refresher){
+ 	console.log('Begin async operation',refresher);
+ 	this.setUserInfo();
+ 	this.pubMes = this.usrData.publicfeedbacks;
+  	this.annonMes = this.usrData.anonfeedbacks;
+  	this.setFeedback();
+  	 setTimeout(() => {
+  	 	console.log('Async operation has ended');
+  	 	refresher.complete();
+  	 },2000);
+ }
+
 }

@@ -16,6 +16,13 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher pulling-text="Pull to refresh..." (ionRefresh) = "doRefresh($event)">
+     <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
   <div id = "A">
         <ion-list>
           <ion-item *ngFor = "let mes of curList">
@@ -23,4 +30,4 @@
           </ion-item>
         </ion-list>
     </div>
-</ion-content>
+  </ion-content>
