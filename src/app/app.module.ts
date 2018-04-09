@@ -22,7 +22,8 @@ import {HeaderMenuComponent} from '../components/header-menu/header-menu';
 
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
 
-import {PipesModule} from '../pipes/pipes.module';
+import { PipesModule } from '../pipes/pipes.module';
+import { ChatInfoProvider } from '../providers/chat-info/chat-info';
 
 
 
@@ -65,7 +66,8 @@ import {PipesModule} from '../pipes/pipes.module';
     AngularFireAuth,
     AngularFireDatabaseModule,
     UserInfoProvider,
-    SearchuserPage
+    SearchuserPage,
+    ChatInfoProvider
   ]
 })
 export class AppModule {}
