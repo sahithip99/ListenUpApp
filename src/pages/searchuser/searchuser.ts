@@ -22,13 +22,9 @@ export class SearchuserPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public uInfo: UserInfoProvider) {
   	    this.userList = this.uInfo.usersArray();
-  	    console.log(this.userList);
-  }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchuserPage');
   }
 
-
+  //------------SEARCHING USERS--------------------
   searchUsers(searchbar){
   	this.userList = this.uInfo.usersArray();
   	var q = searchbar.srcElement.value;
@@ -49,7 +45,7 @@ export class SearchuserPage {
   		
   	});
   }
-
+//-------------GO TO SENDFEED PAGE---------------
   goToSend(user){
   	this.navCtrl.push(SendfeedPage,{
   		param1: user
@@ -57,8 +53,5 @@ export class SearchuserPage {
   	this.curUser = user;
 }
 
-	returnUser(){
-	this.curUser;
-}
 }
 	

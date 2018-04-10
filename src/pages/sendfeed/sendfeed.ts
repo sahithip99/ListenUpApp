@@ -18,19 +18,18 @@ import * as firebase from 'firebase';
 export class SendfeedPage {
 	 annon: boolean;
 	 curUser: any;
-	 param: any;
+	 param: any; //PARAMETER PASSED FROM THE PREVIOUS PAGE
 	 mesData: any = {
 	 title: "",
 	 message: ""
 	 }
   constructor(public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase, public uInfo: UserInfoProvider) {
   	this.param = this.navParams.get('param1');
-  	console.log(this.param);
   	this.curUser = this.uInfo.getUserInfo();
-  	console.log(this.curUser);
   	this.annon = false;
   }
 
+//-------------SENDING PUBLIC FEEDBACK--------------------
  sendMessage(){
  	var timeStamp =  firebase.database.ServerValue.TIMESTAMP;
  	if(this.annon == false){
@@ -45,6 +44,7 @@ export class SendfeedPage {
  		//photo url
  	});
  }
+ //---------------SENDING PRIVATE FEEDBACK----------------
  	else{
  		this.afData.database.ref("users").child(this.param.id).child("anonfeedbacks").push({
  		title: this.mesData.title,
@@ -52,10 +52,10 @@ export class SendfeedPage {
  		username: "annonymous",
  		id: this.param.id,
  		firstname: "annonymous",
- 		timeSent:timeStamp
+ 		timestamp:timeStamp
  		//photo url
  	})
  }
-
 }
+
 }

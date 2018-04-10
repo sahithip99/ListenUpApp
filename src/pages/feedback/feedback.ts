@@ -11,16 +11,15 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'feedback.html'
 })
 export class FeedbackPage {
-  pubMes: any;
-  annonMes: any;
-  pubArray: any;
+  pubMes: any; //PUBLIC FEEDBACK
+  annonMes: any; //ANNON FEEDBACK
+  pubArray: any; //ARRAY THAT STORES PUBLIC FEEDBACK
   annonArray: any;
-  usrId: any;
-  curList = [];
-  usrData:any;
+  usrId: any; //CURRENT USER'S ID
+  curList = []; //FOR SWITCHING BETWEEN BETWEEN PUBLIC AND ANNON
+  usrData:any; 
 
   constructor(public navCtrl: NavController, public uInfo: UserInfoProvider, public afData: AngularFireDatabase) {
-  	//this.loadFeedInfo();
   	this.usrData = this.uInfo.getUserInfo();
   	this.pubMes = this.usrData.publicfeedbacks;
   	this.annonMes = this.usrData.anonfeedbacks;
@@ -29,6 +28,7 @@ export class FeedbackPage {
 
   }
 
+//------------INITIALIZE ARRAYS AND SET DEFAULT PAGE AS PUBLIC-------------------
 	 setFeedback(){
 		this.pubArray = [];
 		this.annonArray = [];
@@ -38,42 +38,31 @@ export class FeedbackPage {
 	for(var i in this.annonMes){
 			this.annonArray.push(this.annonMes[i]);
 		}
-		console.log("pub",this.pubArray);
-		console.log("annon",this.annonArray);
 		this.curList = this.pubArray;
 	}
-/*loadFeedInfo(){
-   	this.pubMes = this.uInfo.getPubmes();
-   	this.annonMes = this.uInfo.getAnnonmes();
-    if (this.pubMes == null || this.annonMes == null){
-      setTimeout(() => {
-        console.log("try again");
-        this.loadFeedInfo();
-      },1000);
-    }
-    else{
-      console.log("got feed",this.pubMes,this.annonMes)
-    }
-  }
-*/
+
+
+//------------WHEN CLICK, GOTO SEARCH USER PAGE-------------
 toSendfeed(){
 	this.navCtrl.push(SearchuserPage);
 }
 
+//----------CLICKED PUBLIC----------------------
 clickPub(){
 	this.curList = this.pubArray;
 }
+//--------------CLICKED ANNON-----------------
 clickAnnon(){
 	this.curList = this.annonArray
 }
-//refresh message
+//-----------------------REFRESH MESSAGE-----------------------
 async setUserInfo(){
 		await this.afData.database.ref('users/' + this.usrId).once('value',dataSnap =>{
 			this.usrData = dataSnap.val();
 			console.log("reloading data", this.usrData);
-
 		});
 }
+
  doRefresh(refresher){
  	console.log('Begin async operation',refresher);
  	this.setUserInfo();
