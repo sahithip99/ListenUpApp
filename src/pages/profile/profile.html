@@ -10,7 +10,13 @@
 </ion-header>
 
 <ion-content padding>
+
 <ion-item>
   {{firstName}} {{lastName}} {{userName}}
 </ion-item>
+
+  <div style="display:flex; flex-direction:column;justify-content:center">
+    <button ion-button (click)="capture()">Let's take a picture!</button>
+    <img [src]="captureDataUrl" *ngIf='captureDataUrl'/>
+  </div>
 </ion-content>

@@ -15,7 +15,7 @@ import {UserInfoProvider} from '../providers/userInfo/userInfo';
 })
 export class MyApp {
   rootPage:any = LoginPage;
-  constructor(platform: Platform, statusBar: StatusBar, 
+  constructor(platform: Platform, statusBar: StatusBar,
     splashScreen: SplashScreen, private afAuth: AngularFireAuth, private uInfo:UserInfoProvider) {
     platform.ready().then(() => {
       this.afAuth.auth.onAuthStateChanged(user => {
@@ -29,7 +29,7 @@ export class MyApp {
           this.rootPage = LoginPage;
 
         }
-                  
+
       })
 
       // Okay, so the platform is ready and our plugins are available.

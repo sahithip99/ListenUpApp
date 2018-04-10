@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {User } from "../../models/user";
 import {AngularFireAuth} from 'angularfire2/auth';
-import * as firebase from 'firebase';
+//import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
@@ -30,7 +30,7 @@ export class LoginPage {
     this.usrInfo = this.uInfo.getUserInfo();
     this.allUsers = this.uInfo.allUsers();
     this.loadUserInfo();
-  } 
+  }
 
   async login(user: User) {
     try {
@@ -38,7 +38,7 @@ export class LoginPage {
       if (result) {
         console.log(result);
         this.navCtrl.setRoot(TabsPage);
-        console.log('user info',this.usrInfo)
+        console.log('this is user info',this.usrInfo)
       }
     }
   catch(e){
@@ -50,7 +50,7 @@ export class LoginPage {
     this.usrInfo = this.uInfo.getUserInfo();
     if (this.usrInfo == undefined || this.usrInfo == null){
       setTimeout(() => {
-        console.log("try again");
+
         this.loadUserInfo();
       },1000);
     }

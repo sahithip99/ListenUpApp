@@ -22,6 +22,7 @@ import {FeedbackinfoPage} from '../pages/feedbackinfo/feedbackinfo'
 import {HeaderMenuComponent} from '../components/header-menu/header-menu';
 
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
+import { Camera } from '@ionic-native/camera';
 
 import {PipesModule} from '../pipes/pipes.module';
 
@@ -68,7 +69,8 @@ import {PipesModule} from '../pipes/pipes.module';
     AngularFireAuth,
     AngularFireDatabaseModule,
     UserInfoProvider,
-    SearchuserPage
+    SearchuserPage,
+    Camera
   ]
 })
 export class AppModule {}

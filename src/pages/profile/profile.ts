@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 
@@ -12,10 +14,10 @@ export class ProfilePage {
   lastName: any;
   userName: any;
   usrInfo: any;
-  constructor(public navCtrl: NavController, public uInfo: UserInfoProvider) {
+  captureDataUrl: string;
+  constructor(public navCtrl: NavController, public uInfo: UserInfoProvider,private Camera: Camera) {
     this.loadUserInfo();
   }
-
 
 //----------------WHEN LOADING AND USER INFORMATION IS UNDEFINED, RELAOD AGAIN AFTER 1 SECOND---------------
   loadUserInfo(){
@@ -33,4 +35,20 @@ export class ProfilePage {
       this.userName = this.usrInfo.username;
     }
   }
+
+
+capture(){
+const cameraOptions: CameraOptions = {
+  quality: 50,
+  destinationType: this.Camera.DestinationType.DATA_URL,
+  encodingType: this.Camera.EncodingType.JPEG,
+  mediaType: this.Camera.MediaType.PICTURE,
+  };
+
+  this.Camera.getPicture(cameraOptions).then((imageData) => {
+  this.captureDataUrl = 'data:image/jpeg;base64,'+ imageData;
+  }, (err) => {
+
+  });
+}
 }
