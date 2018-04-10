@@ -24,7 +24,8 @@ import {HeaderMenuComponent} from '../components/header-menu/header-menu';
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
 import { Camera } from '@ionic-native/camera';
 
-import {PipesModule} from '../pipes/pipes.module';
+import { PipesModule } from '../pipes/pipes.module';
+import { ChatInfoProvider } from '../providers/chat-info/chat-info';
 
 
 
@@ -70,7 +71,8 @@ import {PipesModule} from '../pipes/pipes.module';
     AngularFireDatabaseModule,
     UserInfoProvider,
     SearchuserPage,
-    Camera
+    Camera,
+    ChatInfoProvider
   ]
 })
 export class AppModule {}

@@ -7,6 +7,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {UserInfoProvider} from '../providers/userInfo/userInfo';
+import {ChatInfoProvider} from '../providers/chat-info/chat-info';
 
 
 
