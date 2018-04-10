@@ -17,6 +17,7 @@ import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 import {SendfeedPage} from '../pages/sendfeed/sendfeed';
 import {SearchuserPage} from '../pages/searchuser/searchuser';
+import {FeedbackinfoPage} from '../pages/feedbackinfo/feedbackinfo'
 
 import {HeaderMenuComponent} from '../components/header-menu/header-menu';
 
@@ -37,6 +38,7 @@ import {PipesModule} from '../pipes/pipes.module';
     LoginPage,
     SendfeedPage,
     SearchuserPage,
+    FeedbackinfoPage,
     HeaderMenuComponent
   ],
   imports: [
@@ -56,6 +58,7 @@ import {PipesModule} from '../pipes/pipes.module';
     TabsPage,
     SendfeedPage,
     SearchuserPage,
+    FeedbackinfoPage,
     LoginPage
   ],
   providers: [

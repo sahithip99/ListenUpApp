@@ -16,6 +16,8 @@ export class ProfilePage {
     this.loadUserInfo();
   }
 
+
+//----------------WHEN LOADING AND USER INFORMATION IS UNDEFINED, RELAOD AGAIN AFTER 1 SECOND---------------
   loadUserInfo(){
     this.usrInfo = this.uInfo.getUserInfo();
     if (this.usrInfo == undefined || this.usrInfo == null){

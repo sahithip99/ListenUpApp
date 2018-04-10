@@ -25,7 +25,7 @@
   </ion-refresher>
   <div id = "A">
         <ion-list>
-          <ion-item *ngFor = "let mes of curList">
+          <ion-item *ngFor = "let mes of curList" (click) = "toLookfeed(mes)">
             <p><img src = "https://kawaii-mobile.com/wp-content/uploads/2016/10/Re-Zero-Rem.iPhone-6-Plus-wallpaper-1080x1920.jpg"> @{{mes.username}} {{mes.title}} {{mes.message}}</p>
           </ion-item>
         </ion-list>

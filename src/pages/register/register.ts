@@ -42,7 +42,6 @@ usrNames: any;
 //FUNCTIONS
 
 
-
 registerPeople(){
   function checkEmpty(user){
     for(var i in user){

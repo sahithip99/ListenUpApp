@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import {SearchuserPage} from '../searchuser/searchuser';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
+import {FeedbackinfoPage} from '../feedbackinfo/feedbackinfo';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 
@@ -47,6 +48,9 @@ toSendfeed(){
 	this.navCtrl.push(SearchuserPage);
 }
 
+toLookfeed(mes){
+  this.navCtrl.push(FeedbackinfoPage,{param: mes});
+}
 //----------CLICKED PUBLIC----------------------
 clickPub(){
 	this.curList = this.pubArray;
