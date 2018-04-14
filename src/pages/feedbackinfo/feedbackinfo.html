@@ -8,6 +8,9 @@
 
   <ion-navbar>
     <ion-title>feedbackinfo</ion-title>
+    <button ion-button right (click) = "flagUser()">
+    	<ion-icon name = "flag" right></ion-icon>
+    </button>
   </ion-navbar>
 
 </ion-header>
@@ -16,5 +19,5 @@
 <ion-content padding>
 <ion-label>{{senderTitle}}</ion-label>
 {{senderMes}}
- <button ion-button>reply</button>
+ <button ion-button *ngIf = "reply">reply</button>
 </ion-content>

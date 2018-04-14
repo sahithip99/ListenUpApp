@@ -7,7 +7,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {UserInfoProvider} from '../providers/userInfo/userInfo';
-import {ChatInfoProvider} from '../providers/chat-info/chat-info';
+import {RegisterPage} from '../pages/register/register';
+import {CreateuserPage} from '../pages/createuser/createuser';
 
 
 
@@ -16,27 +17,46 @@ import {ChatInfoProvider} from '../providers/chat-info/chat-info';
 })
 export class MyApp {
   rootPage:any = LoginPage;
+  usrInfo: any;
   constructor(platform: Platform, statusBar: StatusBar,
     splashScreen: SplashScreen, private afAuth: AngularFireAuth, private uInfo:UserInfoProvider) {
+    
     platform.ready().then(() => {
-      this.afAuth.auth.onAuthStateChanged(user => {
-        if(user){
+       this.afAuth.auth.onAuthStateChanged(user => {
+         if(user != undefined){
+         this.uInfo.setUserInfo(user).then(success =>{
+           this.loadUserInfo(user);
+         });
+       }
+      });
+      statusBar.styleDefault();
+      splashScreen.hide();
+
+    });
+  }
+loadUserInfo(user){
+    this.usrInfo = this.uInfo.getUserInfo();
+    this.uInfo.setUsers()
+    if (this.usrInfo == undefined || this.usrInfo == null){
+      setTimeout(() => {
+        this.loadUserInfo(user);
+      },1000);
+    }
+    else{
+       if(user){
           console.log("logged in");
-          this.uInfo.setUserInfo(user);
-          this.rootPage = TabsPage;
+          if(this.usrInfo.username){
+              this.rootPage = TabsPage;
+          }
+          else{
+            this.rootPage = CreateuserPage;
+          }    
         }
         else{
           console.log("logged out");
           this.rootPage = LoginPage;
-
-        }
-
-      })
-
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-    });
+        };
+    }
   }
+
 }

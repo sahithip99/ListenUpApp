@@ -18,11 +18,14 @@ import {RegisterPage} from '../pages/register/register';
 import {SendfeedPage} from '../pages/sendfeed/sendfeed';
 import {SearchuserPage} from '../pages/searchuser/searchuser';
 import {FeedbackinfoPage} from '../pages/feedbackinfo/feedbackinfo'
+import {ReportuserPage} from '../pages/reportuser/reportuser';
+import {CreateuserPage} from '../pages/createuser/createuser';
 
 import {HeaderMenuComponent} from '../components/header-menu/header-menu';
 
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
 import { Camera } from '@ionic-native/camera';
+
 
 import { PipesModule } from '../pipes/pipes.module';
 import { ChatInfoProvider } from '../providers/chat-info/chat-info';
@@ -41,6 +44,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     SendfeedPage,
     SearchuserPage,
     FeedbackinfoPage,
+    CreateuserPage,
     HeaderMenuComponent
   ],
   imports: [
@@ -61,6 +65,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     SendfeedPage,
     SearchuserPage,
     FeedbackinfoPage,
+    CreateuserPage,
     LoginPage
   ],
   providers: [

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import{ReportuserPage} from '../reportuser/reportuser';
+
 /**
  * Generated class for the FeedbackinfoPage page.
  *
@@ -17,14 +19,16 @@ export class FeedbackinfoPage {
 	senderInfo: any;
 	senderTitle: any;
 	senderMes: any;
+  reply: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   	this.senderInfo = this.navParams.get("param");
   	this.senderTitle = this.senderInfo.title;
   	this.senderMes = this.senderInfo.message;
+    this.reply = this.navParams.get('reply');
   	console.log("sender info",this.senderInfo);
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FeedbackinfoPage');
-  }
-
+ 
+ flagUser(){
+   this.navCtrl.push(ReportuserPage);
+ }
 }

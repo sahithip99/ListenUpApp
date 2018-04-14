@@ -22,6 +22,7 @@ export class SearchuserPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public uInfo: UserInfoProvider) {
   	    this.userList = this.uInfo.usersArray();
+        console.log("array of users",this.userList);
   }
 
   //------------SEARCHING USERS--------------------

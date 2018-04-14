@@ -19,6 +19,7 @@ export class FeedbackPage {
   usrId: any; //CURRENT USER'S ID
   curList = []; //FOR SWITCHING BETWEEN BETWEEN PUBLIC AND ANNON
   usrData:any; 
+  reply: any;
 
   constructor(public navCtrl: NavController, public uInfo: UserInfoProvider, public afData: AngularFireDatabase) {
   	this.usrData = this.uInfo.getUserInfo();
@@ -26,6 +27,7 @@ export class FeedbackPage {
   	this.annonMes = this.usrData.anonfeedbacks;
   	this.usrId = this.usrData.id;
   	this.setFeedback();
+    this.reply = true;
 
   }
 
@@ -33,10 +35,10 @@ export class FeedbackPage {
 	 setFeedback(){
 		this.pubArray = [];
 		this.annonArray = [];
-	for(var i in this.pubMes){
-		this.pubArray.push(this.pubMes[i]);
+	  for(var i in this.pubMes){
+		  this.pubArray.push(this.pubMes[i]);
 	}
-	for(var i in this.annonMes){
+	  for(var i in this.annonMes){
 			this.annonArray.push(this.annonMes[i]);
 		}
 		this.curList = this.pubArray;
@@ -47,17 +49,21 @@ export class FeedbackPage {
 toSendfeed(){
 	this.navCtrl.push(SearchuserPage);
 }
-
+//------Feedback information indepth-------
 toLookfeed(mes){
-  this.navCtrl.push(FeedbackinfoPage,{param: mes});
+  this.navCtrl.push(FeedbackinfoPage,
+    {param: mes,
+     reply : this.reply});
 }
 //----------CLICKED PUBLIC----------------------
 clickPub(){
 	this.curList = this.pubArray;
+  this.reply = true;
 }
 //--------------CLICKED ANNON-----------------
 clickAnnon(){
 	this.curList = this.annonArray
+  this.reply = false;
 }
 //-----------------------REFRESH MESSAGE-----------------------
 async setUserInfo(){

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Register</ion-title>
+    <ion-title>Registration</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,27 +20,22 @@
   <ion-input type="text" [(ngModel)]="user.email"></ion-input>
   </ion-item>
 
+   <ion-item>
+  <ion-label floating>Confirm Email Address</ion-label>
+  <ion-input type="text" [(ngModel)]="user.cEmail"></ion-input>
+  </ion-item>
+
   <ion-item>
   <ion-label floating>Password</ion-label>
   <ion-input type="password" [(ngModel)]="user.password"></ion-input>
   </ion-item>
 
-  <ion-item>
-  <ion-label floating> User Name</ion-label>
-  <ion-input type = "text" [(ngModel)] = "user.username"></ion-input>
+   <ion-item>
+  <ion-label floating>Re-enter Password</ion-label>
+  <ion-input type="password" [(ngModel)]="user.repass"></ion-input>
   </ion-item>
 
-  <ion-item>
-  <ion-label floating> First Name</ion-label>
-  <ion-input type = "text" [(ngModel)] = "user.firstname"></ion-input>
-  </ion-item>
-
-  <ion-item>
-  <ion-label floating> Last Name</ion-label>
-  <ion-input type = "text" [(ngModel)] = "user.lastname"></ion-input>
-  </ion-item>
-
-  <button ion-button (click)="registerPeople()">Register</button>
+  <button ion-button (click)="registerPeople()">Continue</button>
 
 
 </ion-content>
