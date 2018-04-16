@@ -112,6 +112,12 @@ export class FeedbackinfoPage {
          blockedusers[this.senderInfo.id] = this.senderInfo.username;
          this.afData.database.ref('users').child(this.userinfo.id).update({blockedusers});
          this.navCtrl.pop();
+         if(this.senderInfo.type == "publicfeedbacks"){
+                this.afData.database.ref('users').child(this.senderInfo.type).remove(this.senderInfo.key)
+         }
+         else if(this.senderInfo.type = "anonfeedbacks"){
+             this.afData.database.ref('users').child(this.senderInfo.type).remove(this.senderInfo.key)
+         }
        }
      }
      ]
