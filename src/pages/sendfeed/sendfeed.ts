@@ -36,7 +36,7 @@ export class SendfeedPage {
  	this.afData.database.ref("users").child(this.param.id).child("publicfeedbacks").push({
  		title: this.mesData.title,
  		message: this.mesData.message,
- 		id: this.param.id,
+ 		id: this.curUser.id,
  		firstname: this.curUser.firstname,
  		lastname: this.curUser.lastname,
  		username: this.curUser.username,

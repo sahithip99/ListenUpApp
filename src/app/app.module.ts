@@ -45,6 +45,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     SearchuserPage,
     FeedbackinfoPage,
     CreateuserPage,
+    ReportuserPage,
     HeaderMenuComponent
   ],
   imports: [
@@ -66,6 +67,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     SearchuserPage,
     FeedbackinfoPage,
     CreateuserPage,
+    ReportuserPage,
     LoginPage
   ],
   providers: [
