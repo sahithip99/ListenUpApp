@@ -33,7 +33,8 @@ export class SendfeedPage {
  sendMessage(){
  	var timeStamp =  firebase.database.ServerValue.TIMESTAMP;
  	if(this.annon == false){
- 	this.afData.database.ref("users").child(this.param.id).child("publicfeedbacks").push({
+ 	var obj = {
+ 		type: "publicfeedbacks",
  		title: this.mesData.title,
  		message: this.mesData.message,
  		id: this.curUser.id,
@@ -41,12 +42,17 @@ export class SendfeedPage {
  		lastname: this.curUser.lastname,
  		username: this.curUser.username,
  		timeStamp: timeStamp
- 		//photo url
+ 	}
+ 	this.afData.database.ref("users").child(this.param.id).child("publicfeedbacks").push(obj).then(success => {
+ 		var key = success.key;
+ 	this.afData.database.ref("users").child(this.param.id).child("publicfeedbacks").child(key).update({key: key});
  	});
+ 		//photo url
  }
  //---------------SENDING PRIVATE FEEDBACK----------------
  	else{
  		this.afData.database.ref("users").child(this.param.id).child("anonfeedbacks").push({
+ 		type: "anonfeedbacks",
  		title: this.mesData.title,
  		message: this.mesData.message,
  		username: "annonymous",

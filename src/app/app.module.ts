@@ -18,7 +18,6 @@ import {RegisterPage} from '../pages/register/register';
 import {SendfeedPage} from '../pages/sendfeed/sendfeed';
 import {SearchuserPage} from '../pages/searchuser/searchuser';
 import {FeedbackinfoPage} from '../pages/feedbackinfo/feedbackinfo'
-import {ReportuserPage} from '../pages/reportuser/reportuser';
 import {CreateuserPage} from '../pages/createuser/createuser';
 
 import {HeaderMenuComponent} from '../components/header-menu/header-menu';
@@ -45,7 +44,6 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     SearchuserPage,
     FeedbackinfoPage,
     CreateuserPage,
-    ReportuserPage,
     HeaderMenuComponent
   ],
   imports: [
@@ -67,7 +65,6 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     SearchuserPage,
     FeedbackinfoPage,
     CreateuserPage,
-    ReportuserPage,
     LoginPage
   ],
   providers: [

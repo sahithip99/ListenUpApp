@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
-
+import { AngularFireDatabase } from 'angularfire2/database';
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
@@ -14,14 +14,15 @@ export class ProfilePage {
   usrInfo: any;
   param: any;
   captureDataUrl: string;
-  constructor(public navCtrl: NavController, public uInfo: UserInfoProvider,private Camera: Camera, public navParams : NavParams) {
-    this.param = this.navParams.get('param');
-    console.log("wtf",this.param);
-    //this.firstName = this.param.firstname;
-    //this.lastName = this.param.lastname;
-    //this.userName = this.param.username;
-    this.usrInfo = this.uInfo.getUserInfo();
+  constructor(public navCtrl: NavController, 
+    public uInfo: UserInfoProvider,
+    private Camera: Camera, 
+    public navParams : NavParams,
+    private afData: AngularFireDatabase) {
+    this.loadUserInfo();
   }
+
+
   loadUserInfo(){
     this.usrInfo = this.uInfo.getUserInfo();
     if (this.usrInfo.firstname == undefined || this.usrInfo.firstname == null){
@@ -30,9 +31,13 @@ export class ProfilePage {
       },1000);
     }
     else{
-
+    this.firstName = this.usrInfo.firstname;
+    this.lastName = this.usrInfo.lastname;
+    this.userName = this.usrInfo.username;
     }
   }
+
+
 capture(){
 const cameraOptions: CameraOptions = {
   quality: 50,

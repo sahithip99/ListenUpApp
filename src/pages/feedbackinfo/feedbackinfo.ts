@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {AlertController} from 'ionic-angular';
-import{ReportuserPage} from '../reportuser/reportuser';
 import{AngularFireDatabase} from 'angularfire2/database';
 import * as firebase from 'firebase';
 import{UserInfoProvider} from "../../providers/userInfo/userInfo";
@@ -93,4 +92,30 @@ export class FeedbackinfoPage {
    })
  }
 
+ blockUser(){
+   let alert = this.alertCtrl.create({
+     title: 'Block this User?',
+     message: 'If the blocked user is not annonymous, you can unblock him later by going to your blacklist in the menu',
+     buttons: [
+     {
+       text: 'No',
+       role: 'cancel',
+       handler: () =>{
+         console.log("cancel clicked");
+       }
+     },
+     {
+       text: 'Yes',
+       handler: () =>{
+         console.log("blocked user");
+         var blockedusers = {};
+         blockedusers[this.senderInfo.id] = this.senderInfo.username;
+         this.afData.database.ref('users').child(this.userinfo.id).update({blockedusers});
+         this.navCtrl.pop();
+       }
+     }
+     ]
+   });
+   alert.present();
+  }
 }

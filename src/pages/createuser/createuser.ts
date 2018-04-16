@@ -5,6 +5,8 @@ import {UserInfoProvider} from "../../providers/userInfo/userInfo";
 import { AngularFireDatabase } from 'angularfire2/database';
 import {AngularFireAuth } from "angularfire2/auth";
 
+import{LoginPage} from '../login/login';
+
 @IonicPage()
 @Component({
   selector: 'page-createuser',
@@ -15,6 +17,7 @@ export class CreateuserPage {
 	uniqueUser: any;
 	rootPage: any = CreateuserPage;
 	usrInfo: any;
+  paramInfo: any;
 	tempInfo: any;
 	user: any = {
 		username: "",
@@ -40,7 +43,6 @@ export class CreateuserPage {
 		});
 	}
 
-
 finishReg(){
 //-----------CHECK UNIQUE USERNAMES------------
  for(var i in this.usrNames){
@@ -54,7 +56,7 @@ finishReg(){
       console.log("unique user name!");
     }
   }
-  
+
 //----------------CHECK TO SEE IF THE USER ENTERED ANYTHING---------------
  function checkEmpty(user){
     for(var i in user){
@@ -74,7 +76,7 @@ var infoObj = {
       username: this.user.username
 }
   if(checkEmpty(this.user) && this.uniqueUser){
-    this.afData.database.ref('users').child(this.tempInfo.id).set(infoObj
+    this.afData.database.ref('users').child(this.tempInfo.id).update(infoObj
      ).then(winning => {
       console.log("all is done");
       return;
@@ -83,7 +85,8 @@ var infoObj = {
   var obj ={};
       obj[this.tempInfo.id] = this.user.username
       this.afData.database.ref('usernames').update(obj);
-      this.navCtrl.setRoot(TabsPage,infoObj)
+         this.afAuth.auth.signOut();
+         this.navCtrl.setRoot(LoginPage);
   }
   else{
     console.log("something happend! fix itttttt");
