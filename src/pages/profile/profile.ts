@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import { AngularFireDatabase } from 'angularfire2/database';
+import * as firebase from 'firebase';
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
@@ -14,11 +16,11 @@ export class ProfilePage {
   usrInfo: any;
   param: any;
   captureDataUrl: string;
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public uInfo: UserInfoProvider,
-    private Camera: Camera, 
+    private Camera: Camera,
     public navParams : NavParams,
-    private afData: AngularFireDatabase) {
+    private afData: AngularFireDatabase, public alertCtrl : AlertController) {
     this.loadUserInfo();
   }
 
@@ -38,18 +40,39 @@ export class ProfilePage {
   }
 
 
-capture(){
-const cameraOptions: CameraOptions = {
-  quality: 50,
-  destinationType: this.Camera.DestinationType.DATA_URL,
-  encodingType: this.Camera.EncodingType.JPEG,
-  mediaType: this.Camera.MediaType.PICTURE,
-  };
+  capture(){
+  const cameraOptions: CameraOptions = {
+    quality: 50,
+    destinationType: this.Camera.DestinationType.DATA_URL,
+    encodingType: this.Camera.EncodingType.JPEG,
+    mediaType: this.Camera.MediaType.PICTURE,
+    };
 
-  this.Camera.getPicture(cameraOptions).then((imageData) => {
-  this.captureDataUrl = 'data:image/jpeg;base64,'+ imageData;
-  }, (err) => {
+    this.Camera.getPicture(cameraOptions).then((imageData) => {
+      this.captureDataUrl = 'data:image/jpeg;base64,'+ imageData;
+      this.upload();
+    }, (err) => {
 
-  });
-}
+    });
+  }
+
+  upload() {
+      let storageRef = firebase.storage().ref(); //reference to storage database
+      const imageRef = storageRef.child(`profiles/${this.uInfo.getUserId()}.jpg`);
+      imageRef.putString(this.captureDataUrl,firebase.storage.StringFormat.DATA_URL).then((snapshot)=>{
+        this.showSuccessfulUploadAlert();
+      });
+    }
+
+  showSuccessfulUploadAlert(){
+    let alert = this.alertCtrl.create({
+      title : 'Uploaded!',
+      subTitle : 'Picture is uploaded to Firebase',
+      buttons : ['OK']
+    });
+    alert.present();
+    this.captureDataUrl = "";
+  }
+
+
 }

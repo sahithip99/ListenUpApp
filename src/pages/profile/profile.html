@@ -17,6 +17,7 @@
 
   <div style="display:flex; flex-direction:column;justify-content:center">
     <button ion-button (click)="capture()">Let's take a picture!</button>
-    <img [src]="captureDataUrl" *ngIf='captureDataUrl'/>
+    <img id="profile" [src]="captureDataUrl" *ngIf='captureDataUrl'/>
+
   </div>
 </ion-content>
