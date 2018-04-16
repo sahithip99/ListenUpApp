@@ -19,7 +19,7 @@ import {SendfeedPage} from '../pages/sendfeed/sendfeed';
 import {SearchuserPage} from '../pages/searchuser/searchuser';
 import {FeedbackinfoPage} from '../pages/feedbackinfo/feedbackinfo'
 import {CreateuserPage} from '../pages/createuser/createuser';
-
+import {BlockusersPage} from '../pages/blockusers/blockusers';
 import {HeaderMenuComponent} from '../components/header-menu/header-menu';
 
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
@@ -44,6 +44,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     SearchuserPage,
     FeedbackinfoPage,
     CreateuserPage,
+    BlockusersPage,
     HeaderMenuComponent
   ],
   imports: [
@@ -65,6 +66,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     SearchuserPage,
     FeedbackinfoPage,
     CreateuserPage,
+    BlockusersPage,
     LoginPage
   ],
   providers: [

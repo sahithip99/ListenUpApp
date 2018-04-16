@@ -30,7 +30,13 @@ export class FeedbackPage {
     this.reply = true;
 
   }
-
+//---------------REFRESH LIST WHENEVER YOU LOAD THIS PAGE:
+ ionViewCanEnter(){
+   this.setUserInfo();
+   this.pubMes = this.usrData.publicfeedbacks;
+   this.annonMes = this.usrData.anonfeedbacks;
+   this.setFeedback();
+ }
 //------------INITIALIZE ARRAYS AND SET DEFAULT PAGE AS PUBLIC-------------------
 	 setFeedback(){
 		this.pubArray = [];

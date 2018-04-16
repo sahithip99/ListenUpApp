@@ -14,12 +14,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'blockusers.html',
 })
 export class BlockusersPage {
+	blockedUsers: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  	this.blockedUsers = this.navParams.get("param");
+  	console.log("blocked guy",this.blockedUsers);
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad BlockusersPage');
   }
-
+  searchUsers(searchbar){
+  	var q = searchbar.srcElement.value;
+  	console.log("searching...",q);
+  	if(!q) return;
+  	if(String(q).replace(/\s/g,"").length ==0){
+  		return true;
+  	}
+  	this.blockedUsers = this.blockedUsers.filter((v) => {
+  		if(v.username && q){
+  			if (v.username.toLowerCase().indexOf(q.toLowerCase()) > -1){
+  				return true;
+  			}
+  			return false;
+  		}
+  	});
+  }
 }

@@ -21,17 +21,30 @@ export class HeaderMenuComponent {
 
   text: string;
   usrInfo: any;
-  blockedUsers = []
+  blockedUsers = [];
   constructor(private afAuth: AngularFireAuth,
     public menuCtrl: MenuController,
               public app: App,
               private afData: AngularFireDatabase,
               private uInfo: UserInfoProvider,
-              //public navCtrl: NavController, 
-    /*public navParams: NavParams */) {
+              /*public navCtrl: NavController, 
+    public navParams: NavParams */) {
     console.log('Hello HeaderMenuComponent Component');
     this.text = 'Hello World';
-    this.usrInfo = uInfo.getUserInfo();
+    this.loadUserInfo();
+  }
+
+ loadUserInfo(){
+    this.usrInfo = this.uInfo.getUserInfo();
+    if (this.usrInfo == undefined){
+      setTimeout(() => {
+        this.loadUserInfo();
+      },1000);
+    }
+    else{
+      console.log("success loading in userinfo");
+
+    }
   }
 
 logoutClicked(){
@@ -48,6 +61,13 @@ blocked(){
         this.blockedUsers.push(this.usrInfo.blockedusers[i]);
   }
 }  
+
+console.log("blocked users");
+this.menuCtrl.close();
+var nav = this.app.getRootNav();
+nav.push(BlockusersPage,{param:this.blockedUsers});
+
 //this.navCtrl.push(BlockusersPage,{param:this.blockedUsers});
+
 }
 }
