@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import{AngularFireDatabase} from 'angularfire2/database';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import * as firebase from 'firebase';
-
+import {AlertController} from 'ionic-angular';
 /**
  * Generated class for the SendfeedPage page.
  *
@@ -23,7 +23,11 @@ export class SendfeedPage {
 	 title: "",
 	 message: ""
 	 }
-  constructor(public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase, public uInfo: UserInfoProvider) {
+  constructor(public navCtrl: NavController, 
+  	public navParams: NavParams, 
+  	public afData: AngularFireDatabase, 
+  	public uInfo: UserInfoProvider,
+  	private alertCtrl: AlertController) {
   	this.param = this.navParams.get('param1');
   	this.curUser = this.uInfo.getUserInfo();
   	this.annon = false;
@@ -62,6 +66,19 @@ export class SendfeedPage {
  		//photo url
  	})
  }
+ var alertCtrl = this.alertCtrl.create({
+ 	title: "Feedback Sent!",
+ 	buttons: [
+ 	{
+ 		text: "ok",
+ 		role: "cancel",
+ 		handler: () =>{
+ 			console.log("message sent!");
+ 			this.navCtrl.pop();
+ 		}
+ 	}
+ 	]
+ });
+ alertCtrl.present();
 }
-
 }
