@@ -21,10 +21,16 @@ export class SearchuserPage {
 	curUser: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public uInfo: UserInfoProvider) {
+        var usrId = this.uInfo.getUserInfo().id;
   	    this.userList = this.uInfo.usersArray();
         for(var i in this.userList){
+          if (this.userList[i].id == usrId){
+            this.userList.splice(i,1);
+          }
+        }
+        for(var i in this.userList){
           for(var j in this.userList[i].blockedusers){
-              if(j == this.uInfo.getUserInfo().id){
+              if(j == usrId){
                 this.userList.splice(i,1)
               }
           }

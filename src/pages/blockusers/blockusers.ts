@@ -78,7 +78,7 @@ export class BlockusersPage {
   				this.afData.database.ref('users').child(this.uInfo.getUserInfo().id).child("blockedusers").child(uid).remove();
   				this.blocked = false;
   				var index = this.blockedUsers.indexOf(user);
-  				this.blockedUsers.split(index,1);
+  				this.blockedUsers.splice(index,1);
   			}
   		}
   		]
