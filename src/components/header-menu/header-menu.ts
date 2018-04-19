@@ -22,6 +22,7 @@ export class HeaderMenuComponent {
   text: string;
   usrInfo: any;
   blockedUsers = [];
+  blockedObj =  {};
   constructor(private afAuth: AngularFireAuth,
     public menuCtrl: MenuController,
               public app: App,
@@ -32,6 +33,7 @@ export class HeaderMenuComponent {
     console.log('Hello HeaderMenuComponent Component');
     this.text = 'Hello World';
     this.loadUserInfo();
+    //this.blocked();
   }
 
  loadUserInfo(){
@@ -57,17 +59,21 @@ logoutClicked(){
 
 blocked(){
   for(var i in this.usrInfo.blockedusers){
-    if(this.usrInfo.blockedusers[i] != "annonymous"){
+    var unique = true;
+    for(var j in this.blockedUsers){
+      if(this.usrInfo.blockedusers[i] == this.blockedUsers[j]){
+        unique = false;
+      }
+    }
+    if(this.usrInfo.blockedusers[i] != "annonymous" && unique ){
+      this.blockedObj[i] = this.usrInfo.blockedusers[i];
         this.blockedUsers.push(this.usrInfo.blockedusers[i]);
+      }
   }
-}  
-
 console.log("blocked users");
 this.menuCtrl.close();
 var nav = this.app.getRootNav();
-nav.push(BlockusersPage,{param:this.blockedUsers});
-
+nav.push(BlockusersPage,{param1:this.blockedObj,param: this.blockedUsers});
 //this.navCtrl.push(BlockusersPage,{param:this.blockedUsers});
-
 }
 }
