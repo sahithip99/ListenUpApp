@@ -33,6 +33,23 @@ export class SendfeedPage {
   	this.annon = false;
   }
 
+
+alertControl(){
+   var alertCtrl = this.alertCtrl.create({
+   title: "Feedback Sent!",
+   buttons: [
+   {
+     text: "ok",
+     role: "cancel",
+     handler: () =>{
+       console.log("message sent!");
+       this.navCtrl.pop();
+     }
+   }
+   ]
+ });
+ alertCtrl.present();
+}
 //-------------SENDING PUBLIC FEEDBACK--------------------
  sendMessage(){
  	var timeStamp =  firebase.database.ServerValue.TIMESTAMP;
@@ -52,9 +69,10 @@ export class SendfeedPage {
  	this.afData.database.ref("users").child(this.param.id).child("publicfeedbacks").child(key).update({key: key});
  	});
  		//photo url
+     this.alertControl();
  }
  //---------------SENDING PRIVATE FEEDBACK----------------
- 	else{
+ 	else if(this.param.annonallow && this.annon == true){
  		this.afData.database.ref("users").child(this.param.id).child("anonfeedbacks").push({
  		type: "anonfeedbacks",
  		title: this.mesData.title,
@@ -64,21 +82,25 @@ export class SendfeedPage {
  		firstname: "annonymous",
  		timestamp:timeStamp
  		//photo url
- 	})
+ 	});
+     this.alertControl();
  }
- var alertCtrl = this.alertCtrl.create({
- 	title: "Feedback Sent!",
- 	buttons: [
- 	{
- 		text: "ok",
- 		role: "cancel",
- 		handler: () =>{
- 			console.log("message sent!");
- 			this.navCtrl.pop();
- 		}
- 	}
- 	]
+ else{
+   
+    var alertCtrl = this.alertCtrl.create({
+   title: "the user does not accept annonymous feedback",
+   buttons: [
+   {
+     text: "ok",
+     role: "cancel",
+     handler: () =>{
+       console.log("the user does not accept annonymous feedback");
+       this.navCtrl.pop();
+     }
+   }
+   ]
  });
  alertCtrl.present();
+ }
 }
 }
