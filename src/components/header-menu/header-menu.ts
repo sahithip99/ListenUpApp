@@ -81,14 +81,14 @@ nav.push(BlockusersPage,{param1:this.blockedObj,param: this.blockedUsers});
 
 allowAnnon(){
   if(this.annonStatus){ 
-    this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowannon: false});
-    this.annonStatus = false
+    this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowannon: true});
+    //this.annonStatus = false
       console.log("disabled annon");
 }
   else{
-      this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowannon: true});
+      this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowannon: false});
       console.log("enabled annon");
-        this.annonStatus = true
+        //this.annonStatus = true
   }
 }
 }

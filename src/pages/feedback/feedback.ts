@@ -7,6 +7,8 @@ import {FeedbackinfoPage} from '../feedbackinfo/feedbackinfo';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 
+import {AlertController} from 'ionic-angular';
+
 @Component({
   selector: 'page-feedback',
   templateUrl: 'feedback.html'
@@ -20,7 +22,7 @@ export class FeedbackPage {
   curList = []; //FOR SWITCHING BETWEEN BETWEEN PUBLIC AND ANNON
   usrData:any; 
   reply: any;
-  constructor(public navCtrl: NavController, public uInfo: UserInfoProvider, public afData: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public uInfo: UserInfoProvider, public afData: AngularFireDatabase, private alertCtrl: AlertController) {
   	this.usrData = this.uInfo.getUserInfo();
   	this.pubMes = this.usrData.publicfeedbacks;
   	this.annonMes = this.usrData.anonfeedbacks;
@@ -93,6 +95,25 @@ async setUserInfo(){
 
  deleteMes(mes){
    console.log("message:",mes);
+   var alertCtrl = this.alertCtrl.create({
+     title: "are you sure you want to delete this feedback?",
+     message: "this action is permanent",
+     buttons: [
+     {
+       text: "no",
+       role: "cancel",
+       handler: () =>{
+          console.log("cancel clicked");
+       }
+     },
+     {
+       text: "yes",
+       handler: () => {
+         this.afData.database.ref('users').child(this.usrId).child(mes.type).child(mes.key).remove();
+       }
+     }
+     ]
+   });
+   alertCtrl.present();
  }
-
 }
