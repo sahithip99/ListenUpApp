@@ -23,6 +23,7 @@ export class HeaderMenuComponent {
   usrInfo: any;
   blockedUsers = [];
   blockedObj =  {};
+  annonStatus: any;
   constructor(private afAuth: AngularFireAuth,
     public menuCtrl: MenuController,
               public app: App,
@@ -33,6 +34,7 @@ export class HeaderMenuComponent {
     console.log('Hello HeaderMenuComponent Component');
     this.text = 'Hello World';
     this.loadUserInfo();
+    
     //this.blocked();
   }
 
@@ -45,7 +47,7 @@ export class HeaderMenuComponent {
     }
     else{
       console.log("success loading in userinfo");
-
+      this.annonStatus = this.uInfo.getUserInfo().allowannon;
     }
   }
 
@@ -75,5 +77,18 @@ this.menuCtrl.close();
 var nav = this.app.getRootNav();
 nav.push(BlockusersPage,{param1:this.blockedObj,param: this.blockedUsers});
 //this.navCtrl.push(BlockusersPage,{param:this.blockedUsers});
+}
+
+allowAnnon(){
+  if(this.annonStatus){ 
+    this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowannon: false});
+    this.annonStatus = false
+      console.log("disabled annon");
+}
+  else{
+      this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowannon: true});
+      console.log("enabled annon");
+        this.annonStatus = true
+  }
 }
 }

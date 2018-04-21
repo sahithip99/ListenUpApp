@@ -124,4 +124,8 @@ export class FeedbackinfoPage {
    });
    alert.present();
   }
+
+ deleteMsg(){
+   
+ }
 }

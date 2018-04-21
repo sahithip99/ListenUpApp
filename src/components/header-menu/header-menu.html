@@ -6,5 +6,11 @@
   	</ion-list-header>
   	<ion-item (click) = "logoutClicked()">Logout</ion-item>
   	<ion-item (click) = "blocked()">Blocked Users</ion-item>
+  	<ion-item>
+  		<ion-label> Block Annon Feedback</ion-label> 	
+  		<ion-toggle [(ngModel)] = "annonStatus" (ngModelChange) = "allowAnnon($event)"></ion-toggle> 
+  	</ion-item>
+ 
+
   </ion-list>
 </div>

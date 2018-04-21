@@ -20,7 +20,6 @@ export class FeedbackPage {
   curList = []; //FOR SWITCHING BETWEEN BETWEEN PUBLIC AND ANNON
   usrData:any; 
   reply: any;
-
   constructor(public navCtrl: NavController, public uInfo: UserInfoProvider, public afData: AngularFireDatabase) {
   	this.usrData = this.uInfo.getUserInfo();
   	this.pubMes = this.usrData.publicfeedbacks;
@@ -28,6 +27,7 @@ export class FeedbackPage {
   	this.usrId = this.usrData.id;
   	this.setFeedback();
     this.reply = true;
+    
 
   }
 //---------------REFRESH LIST WHENEVER YOU LOAD THIS PAGE:
@@ -35,7 +35,7 @@ export class FeedbackPage {
    this.setUserInfo();
    this.pubMes = this.usrData.publicfeedbacks;
    this.annonMes = this.usrData.anonfeedbacks;
-   this.setFeedback();
+
  }
 //------------INITIALIZE ARRAYS AND SET DEFAULT PAGE AS PUBLIC-------------------
 	 setFeedback(){
@@ -89,6 +89,10 @@ async setUserInfo(){
   	 	console.log('Async operation has ended');
   	 	refresher.complete();
   	 },2000);
+ }
+
+ deleteMes(mes){
+   console.log("message:",mes);
  }
 
 }

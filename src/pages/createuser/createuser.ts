@@ -73,7 +73,8 @@ var infoObj = {
       firstname: this.user.firstname,
       lastname: this.user.lastname,
       email: this.tempInfo.email,
-      username: this.user.username
+      username: this.user.username,
+      allowAnnon: true
 }
   if(checkEmpty(this.user) && this.uniqueUser){
     this.afData.database.ref('users').child(this.tempInfo.id).update(infoObj

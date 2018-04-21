@@ -35,7 +35,6 @@ export class UserInfoProvider{
     })
     return this.usrArray
   }
-  
  //----------------------ALL OF THE USERNAMES-------------------
   async setNameInfo(){
 		await this.afData.database.ref('usernames').once('value',dataSnap =>{
@@ -52,6 +51,9 @@ getUserId(){
 }
 allUsers(){
 	return this.usrGroup;
+}
+getAccept(){
+	return this.allowAnnon;
 }
 usersArray(){
 	return this.usrArray;
