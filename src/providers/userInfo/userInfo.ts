@@ -52,9 +52,6 @@ getUserId(){
 allUsers(){
 	return this.usrGroup;
 }
-getAccept(){
-	return this.allowAnnon;
-}
 usersArray(){
 	return this.usrArray;
 }
