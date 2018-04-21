@@ -20,7 +20,7 @@ export class MyApp {
   usrInfo: any;
   constructor(platform: Platform, statusBar: StatusBar,
     splashScreen: SplashScreen, private afAuth: AngularFireAuth, private uInfo:UserInfoProvider) {
-    
+
     platform.ready().then(() => {
        this.afAuth.auth.onAuthStateChanged(user => {
          if(user != undefined){
@@ -44,16 +44,16 @@ loadUserInfo(user){
     }
     else{
        if(user){
-          console.log("logged in");
+          //user logged in
           if(this.usrInfo.username){
               this.rootPage = TabsPage;
           }
           else{
             this.rootPage = CreateuserPage;
-          }    
+          }
         }
         else{
-          console.log("logged out");
+        //user logged out
           this.rootPage = LoginPage;
         };
     }
