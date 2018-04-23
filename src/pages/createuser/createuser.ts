@@ -74,7 +74,8 @@ var infoObj = {
       lastname: this.user.lastname,
       email: this.tempInfo.email,
       username: this.user.username,
-      allowAnnon: true
+      allowAnnon: true,
+      photourl: "https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181"
 }
   if(checkEmpty(this.user) && this.uniqueUser){
     this.afData.database.ref('users').child(this.tempInfo.id).update(infoObj

@@ -1,3 +1,23 @@
 page-profile {
+	.toolbar-background{
+		background-color: #15a88b;
+	}
+	ion-navbar{
+		height: 50px;
+	}
+	ion-title{
+		font-family: "Comic Sans MS"
+	}
+	 img{
+		margin: auto;
+		width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 70px;
+        display: block;
+}
+  h2{
+  	text-align: center;
+  }
 
 }

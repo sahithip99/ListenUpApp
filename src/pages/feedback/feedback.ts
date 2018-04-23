@@ -109,6 +109,7 @@ async setUserInfo(){
      {
        text: "yes",
        handler: () => {
+        
          this.afData.database.ref('users').child(this.usrId).child(mes.type).child(mes.key).remove();
        }
      }

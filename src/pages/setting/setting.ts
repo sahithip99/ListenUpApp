@@ -18,5 +18,4 @@ export class SettingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-
 }
