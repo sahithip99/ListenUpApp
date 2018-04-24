@@ -77,8 +77,18 @@ setPhoto(){
         console.log("clicked take photo");
         this.capture();
       }
+    },
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      handler: () => {
+        console.log("cancel clicked");
+      }
     }
     ]
-  })
+  });
+  actSheet.present();
 }
+
+
 }

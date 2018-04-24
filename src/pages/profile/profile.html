@@ -11,12 +11,12 @@
 
 <ion-content padding>
 <ion-item>
-  <img  [src] = "'captureDataUrl' ? 'captureDataUrl' : 'userPhoto'"> <h2> {{firstName}} {{lastName}} <div>FeedbackID: {{userName}}</div></h2>
+  <img  [src] = "captureDataUrl ? captureDataUrl : userPhoto" (click) = "setPhoto()"> <h2> {{firstName}} {{lastName}} <div>FeedbackID: {{userName}}</div></h2>
 </ion-item>
 
 
-  <div style="display:flex; flex-direction:column;justify-content:center">
-    <button ion-button (click)="capture()">Let's take a picture!</button>
+   <!--><div style="display:flex; flex-direction:column;justify-content:center">
+   <button ion-button (click)="capture()">Let's take a picture!</button>
     <img class="profile" [src]="captureDataUrl" *ngIf='captureDataUrl'/>
-  </div>
+  </div><-->
 </ion-content>
