@@ -45,12 +45,13 @@ export class ProfilePage {
   }
 
 
-  capture(){
+  capture(sourcetype){
   const cameraOptions: CameraOptions = {
     quality: 50,
     destinationType: this.Camera.DestinationType.DATA_URL,
     encodingType: this.Camera.EncodingType.JPEG,
     mediaType: this.Camera.MediaType.PICTURE,
+    sourceType: sourcetype
     };
 
     this.Camera.getPicture(cameraOptions).then((imageData) => {
@@ -65,9 +66,9 @@ export class ProfilePage {
       let storageRef = firebase.storage().ref(); //reference to storage database
       const imageRef = storageRef.child(`profiles/${this.uInfo.getUserId()}.jpg`);
       imageRef.putString(this.captureDataUrl,firebase.storage.StringFormat.DATA_URL).then((snapshot)=>{
-        this.showSuccessfulUploadAlert();
       });
     }
+
 
 setPhoto(){
   var actSheet = this.actSheet.create({
@@ -78,6 +79,7 @@ setPhoto(){
       role: 'upload',
       handler: () => {
         console.log("uploading photo clicked");
+        this.capture(0);
       }
     },
     {
@@ -85,7 +87,7 @@ setPhoto(){
       role: 'take',
       handler : () => {
         console.log("clicked take photo");
-        this.capture();
+        this.capture(1);
       }
     },
     {
@@ -99,7 +101,6 @@ setPhoto(){
   });
   actSheet.present();
 }
-
 
 
 }
