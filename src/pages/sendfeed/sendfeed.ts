@@ -23,14 +23,28 @@ export class SendfeedPage {
 	 title: "",
 	 message: ""
 	 }
+   receivePho: any;
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams, 
   	public afData: AngularFireDatabase, 
   	public uInfo: UserInfoProvider,
   	private alertCtrl: AlertController) {
   	this.param = this.navParams.get('param1');
+    this.loadReceiverPhoto()
   	this.curUser = this.uInfo.getUserInfo();
   	this.annon = false;
+  }
+
+
+
+async loadReceiverPhoto(){
+      await firebase.storage().ref('profiles').child(this.param.id + '.jpg').getDownloadURL().then(success =>{
+      this.receivePho = success;
+    },
+    fail => {
+      this.receivePho = 'https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181'
+}
+    );
   }
 
 

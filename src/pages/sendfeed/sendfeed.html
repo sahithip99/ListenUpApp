@@ -5,32 +5,23 @@
   Ionic pages and navigation.
 -->
 <ion-header color = "primary">
-  <ion-navbar>
-    <ion-title>
-      Searchusers
-    </ion-title>
+  <ion-navbar color = "primary">
   </ion-navbar>
+  <img [src] = "receivePho">
+ <h1 id = "name">{{param.firstname}} {{param.lastname}}</h1>
+
 </ion-header>
 
-<ion-content>
-			<ion-item>
-				<ion-label>make it annonymous?</ion-label>
+<ion-content id = "A">
+			<ion-item id = "A1">
+				<ion-label><h2><b>Annonymous?</b></h2></ion-label>
 				<ion-toggle [(ngModel)] = "annon"></ion-toggle>
 			</ion-item>
-			<ion-item>
-				<ion-label>
-					Sending Message to {{param.firstname}} {{param.lastname}} @{{param.username}}
-				</ion-label>
-			</ion-item>
-			<ion-item> 
-			<ion-label floating autocorrect>Enter the title of your message</ion-label>
-			<ion-input type = "text" [(ngModel)] = "mesData.title" ></ion-input>
-			</ion-item>
-	
-			<ion-item>
-			<ion-label floating autocorrect>enter your message</ion-label>
-			<ion-textarea type="text" [(ngModel)] = "mesData.message"></ion-textarea>
-			</ion-item>
+			<ion-textarea floating autocorrect id = "A4" type = "text" [(ngModel)] = "mesData.title">
+			</ion-textarea>
 
-				<button ion-button value = "send message" color = "primary" (click) = "sendMessage()">send message</button>
+			<ion-textarea type="text" [(ngModel)] = "mesData.message" id = "A3"></ion-textarea>
+
+
+				<button  id = "A2" ion-button value = "send message" color = "primary" (click) = "sendMessage()">send message</button>
 </ion-content>
