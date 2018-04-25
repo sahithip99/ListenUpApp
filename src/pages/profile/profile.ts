@@ -4,6 +4,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ActionSheetController } from 'ionic-angular';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'page-profile',
@@ -39,7 +40,7 @@ export class ProfilePage {
     this.firstName = this.usrInfo.firstname;
     this.lastName = this.usrInfo.lastname;
     this.userName = this.usrInfo.username;
-    this.userPhoto = this.usrInfo.photourl
+    this.userPhoto = this.uInfo.getPhoto();
     }
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+import * as firebase from 'firebase';
 
 @Injectable()
 
@@ -9,6 +10,7 @@ export class UserInfoProvider{
 	usrNames: any;
 	usrGroup: any;
 	usrArray: any;
+	userPhoto: any;
 	usrId: any;
 	constructor(public afAuth: AngularFireAuth, public afData: AngularFireDatabase){
 		console.log('Hello UserInfoProvider Provider');
@@ -35,6 +37,17 @@ export class UserInfoProvider{
     })
     return this.usrArray
   }
+  async setPhoto(id){
+    await firebase.storage().ref('profiles').child(id + '.jpg').getDownloadURL().then(success =>{
+      this.userPhoto = success;
+    },
+    fail => {
+      this.userPhoto = 'https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181'
+}
+    );
+  }
+
+
  //----------------------ALL OF THE USERNAMES-------------------
   async setNameInfo(){
 		await this.afData.database.ref('usernames').once('value',dataSnap =>{
@@ -45,6 +58,9 @@ export class UserInfoProvider{
 //-----------------Getters-----------------
 getUserInfo(){
 	return this.usrData;
+}
+getPhoto(){
+	return this.userPhoto;
 }
 getUserId(){
 	return this.usrId;
