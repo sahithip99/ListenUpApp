@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -18,9 +18,9 @@ export class ProfilePage {
   param: any;
   userPhoto: any;
   captureDataUrl: string;
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public uInfo: UserInfoProvider,
-    private Camera: Camera, 
+    private Camera: Camera,
     public navParams : NavParams,
     private afData: AngularFireDatabase,
     private actSheet: ActionSheetController) {
@@ -45,20 +45,29 @@ export class ProfilePage {
   }
 
 
-capture(){
-const cameraOptions: CameraOptions = {
-  quality: 50,
-  destinationType: this.Camera.DestinationType.DATA_URL,
-  encodingType: this.Camera.EncodingType.JPEG,
-  mediaType: this.Camera.MediaType.PICTURE,
-  };
+  capture(){
+  const cameraOptions: CameraOptions = {
+    quality: 50,
+    destinationType: this.Camera.DestinationType.DATA_URL,
+    encodingType: this.Camera.EncodingType.JPEG,
+    mediaType: this.Camera.MediaType.PICTURE,
+    };
 
-  this.Camera.getPicture(cameraOptions).then((imageData) => {
-  this.captureDataUrl = 'data:image/jpeg;base64,'+ imageData;
-  }, (err) => {
-      console.log("couldn't take photo!");
-  });
-}
+    this.Camera.getPicture(cameraOptions).then((imageData) => {
+      this.captureDataUrl = 'data:image/jpeg;base64,'+ imageData;
+      this.upload();
+    }, (err) => {
+
+    });
+  }
+
+  upload() {
+      let storageRef = firebase.storage().ref(); //reference to storage database
+      const imageRef = storageRef.child(`profiles/${this.uInfo.getUserId()}.jpg`);
+      imageRef.putString(this.captureDataUrl,firebase.storage.StringFormat.DATA_URL).then((snapshot)=>{
+        this.showSuccessfulUploadAlert();
+      });
+    }
 
 setPhoto(){
   var actSheet = this.actSheet.create({
@@ -90,6 +99,7 @@ setPhoto(){
   });
   actSheet.present();
 }
+
 
 
 }
