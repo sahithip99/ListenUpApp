@@ -25,6 +25,11 @@ export class UserInfoProvider{
 
 		});
 	}
+
+	clearUserInfo(){
+		this.usrData = null;
+		this.usrId = null;
+	}
 //---------------ALL OF THE USERS---------------------------
 	async setUsers(){
     await this.afData.database.ref('users').once('value',dataSnap =>{

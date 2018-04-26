@@ -33,6 +33,7 @@ export class SendfeedPage {
   	this.curUser = this.uInfo.getUserInfo();
   	this.annon = false;
     this.receivePho = this.param.photourl
+    console.log("sending feedback to", this.param);
   }
 
 
@@ -67,7 +68,8 @@ alertControl(){
  		firstname: this.curUser.firstname,
  		lastname: this.curUser.lastname,
  		username: this.curUser.username,
- 		timeStamp: timeStamp
+ 		timeStamp: timeStamp,
+    photourl: this.curUser.photourl
  	}
  	this.afData.database.ref("users").child(this.param.id).child("publicfeedbacks").push(obj).then(success => {
  		var key = success.key;
@@ -77,17 +79,21 @@ alertControl(){
      this.alertControl();
  }
  //---------------SENDING PRIVATE FEEDBACK----------------
- 	else if(this.param.annonallow && this.annon == true){
- 		this.afData.database.ref("users").child(this.param.id).child("anonfeedbacks").push({
- 		type: "anonfeedbacks",
- 		title: this.mesData.title,
- 		message: this.mesData.message,
- 		username: "annonymous",
- 		id: this.param.id,
- 		firstname: "annonymous",
- 		timestamp:timeStamp
- 		//photo url
- 	});
+ 	else if(this.param.allowAnnon && this.annon == true){
+     var obj2 = {
+     type: "anonfeedbacks",
+     title: this.mesData.title,
+     message: this.mesData.message,
+     username: "annonymous",
+     id: this.param.id,
+     firstname: "annonymous",
+     timestamp:timeStamp,
+     photourl: "https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181"
+     }
+   this.afData.database.ref("users").child(this.param.id).child("anonfeedbacks").push(obj2).then(success => {
+   var key = success.key;
+   this.afData.database.ref("users").child(this.param.id).child("anonfeedbacks").child(key).update({key: key});
+   });
      this.alertControl();
  }
  else{

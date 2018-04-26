@@ -30,9 +30,8 @@ export class ProfilePage {
 
   loadUserInfo(){
     this.usrInfo = this.uInfo.getUserInfo();
-    if (this.usrInfo.firstname == undefined || this.usrInfo.firstname == null){
-      console.log("try again to get user data");
-      setTimeout(() => {
+     if(!this.usrInfo){
+       setTimeout(() => {
         this.loadUserInfo();
       },1000);
     }
@@ -66,6 +65,9 @@ export class ProfilePage {
       let storageRef = firebase.storage().ref(); //reference to storage database
       const imageRef = storageRef.child(`profiles/${this.uInfo.getUserId()}.jpg`);
       imageRef.putString(this.captureDataUrl,firebase.storage.StringFormat.DATA_URL).then((snapshot)=>{
+      });
+      this.afData.database.ref("users").child(this.usrInfo.id).update({
+        photourl: this.captureDataUrl
       });
     }
 

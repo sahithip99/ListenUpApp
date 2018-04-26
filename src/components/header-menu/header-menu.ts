@@ -47,13 +47,14 @@ export class HeaderMenuComponent {
     }
     else{
       console.log("success loading in userinfo");
-      this.annonStatus = this.uInfo.getUserInfo().allowannon;
+      this.annonStatus = this.uInfo.getUserInfo().allowAnnon;
     }
   }
 
 logoutClicked(){
 	console.log('Logout...')
 	this.afAuth.auth.signOut();
+  this.uInfo.clearUserInfo();
 	this.menuCtrl.close();
 	var nav = this.app.getRootNav();
 	nav.setRoot(LoginPage);
@@ -81,12 +82,12 @@ nav.push(BlockusersPage,{param1:this.blockedObj,param: this.blockedUsers});
 
 allowAnnon(){
   if(this.annonStatus){ 
-    this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowannon: true});
+    this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowAnnon: true});
     //this.annonStatus = false
       console.log("disabled annon");
 }
   else{
-      this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowannon: false});
+      this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowAnnon: false});
       console.log("enabled annon");
         //this.annonStatus = true
   }

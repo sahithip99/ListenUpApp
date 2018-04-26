@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = "primary">
     <ion-title>
       Feedback
     </ion-title>
@@ -28,9 +28,11 @@
          
           <ion-item-sliding *ngFor = "let mes of curList" >
 
-          <ion-item (click) = "toLookfeed(mes)" >
-            <p><img src = "https://kawaii-mobile.com/wp-content/uploads/2016/10/Re-Zero-Rem.iPhone-6-Plus-wallpaper-1080x1920.jpg"> @{{mes.username}} {{mes.title}} {{mes.message}}</p>
-            
+          <ion-item (click) = "clickMessage(mes)" >
+            <img [src] = 'mes.photourl'> <h2 id= "A1">Title: {{mes.title}}</h2>
+            <p id = "A2">from {{mes.firstname}} {{mes.lastname}}
+              <span id = "A3">@{{mes.username}}</span>
+            </p>
           </ion-item>
           <ion-item-options>
             <button ion-button (click)= "deleteMes(mes)">delete</button>
