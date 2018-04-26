@@ -33,7 +33,7 @@ page-sendfeed {
 		position: relative;
 		margin: auto;
 		width: 50%;
-		top: 100px;
+		top: 30px;
 		display: block;
 	}
 
@@ -43,7 +43,7 @@ page-sendfeed {
 		display: block;
 		width: 300px;
 		height: 200px;
-		top: 40px;
+		top: 0px;
 		border: 0.1em solid gray;
 
 	}
@@ -53,8 +53,16 @@ page-sendfeed {
 		margin: auto;
 		display: block;
 		width: 300px;
-		height: 50px;
-		top: 40px;
+		height: 60px;
+		top:-30px;
 		border: 0.1em solid gray;
+		font-size: 20px;
 	}
+	ion-toggle{
+		position: relative;
+		left: 290px;
+		top: -50px;
+		display: block;
+	}
+
 }

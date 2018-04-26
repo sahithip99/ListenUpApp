@@ -13,12 +13,12 @@
 </ion-header>
 
 <ion-content id = "A">
-			<ion-item id = "A1">
+				<div>
 				<ion-label><h2><b>Annonymous?</b></h2></ion-label>
-				<ion-toggle [(ngModel)] = "annon"></ion-toggle>
-			</ion-item>
-			<ion-textarea floating autocorrect id = "A4" type = "text" [(ngModel)] = "mesData.title">
-			</ion-textarea>
+				<ion-toggle [(ngModel)] = "annon" ></ion-toggle>
+			</div>
+			<ion-input floating autocorrect id = "A4" type = "text" [(ngModel)] = "mesData.title" placeholder = "Title">
+			</ion-input>
 
 			<ion-textarea type="text" [(ngModel)] = "mesData.message" id = "A3"></ion-textarea>
 
