@@ -50,7 +50,13 @@ export class UserInfoProvider{
       this.userPhoto = 'https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181'
 }
     );
-  }
+	}
+	
+	//LOAD OTHER PEOPLE INFORMATION
+	getOtherUserInfo(otherID: string){
+		let otherUser$ = this.afData.object(`users/${otherID}`).valueChanges()
+		return otherUser$
+	}
 
 
  //----------------------ALL OF THE USERNAMES-------------------

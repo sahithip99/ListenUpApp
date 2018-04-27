@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import {SearchuserPage} from '../searchuser/searchuser';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
+import {ChatInfoProvider} from '../../providers/chat-info/chat-info';
 import {FeedbackinfoPage} from '../feedbackinfo/feedbackinfo';
 
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -25,7 +26,11 @@ export class FeedbackPage {
   reply: any;
   checkboxOpen: any;
   reasons: any;
-  constructor(public navCtrl: NavController, public uInfo: UserInfoProvider, public afData: AngularFireDatabase, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController
+    , public uInfo: UserInfoProvider
+    , private chatInfo: ChatInfoProvider
+    , public afData: AngularFireDatabase
+    , private alertCtrl: AlertController) {
   	this.usrData = this.uInfo.getUserInfo();
   	this.pubMes = this.usrData.publicfeedbacks;
   	this.annonMes = this.usrData.anonfeedbacks;
@@ -210,34 +215,83 @@ async setUserInfo(){
 
 
 
-clickMessage(mes){
-  var alertCtrl = this.alertCtrl.create({
-    title: mes.title,
-    message: mes.message,
-    buttons: [
-    {
-      text: 'ok',
-      role: 'cancel',
-      handler: () =>{
-        console.log("reviewed message!");
+  clickMessage(mes){
+    var alertCtrl = this.alertCtrl.create({
+      title: mes.title,
+      message: mes.message,
+      buttons: [
+      {
+        text: 'ok',
+        role: 'cancel',
+        handler: () =>{
+          console.log("reviewed message!");
+        }
+      },
+      {
+        text: "report",
+        role: "report",
+        handler: () =>{
+          this.flagUser(mes);
+        }
+      },
+      {
+        text: "block",
+        role: "block",
+        handler: () => {
+            this.blockUser(mes);
+        }
       }
-    },
-    {
-      text: "report",
-      role: "report",
-      handler: () =>{
-        this.flagUser(mes);
+      ]
+    });
+    alertCtrl.present();
+  }
+
+  //@param: mes: mes obj, contains info about the feedback
+  replyMessage(mes){
+    console.log(mes);
+    let alert = this.alertCtrl.create({
+      title: `Message ${mes.username}?`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'OK',
+          handler: () => {
+            console.log('OK clicked');
+            
+            this.enterChat(mes)
+
+          }
+        }
+      ]
+    })
+
+    alert.present();
+
+  }
+
+  //NavParams: chatID which is the ID of the chat itself, and otherID which is the ID of the other person
+  enterChat(feedback){
+    let chatKey = this.chatInfo.checkChat(this.usrId, feedback.id);
+    chatKey.then(key=> {
+      if (key){
+        console.log("Chat is found", key);
+        this.navCtrl.push('MessageDetailPage', {chatID: key, otherID: feedback.id})
       }
-    },
-    {
-      text: "block",
-      role: "block",
-      handler: () => {
-          this.blockUser(mes);
+      else { //Chat has not existed yet
+        let createNewChat = this.chatInfo.createNewChat(this.usrId, feedback.id);
+        createNewChat.then(newChatKey => {
+          this.navCtrl.push('MessageDetailPage', {chatID: newChatKey, otherID: feedback.id});
+        })
       }
-    }
-    ]
-  });
-  alertCtrl.present();
-}
+    })
+   
+  }
+
+
 }
