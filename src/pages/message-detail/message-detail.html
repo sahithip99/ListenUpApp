@@ -1,0 +1,44 @@
+<!--
+  Generated template for the MessageDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>message-detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item *ngFor="let chat of chatData | async">
+      <ion-card>
+        <ion-card-content>{{chat.text}}</ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar>
+      <form>
+        <ion-item>
+          <ion-input autocomplete autocorrect type="text" placeholder="Write a message" name="messageText" [(ngModel)]="messageText"></ion-input>
+        </ion-item>
+      </form>
+  
+      <ion-buttons end>
+        <button ion-button icon-right color="primary" (click)="sendMessage(messageText)">
+          Send
+          <ion-icon name="send"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+

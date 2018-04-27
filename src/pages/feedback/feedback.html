@@ -27,15 +27,19 @@
         <ion-list>
          
           <ion-item-sliding *ngFor = "let mes of curList" >
-
-          <ion-item (click) = "clickMessage(mes)" >
-            <img [src] = 'mes.photourl'> <h2 id= "A1">Title: {{mes.title}}</h2>
-            <p id = "A2">from {{mes.firstname}} {{mes.lastname}}
-              <span id = "A3">@{{mes.username}}</span>
-            </p>
+          <ion-item>
+            <ng-container  >      
+                <img [src] = 'mes.photourl' (click) = "clickMessage(mes)"> 
+                <h2 id= "A1" (click) = "clickMessage(mes)">Title: {{mes.title}}</h2>
+                <p id = "A2" (click) = "clickMessage(mes)">from {{mes.firstname}} {{mes.lastname}}
+                  <span id = "A3" >@{{mes.username}}</span>
+                </p>
+            </ng-container>
+       
+            <ion-icon item-end name="chatbubbles" (click) = "replyMessage(mes)"></ion-icon>
           </ion-item>
           <ion-item-options>
-            <button ion-button (click)= "deleteMes(mes)">delete</button>
+            <button ion-button (click)= "deleteMes(mes)">Delete</button>
           </ion-item-options>
           </ion-item-sliding>
         </ion-list>
