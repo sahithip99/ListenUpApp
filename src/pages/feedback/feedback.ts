@@ -21,7 +21,7 @@ export class FeedbackPage {
   annonArray: any;
   usrId: any; //CURRENT USER'S ID
   curList = []; //FOR SWITCHING BETWEEN BETWEEN PUBLIC AND ANNON
-  usrData:any; 
+  usrData:any;
   reply: any;
   checkboxOpen: any;
   reasons: any;
@@ -32,7 +32,7 @@ export class FeedbackPage {
   	this.usrId = this.usrData.id;
   	this.setFeedback();
     this.reply = true;
-    
+
 
   }
 //---------------REFRESH LIST WHENEVER YOU LOAD THIS PAGE:
@@ -166,7 +166,7 @@ async setUserInfo(){
          timestamp: timeStamp,
          reporterid: this.usrData.id,
          offenderid: mes.id,
-         reasons: data 
+         reasons: data
        });
      }
    });

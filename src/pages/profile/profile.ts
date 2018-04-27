@@ -77,7 +77,7 @@ setPhoto(){
     title: 'Choose a Photo Option',
     buttons: [
     {
-      text: 'Upload Your Photo',
+      text: 'Choose from gallery',
       role: 'upload',
       handler: () => {
         console.log("uploading photo clicked");
