@@ -214,8 +214,20 @@ async setUserInfo(){
   }
 
 
+  //Handle dropdowns
+  activateDropdown(mes){
+    if (mes.dropdown == true){
+      mes.dropdown = false;
+    }
+    else {
+      mes.dropdown = true;
+    }
+  }
+
+
 
   clickMessage(mes){
+    console.log(mes);
     var alertCtrl = this.alertCtrl.create({
       title: mes.title,
       message: mes.message,
@@ -243,7 +255,7 @@ async setUserInfo(){
       }
       ]
     });
-    alertCtrl.present();
+    // alertCtrl.present();
   }
 
   //@param: mes: mes obj, contains info about the feedback

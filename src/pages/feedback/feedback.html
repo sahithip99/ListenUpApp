@@ -32,23 +32,30 @@
   </ion-refresher>
   <div id = "A">
         <ion-list>
+          <ng-container *ngFor = "let mes of curList">
+              <ion-item-sliding  >
+              <ion-item>
+                <ng-container  >      
+                    <img [src] = 'mes.photourl' (click) = "clickMessage(mes)"> 
+                    <h2 id= "A1" (click) = "clickMessage(mes)">{{mes.title}}</h2>
+                    <p id = "A2" (click) = "clickMessage(mes)">from {{mes.firstname}} {{mes.lastname}}
+                      <span id = "A3" >@{{mes.username}}</span>
+                    </p>
+                    
+                </ng-container>
+          
+                <ion-icon item-end name="ios-arrow-down-outline" color="primary" (click) = "activateDropdown(mes)"></ion-icon>
+                
+              </ion-item>
+              <ion-item-options>
+                <button ion-button (click)= "deleteMes(mes)">Delete</button>
+              </ion-item-options>
+              </ion-item-sliding>
+              <ion-card *ngIf="mes.dropdown">
+                  <ion-card-content>{{mes.message}}</ion-card-content>
+                </ion-card>
 
-          <ion-item-sliding *ngFor = "let mes of curList" >
-          <ion-item>
-            <ng-container  >      
-                <img [src] = 'mes.photourl' (click) = "clickMessage(mes)"> 
-                <h2 id= "A1" (click) = "clickMessage(mes)">Title: {{mes.title}}</h2>
-                <p id = "A2" (click) = "clickMessage(mes)">from {{mes.firstname}} {{mes.lastname}}
-                  <span id = "A3" >@{{mes.username}}</span>
-                </p>
-            </ng-container>
-       
-            <ion-icon item-end name="chatbubbles" (click) = "replyMessage(mes)"></ion-icon>
-          </ion-item>
-          <ion-item-options>
-            <button ion-button (click)= "deleteMes(mes)">Delete</button>
-          </ion-item-options>
-          </ion-item-sliding>
+          </ng-container>
         </ion-list>
     </div>
   </ion-content>
