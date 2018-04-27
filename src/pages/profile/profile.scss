@@ -10,14 +10,22 @@ page-profile {
 	}
 	 img{
 		margin: auto;
-		width: 70px;
-        height: 70px;
+		width: 130px;
+        height: 130px;
         object-fit: cover;
         border-radius: 70px;
         display: block;
 }
   h2{
   	text-align: center;
+  }
+
+  .profile{
+     border-radius: 50%
+  }
+  #A1{
+  	position: relative;
+  	top: 10px
   }
 
 }

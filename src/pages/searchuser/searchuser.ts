@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
-
+import * as firebase from 'firebase';
 import{SendfeedPage} from '../sendfeed/sendfeed';
 
 /**
@@ -19,7 +19,8 @@ export class SearchuserPage {
 
 	userList: any;
 	curUser: any;
-
+  q: any;
+  userPhoto: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public uInfo: UserInfoProvider) {
         var usrId = this.uInfo.getUserInfo().id;
   	    this.userList = this.uInfo.usersArray();
@@ -35,23 +36,28 @@ export class SearchuserPage {
               }
           }
         }
+        this.userList = [];
         console.log("array of users",this.userList);
   }
+
 
   //------------SEARCHING USERS--------------------
   searchUsers(searchbar){
   	this.userList = this.uInfo.usersArray();
-  	var q = searchbar.srcElement.value;
-  	console.log('searching...',q);
-  	if (!q) return;
+  	 this.q = searchbar.srcElement.value;
+  	console.log('searching...',this.q);
+  	if (!this.q) {
+      this.userList = [];
+      return};
 
-  	if (String(q).replace(/\s/g,"").length ==0){
+  	if (String(this.q).replace(/\s/g,"").length ==0){
+      this.userList = [];
   		return true;
   	}
   	this.userList = this.userList.filter((v) => {
-  		if(v.username && v.email && q){
-  			if (v.username.toLowerCase().indexOf(q.toLowerCase()) > -1 ||
-  				v.email.toLowerCase().indexOf(q.toLowerCase()) > -1){
+  		if(v.username && v.email && this.q){
+  			if (v.username.toLowerCase().indexOf(this.q.toLowerCase()) > -1 ||
+  				v.email.toLowerCase().indexOf(this.q.toLowerCase()) > -1){
   				return true;
   			}
   			return false;

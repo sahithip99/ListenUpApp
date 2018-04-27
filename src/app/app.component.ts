@@ -36,8 +36,9 @@ export class MyApp {
   }
 loadUserInfo(user){
     this.usrInfo = this.uInfo.getUserInfo();
-    this.uInfo.setUsers()
-    if (this.usrInfo == undefined || this.usrInfo == null){
+    this.uInfo.setUsers();
+    this.uInfo.setPhoto(this.usrInfo.id);
+    if (this.usrInfo == undefined || this.usrInfo == null || this.uInfo.getPhoto() == undefined || this.uInfo.getPhoto() == null){
       setTimeout(() => {
         this.loadUserInfo(user);
       },1000);

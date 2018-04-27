@@ -6,6 +6,7 @@ import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import {FeedbackinfoPage} from '../feedbackinfo/feedbackinfo';
 
 import { AngularFireDatabase } from 'angularfire2/database';
+import * as firebase from 'firebase';
 
 import {AlertController} from 'ionic-angular';
 
@@ -22,6 +23,8 @@ export class FeedbackPage {
   curList = []; //FOR SWITCHING BETWEEN BETWEEN PUBLIC AND ANNON
   usrData:any; 
   reply: any;
+  checkboxOpen: any;
+  reasons: any;
   constructor(public navCtrl: NavController, public uInfo: UserInfoProvider, public afData: AngularFireDatabase, private alertCtrl: AlertController) {
   	this.usrData = this.uInfo.getUserInfo();
   	this.pubMes = this.usrData.publicfeedbacks;
@@ -58,19 +61,22 @@ toSendfeed(){
 	this.navCtrl.push(SearchuserPage);
 }
 //------Feedback information indepth-------
-toLookfeed(mes){
+/*toLookfeed(mes){
   this.navCtrl.push(FeedbackinfoPage,
     {param: mes,
      reply : this.reply});
 }
+*/
 //----------CLICKED PUBLIC----------------------
 clickPub(){
 	this.curList = this.pubArray;
+  console.log("public list clicked!", this.curList);
   this.reply = true;
 }
 //--------------CLICKED ANNON-----------------
 clickAnnon(){
 	this.curList = this.annonArray
+   console.log("annon list clicked!", this.curList);
   this.reply = false;
 }
 //-----------------------REFRESH MESSAGE-----------------------
@@ -109,7 +115,6 @@ async setUserInfo(){
      {
        text: "yes",
        handler: () => {
-        
          this.afData.database.ref('users').child(this.usrId).child(mes.type).child(mes.key).remove();
        }
      }
@@ -117,4 +122,122 @@ async setUserInfo(){
    });
    alertCtrl.present();
  }
+ flagUser(mes){
+   let alert = this.alertCtrl.create();
+   alert.addInput({
+     type: "checkbox",
+     label: 'Inappropriate Content',
+     value: "Inappropriate Content"
+   });
+
+    alert.addInput({
+     type: "checkbox",
+     label: 'Harassment',
+     value: "Harassment"
+   });
+
+     alert.addInput({
+     type: "checkbox",
+     label: 'Threats',
+     value: "Threats"
+   });
+
+     alert.addInput({
+     type: "checkbox",
+     label: 'Spam',
+     value: "Spam "
+   });
+
+     alert.addInput({
+       type: "text",
+       label: 'Other',
+       value: "Other"
+     })
+   alert.addButton('Cancel');
+
+   alert.addButton({
+     text: 'Ok',
+     handler: data => {
+       console.log("Radio",data);
+       this.checkboxOpen = false;
+       this.reasons = data;
+       var timeStamp =  firebase.database.ServerValue.TIMESTAMP;
+       this.afData.database.ref("reports").push({
+         timestamp: timeStamp,
+         reporterid: this.usrData.id,
+         offenderid: mes.id,
+         reasons: data 
+       });
+     }
+   });
+
+   alert.present().then(() => {
+     this.checkboxOpen = true;
+   })
+ }
+
+ blockUser(mes){
+   let alert = this.alertCtrl.create({
+     title: 'Block this User?',
+     message: 'If the blocked user is not annonymous, you can unblock him later by going to your blacklist in the menu',
+     buttons: [
+     {
+       text: 'No',
+       role: 'cancel',
+       handler: () =>{
+         console.log("cancel clicked");
+       }
+     },
+     {
+       text: 'Yes',
+       handler: () =>{
+         console.log("blocked user");
+         var blockedusers = {};
+         blockedusers[mes.id] = mes.username;
+         this.afData.database.ref('users').child(this.usrData.id).update({blockedusers});
+         if(mes.type == "publicfeedbacks"){
+                this.afData.database.ref('users').child(this.usrData.id).child(mes.type).child(mes.key).remove();
+         }
+         else if(mes.type = "anonfeedbacks"){
+             this.afData.database.ref('users').child(mes.id).child(mes.type).child(mes.key).remove();
+         }
+       }
+     }
+     ]
+   });
+   alert.present();
+  }
+
+
+
+clickMessage(mes){
+  var alertCtrl = this.alertCtrl.create({
+    title: mes.title,
+    message: mes.message,
+    buttons: [
+    {
+      text: 'ok',
+      role: 'cancel',
+      handler: () =>{
+        console.log("reviewed message!");
+      }
+    },
+    {
+      text: "report",
+      role: "report",
+      handler: () =>{
+        this.flagUser(mes);
+      }
+    },
+    {
+      text: "block",
+      role: "block",
+      handler: () => {
+          this.blockUser(mes);
+      }
+    }
+    ]
+  });
+  alertCtrl.present();
+}
 }

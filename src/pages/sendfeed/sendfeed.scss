@@ -1,3 +1,68 @@
 page-sendfeed {
+	.toolbar-background{
+		background-color: #15a88b;
+	}
+	ion-navbar{
+		height: 50px;
+
+	}
+	ion-content{
+		position: fixed;
+		top: -20px
+	}
+
+	img{
+		margin: auto;
+		width: 100px;
+		height: 100px;
+		object-fit: cover;
+		border-radius: 70px;
+		display: block;
+		position: relative;
+		top: -47px;
+	}
+	#name{
+		position: relative;
+		margin: auto;
+		width: 50%;
+		top: -40px;
+		display: block;
+		text-align: center;
+	}
+	#A2{
+		position: relative;
+		margin: auto;
+		width: 50%;
+		top: 10px;
+		display: block;
+	}
+
+	#A3{
+		position: relative;
+		margin: auto;
+		display: block;
+		width: 300px;
+		height: 200px;
+		top: 0px;
+		border: 0.1em solid gray;
+
+	}
+
+	#A4{
+		position: relative;;
+		margin: auto;
+		display: block;
+		width: 300px;
+		height: 60px;
+		top:-30px;
+		border: 0.1em solid gray;
+		font-size: 20px;
+	}
+	ion-toggle{
+		position: relative;
+		left: 290px;
+		top: -50px;
+		display: block;
+	}
 
 }
