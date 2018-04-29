@@ -229,25 +229,24 @@ async setUserInfo(){
   clickMessage(mes){
     console.log(mes);
     var alertCtrl = this.alertCtrl.create({
-      title: mes.title,
-      message: mes.message,
+      title: "Report or block the user?",
       buttons: [
       {
-        text: 'ok',
+        text: 'Cancel',
         role: 'cancel',
         handler: () =>{
           console.log("reviewed message!");
         }
       },
       {
-        text: "report",
+        text: "Report",
         role: "report",
         handler: () =>{
           this.flagUser(mes);
         }
       },
       {
-        text: "block",
+        text: "Block",
         role: "block",
         handler: () => {
             this.blockUser(mes);
@@ -255,7 +254,7 @@ async setUserInfo(){
       }
       ]
     });
-    // alertCtrl.present();
+    alertCtrl.present();
   }
 
   //@param: mes: mes obj, contains info about the feedback
