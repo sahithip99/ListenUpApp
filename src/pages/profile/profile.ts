@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { ActionSheetController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
+@IonicPage()
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'

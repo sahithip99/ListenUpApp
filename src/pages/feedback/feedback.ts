@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage,NavController } from 'ionic-angular';
 
 import {SearchuserPage} from '../searchuser/searchuser';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
@@ -11,6 +11,8 @@ import * as firebase from 'firebase';
 
 import {AlertController} from 'ionic-angular';
 
+
+@IonicPage()
 @Component({
   selector: 'page-feedback',
   templateUrl: 'feedback.html'

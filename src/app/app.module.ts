@@ -9,9 +9,6 @@ import { MyApp } from './app.component';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
 import{AngularFireDatabaseModule} from 'angularfire2/database';
 
-import { FeedbackPage } from '../pages/feedback/feedback';
-import { MessagePage } from '../pages/message/message';
-import { ProfilePage } from '../pages/profile/profile';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
@@ -36,9 +33,9 @@ import { IonicImageLoader } from 'ionic-image-loader';
 @NgModule({
   declarations: [
     MyApp,
-    FeedbackPage,
-    MessagePage,
-    ProfilePage,
+    // FeedbackPage,
+    // MessagePage,
+    // ProfilePage,
     RegisterPage,
     TabsPage,
     LoginPage,
@@ -63,9 +60,6 @@ import { IonicImageLoader } from 'ionic-image-loader';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    FeedbackPage,
-    MessagePage,
-    ProfilePage,
     RegisterPage,
     TabsPage,
     SendfeedPage,

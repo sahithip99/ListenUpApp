@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { ChatInfoProvider } from '../../providers/chat-info/chat-info';
 import { UserInfoProvider } from '../../providers/userInfo/userInfo';
 import { Observable } from 'rxjs/Observable';
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 //AngularFire
 import { AngularFireDatabase } from 'angularfire2/database';
 
+@IonicPage()
 @Component({
   selector: 'page-message',
   templateUrl: 'message.html'
