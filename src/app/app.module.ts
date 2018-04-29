@@ -49,7 +49,10 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+        mode: 'ios',
+        iconMode: 'ios'
+    }),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     PipesModule
