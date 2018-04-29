@@ -25,6 +25,7 @@ export class MessageDetailPage {
   chatID: string;
   usrID: string;
   otherID: string;
+  otherData: any;
   messageText: string;
 
   chatData: Observable<any[]>
@@ -42,6 +43,7 @@ export class MessageDetailPage {
 
     //Call functions here
     this.loadMessages();
+    this.loadOtherInfo();
   }
 
   ionViewDidLoad() {
@@ -53,6 +55,13 @@ export class MessageDetailPage {
     // console.log(this.chatData);
     this.chatData.subscribe(chatArr=> {
       // console.log(chatArr)
+    })
+  }
+
+  loadOtherInfo(){
+    this.uInfo.getOtherUserInfo(this.otherID).subscribe(otherPersonData=> {
+      this.otherData = otherPersonData;
+      console.log(this.otherData);
     })
   }
 

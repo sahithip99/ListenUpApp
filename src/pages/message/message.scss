@@ -1,4 +1,8 @@
 page-message {
 
+    .img-loaded + ion-spinner {
+        display:none;
+      }
+    
 
 }
