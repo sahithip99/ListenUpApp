@@ -90,8 +90,8 @@ export class ChatInfoProvider {
    * return data about the chat itself e.g. last text, timestamp, people in the chat
    */
   loadChatData(chatID: string){
-    let chatData$: Observable<any>
-    chatData$ = this.afData.object(`chats/${chatID}`).valueChanges()
+    let chatData$: Observable<{}>
+    chatData$ = this.afData.object(`chats/${chatID}`).valueChanges();
     return chatData$
   }
 

@@ -52,10 +52,7 @@ export class MessageDetailPage {
 
   loadMessages(){
     this.chatData = this.chatInfo.loadMessages(this.chatID);
-    // console.log(this.chatData);
-    this.chatData.subscribe(chatArr=> {
-      // console.log(chatArr)
-    })
+    
   }
 
   loadOtherInfo(){

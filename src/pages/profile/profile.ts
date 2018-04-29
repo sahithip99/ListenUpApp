@@ -78,7 +78,7 @@ setPhoto(){
     title: 'Choose a Photo Option',
     buttons: [
     {
-      text: 'Choose from gallery',
+      text: 'Gallery',
       role: 'upload',
       handler: () => {
         console.log("uploading photo clicked");
@@ -86,7 +86,7 @@ setPhoto(){
       }
     },
     {
-      text: 'Take Your Photo',
+      text: 'Camera',
       role: 'take',
       handler : () => {
         console.log("clicked take photo");
