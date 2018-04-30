@@ -18,8 +18,8 @@
 <ion-content padding >
 
   <ion-fab right bottom (click) = "clickPub()" >
-    <button ion-fab color="light" mini (click) = "toSendfeed()" >
-      <ion-icon color="primary" name = "noted-logo"></ion-icon>
+    <button ion-fab color="light" (click) = "toSendfeed()" >
+      <ion-icon color="primary" name = "noted-logo" ></ion-icon>
     </button>
   </ion-fab>
 
@@ -35,17 +35,18 @@
           <ng-container *ngFor = "let mes of curList">
               <ion-item-sliding  >
               <ion-item>
-                <ng-container  >      
-                    <img [src] = 'mes.photourl' (click) = "activateDropdown(mes)"> 
+                <ng-container  >
+                  <ion-avatar><img [src] = 'mes.photourl' (click) = "activateDropdown(mes)">
+                  </ion-avatar>
                     <h2 id= "A1" (click) = "activateDropdown(mes)">{{mes.title}}</h2>
                     <p id = "A2" (click) = "activateDropdown(mes)">from {{mes.firstname}} {{mes.lastname}}
                       <span id = "A3" >@{{mes.username}}</span>
                     </p>
-                    
+
                 </ng-container>
-          
+
                 <ion-icon item-end name="ios-arrow-down-outline" color="primary" (click) = "activateDropdown(mes)"></ion-icon>
-                
+
               </ion-item>
               <ion-item-options>
                 <button ion-button (click)= "deleteMes(mes)">Delete</button>
@@ -66,10 +67,10 @@
                     <ion-col>
                       <button ion-button icon-right float-right clear small color="primary" (click)="enterChat(mes)">
                           Message <ion-icon name="ios-chatbubbles" ></ion-icon>
-                      </button>   
+                      </button>
                     </ion-col>
                   </ion-row>
-                  
+
                 </ion-card>
 
           </ng-container>

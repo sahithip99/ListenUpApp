@@ -7,13 +7,13 @@
 <ion-header>
 
   <ion-navbar color="primary">
-  
+
     <!-- <ion-item no-lines color="primary">
-         <ion-avatar item-left><img [src]="otherData?.photourl"></ion-avatar> 
+         <ion-avatar item-left><img [src]="otherData?.photourl"></ion-avatar>
         <p>{{otherData?.firstname}} {{otherData?.lastname}}</p>
     </ion-item>  -->
     <ion-title>{{otherData?.firstname}} {{otherData?.lastname}}</ion-title>
-    
+
   </ion-navbar>
 
 
@@ -23,10 +23,19 @@
 
 <ion-content padding>
   <ion-list no-lines>
-    <ion-item *ngFor="let chat of chatData | async">
-      <ion-card>
-        <ion-card-content>{{chat.text}}</ion-card-content>
+    <ion-item *ngFor="let chat of chatData | async" (click)="logChat(chat)">
+      <!-- If you're the sender -->
+      <ion-card text-wrap class="message-sender">
+        <ion-card-content *ngIf="chat.sender == usrID">{{chat.text}}</ion-card-content>
+
       </ion-card>
+
+      <!-- If you're the receiver -->
+      <ion-card text-wrap *ngIf="chat.receiver == usrID">
+          <ion-card-content>{{chat.text}}</ion-card-content>
+      </ion-card>
+
+
     </ion-item>
   </ion-list>
 
@@ -40,7 +49,7 @@
           <ion-input autocomplete autocorrect type="text" placeholder="Write a message" name="messageText" [(ngModel)]="messageText"></ion-input>
         </ion-item>
       </form>
-  
+
       <ion-buttons end>
         <button ion-button icon-right color="primary" (click)="sendMessage(messageText)">
           Send
@@ -49,4 +58,3 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-footer>
-

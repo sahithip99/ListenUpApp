@@ -13,12 +13,10 @@
 </ion-header>
 
 <ion-content>
-	<h5 id = "A3">results</h5>
+	<h5 id = "A3"></h5>
 	<ion-list>
-		<ion-item ion-item *ngFor = "let user of userList" (click) = "goToSend(user)"> 
+		<ion-item ion-item *ngFor = "let user of userList" (click) = "goToSend(user)">
 			 <img [src] = "user.photourl"> <h3 id = "A1">{{user.firstname}} {{user.lastname}}</h3><p id = "A2">@{{user.username}}</p>
 		</ion-item>
 	</ion-list>
 </ion-content>
-
-
