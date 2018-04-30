@@ -28,6 +28,7 @@ page-sendfeed {
 		top: -40px;
 		display: block;
 		text-align: center;
+		color: #55575b; 
 	}
 	#A2{
 		position: relative;
@@ -35,6 +36,7 @@ page-sendfeed {
 		width: 50%;
 		top: 10px;
 		display: block;
+		color: #55575b; 
 	}
 
 	#A3{
@@ -45,7 +47,8 @@ page-sendfeed {
 		height: 200px;
 		top: 0px;
 		border: 0.1em solid gray;
-
+		color: #55575b; 	
+		border-radius: 5px;
 	}
 
 	#A4{
@@ -57,12 +60,23 @@ page-sendfeed {
 		top:-30px;
 		border: 0.1em solid gray;
 		font-size: 20px;
+		color: #55575b; 
+		border-radius: 5px;
 	}
 	ion-toggle{
 		position: relative;
 		left: 290px;
 		top: -50px;
 		display: block;
+	}
+	b{
+		color: #55575b; 
+		display: block;
+		position: relative;
+		left: 100px;
+	}
+	span{
+		color: white;
 	}
 
 }

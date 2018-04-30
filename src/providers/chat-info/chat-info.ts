@@ -137,6 +137,7 @@ export class ChatInfoProvider {
     }
     chatRef.update(obj)
     userRef.update(obj)
+    otherUserRef.update(obj);
 
     
     
