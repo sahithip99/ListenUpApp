@@ -23,10 +23,19 @@
 
 <ion-content padding>
   <ion-list no-lines>
-    <ion-item *ngFor="let chat of chatData | async">
-      <ion-card>
-        <ion-card-content>{{chat.text}}</ion-card-content>
+    <ion-item *ngFor="let chat of chatData | async" (click)="logChat(chat)">
+      <!-- If you're the sender -->
+      <ion-card text-wrap class="message-sender">
+        <ion-card-content *ngIf="chat.sender == usrID">{{chat.text}} yo</ion-card-content>
+        
       </ion-card>
+
+      <!-- If you're the receiver -->
+      <ion-card text-wrap *ngIf="chat.receiver == usrID">
+          <ion-card-content>{{chat.text}}</ion-card-content>
+      </ion-card>
+      
+
     </ion-item>
   </ion-list>
 

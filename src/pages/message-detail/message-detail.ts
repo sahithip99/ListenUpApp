@@ -67,4 +67,9 @@ export class MessageDetailPage {
     this.messageText = ""
   }
 
+  logChat(chat){
+    console.log(chat.sender)
+    // console.log(this.usrId)
+  }
+
 }
