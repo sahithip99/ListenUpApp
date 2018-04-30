@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 
-import { FeedbackPage } from '../feedback/feedback';
-import { MessagePage } from '../message/message';
-import { ProfilePage } from '../profile/profile';
+
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = ProfilePage;
-  tab2Root = FeedbackPage;
-  tab3Root = MessagePage;
+  tab1Root: any = "ProfilePage";
+  tab2Root: any = "FeedbackPage";
+  tab3Root: any = "MessagePage";
 
   constructor() {
 

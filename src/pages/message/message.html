@@ -1,15 +1,20 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
       Messages
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-<ion-item>
-Enter the username or email:
-<ion-label floating>Hello message tab</ion-label>
-<ion-input type="text"></ion-input>
-</ion-item>
+<ion-content padding>
+  <ion-list>
+  
+    <ion-item *ngFor="let chat of chatArray" (click)="goToChatDetail(chat.payload.val().chatID, chat.otherInfo.id)">
+          <ion-avatar item-start><ion-img src="{{chat.otherInfo?.photourl}}"></ion-img></ion-avatar>
+          <h2>{{chat.otherInfo?.firstname}} {{chat.otherInfo?.lastname}}</h2>
+          <p>{{chat.payload.val().lastText}}</p>
+          <p item-right>{{chat.payload.val().timestamp | date:'EEE hh:mm a'}}</p>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
