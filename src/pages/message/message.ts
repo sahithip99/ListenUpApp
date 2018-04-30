@@ -3,10 +3,13 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { ChatInfoProvider } from '../../providers/chat-info/chat-info';
 import { UserInfoProvider } from '../../providers/userInfo/userInfo';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/take';
 
 //AngularFire
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+
+//3rd party libraries
 
 @IonicPage()
 @Component({
@@ -19,9 +22,11 @@ export class MessagePage {
   chatArray: any[] = []
   usrId: string;
 
+  //Observables
+  chatList$: Observable<any[]>;
+
   //Subscriptions
-  chatList$: any;
-  otherInfo$: any;
+  chatListSubscription: any;
 
 
   constructor(
@@ -40,42 +45,18 @@ export class MessagePage {
   }
 
   loadDMs(){
-    this.chatList$ = this.afData.list(`users/${this.usrId}/chats/DMs`).valueChanges().subscribe(chatArr=> {
-      this.chatArray = []
-      console.log("value changes")
-      chatArr.forEach(chat=> {
-        console.log("chat", chat)
-        //Load information about every single chat the user has
-        let chatID = chat["chatID"]
-        this.chatInfo.loadChatData(chatID).subscribe(chatObj=> {
-          
-          //Load the information of users in the chat, only load information of the other user
-          if (chatObj["sender"] == this.usrId){
-            //You are the sender, load the receiver info
-            this.otherInfo$ = this.uInfo.getOtherUserInfo(chatObj["receiver"]).subscribe(receiverInfo => {
-              chatObj["otherInfo"] = receiverInfo
-              // console.log("receiver Info", receiverInfo)
-              this.chatArray.push(chatObj);
-
-            })
-          }
-          else {
-            //You are the receiver, load the sender info
-            this.otherInfo$ = this.uInfo.getOtherUserInfo(chatObj["sender"]).subscribe(senderInfo=> {
-              chatObj["otherInfo"] = senderInfo
-              // console.log("sender Info", senderInfo)
-              this.chatArray.push(chatObj);
-
-            })
-           
-          }
-         
-          
-        
-         
+    this.chatList$ = this.afData.list(`users/${this.usrId}/chats/DMs`).snapshotChanges()
+    this.chatListSubscription = this.chatList$.subscribe(chatArr=> {
+      this.chatArray = chatArr
+      this.chatArray.forEach(chat=> {
+        let otherID = chat.key
+        this.uInfo.getOtherUserInfo(otherID).take(1).subscribe(otherInfo=> {
+          chat.otherInfo = otherInfo
         })
+        // console.log(chat.payload.val())
+        
       })
-      console.log(this.chatArray);
+   
     })
 
     
@@ -87,11 +68,7 @@ export class MessagePage {
   }
 
   ionViewDidLeave() {  
-    // alert("Left message page")
-    this.chatList$.unsubscribe();
-    if (this.otherInfo$){
-      this.otherInfo$.unsubscribe();
-    }
+   
   }
 
 }

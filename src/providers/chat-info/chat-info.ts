@@ -110,7 +110,7 @@ export class ChatInfoProvider {
 
 
   //-------------------------------------CHAT TAB ---------------------------------------------------
-  async addMessage(text: string, senderUID: string, receiverUID: string, chatID: string){
+  async addMessage(text: string, userID: string, otherID: string, chatID: string){
     let messageRef = this.afData.database.ref(`messages/${chatID}/messages`);
     //Push message up to firebase Database
     let key = messageRef.push().key;
@@ -118,20 +118,25 @@ export class ChatInfoProvider {
     let messageObj = {
       text: text,
       timestamp: timestamp,
-      sender: senderUID,
-      receiver: receiverUID,
+      sender: userID,
+      receiver: otherID,
       key: key
     };
     messageRef.child(key).update(messageObj);
  
     //Updated chat obj
     let chatRef = this.afData.database.ref(`chats/${chatID}`)
-    chatRef.update({
+    let userRef = this.afData.database.ref(`users/${userID}/chats/DMs/${otherID}`)
+    let otherUserRef = this.afData.database.ref(`users/${otherID}/chats/DMs/${userID}`)
+    console.log(userRef)
+    let obj = {
       lastText: text,
       timestamp: timestamp,
-      sender: senderUID,
-      receiver: receiverUID
-    })
+      sender: userID,
+      receiver: otherID
+    }
+    chatRef.update(obj)
+    userRef.update(obj)
 
     
     
