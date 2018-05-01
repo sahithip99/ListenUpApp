@@ -27,6 +27,8 @@ export class FeedbackPage {
   reply: any;
   checkboxOpen: any;
   reasons: any;
+  feedbackTab = "";
+
   constructor(public navCtrl: NavController
     , public uInfo: UserInfoProvider
     , private chatInfo: ChatInfoProvider
@@ -38,6 +40,7 @@ export class FeedbackPage {
   	this.usrId = this.usrData.id;
   	this.setFeedback();
     this.reply = true;
+    this.feedbackTab = "Public";
 
 
   }
@@ -75,12 +78,14 @@ toSendfeed(){
 */
 //----------CLICKED PUBLIC----------------------
 clickPub(){
+  this.feedbackTab = "Public";
 	this.curList = this.pubArray;
   console.log("public list clicked!", this.curList);
   this.reply = true;
 }
 //--------------CLICKED ANNON-----------------
 clickAnnon(){
+  this.feedbackTab = "Anonymous";
 	this.curList = this.annonArray
    console.log("annon list clicked!", this.curList);
   this.reply = false;

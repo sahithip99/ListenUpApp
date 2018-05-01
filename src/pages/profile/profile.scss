@@ -28,16 +28,23 @@ page-profile {
 		color: #76a5af;
   }
 
+  h1{
+  	@extend h2;
+  	font-size: 4rem;
+  }
+
   .profile{
      border-radius: 50%;
   }
+
   #A1{
-  	position: relative;
-  	top: 10px;
-  	color: white;
-  	background-color: #76a5af;
-  	width: 25%;
-  	left: 38%;
+  	// position: relative;
+  	// top: 10px;
+  	color: color($colors, light);
+  	background-color: color($colors, primary);
+  	width: 80%;
+  	margin: auto;
+  	// left: 20%;
   }
 
 }
