@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import * as firebase from 'firebase';
-import{SendfeedPage} from '../sendfeed/sendfeed';
+// import{SendfeedPage} from '../sendfeed/sendfeed';
 
 /**
  * Generated class for the SearchuserPage page.
@@ -14,6 +14,7 @@ import{SendfeedPage} from '../sendfeed/sendfeed';
 @Component({
   selector: 'page-searchuser',
   templateUrl: 'searchuser.html',
+
 })
 export class SearchuserPage {
 
@@ -67,7 +68,7 @@ export class SearchuserPage {
   }
 //-------------GO TO SENDFEED PAGE---------------
   goToSend(user){
-  	this.navCtrl.push(SendfeedPage,{
+  	this.navCtrl.push("SendfeedPage",{
   		param1: user
   	});
   	this.curUser = user;

@@ -9,5 +9,11 @@ import { SendfeedPage } from './sendfeed';
   imports: [
     IonicPageModule.forChild(SendfeedPage),
   ],
+  exports: [
+    SendfeedPage
+  ],
+  entryComponents: [
+    SendfeedPage
+  ]
 })
 export class SendfeedPageModule {}
