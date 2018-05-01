@@ -12,8 +12,8 @@ import{AngularFireDatabaseModule} from 'angularfire2/database';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
-import {SendfeedPage} from '../pages/sendfeed/sendfeed';
-import {SearchuserPage} from '../pages/searchuser/searchuser';
+// import {SendfeedPage} from '../pages/sendfeed/sendfeed';
+// import {SearchuserPage} from '../pages/searchuser/searchuser';
 import {FeedbackinfoPage} from '../pages/feedbackinfo/feedbackinfo'
 import {CreateuserPage} from '../pages/createuser/createuser';
 import {BlockusersPage} from '../pages/blockusers/blockusers';
@@ -39,8 +39,8 @@ import { IonicImageLoader } from 'ionic-image-loader';
     RegisterPage,
     TabsPage,
     LoginPage,
-    SendfeedPage,
-    SearchuserPage,
+    // SendfeedPage,
+    // SearchuserPage,
     FeedbackinfoPage,
     CreateuserPage,
     BlockusersPage,
@@ -62,8 +62,8 @@ import { IonicImageLoader } from 'ionic-image-loader';
     MyApp,
     RegisterPage,
     TabsPage,
-    SendfeedPage,
-    SearchuserPage,
+    // SendfeedPage,
+    // SearchuserPage,
     FeedbackinfoPage,
     CreateuserPage,
     BlockusersPage,
@@ -76,7 +76,7 @@ import { IonicImageLoader } from 'ionic-image-loader';
     AngularFireAuth,
     AngularFireDatabaseModule,
     UserInfoProvider,
-    SearchuserPage,
+    // SearchuserPage,
     Camera,
     ChatInfoProvider
   ]

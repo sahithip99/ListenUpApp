@@ -105,5 +105,9 @@ setPhoto(){
   actSheet.present();
 }
 
+toFeedback(){
+  this.navCtrl.push("SearchuserPage")
+}
+
 
 }

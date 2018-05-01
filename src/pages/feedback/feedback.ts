@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage,NavController } from 'ionic-angular';
 
-import {SearchuserPage} from '../searchuser/searchuser';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import {ChatInfoProvider} from '../../providers/chat-info/chat-info';
 import {FeedbackinfoPage} from '../feedbackinfo/feedbackinfo';
@@ -65,7 +64,7 @@ export class FeedbackPage {
 
 //------------WHEN CLICK, GOTO SEARCH USER PAGE-------------
 toSendfeed(){
-	this.navCtrl.push(SearchuserPage);
+	this.navCtrl.push("SearchuserPage");
 }
 //------Feedback information indepth-------
 /*toLookfeed(mes){

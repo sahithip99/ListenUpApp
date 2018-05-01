@@ -9,5 +9,11 @@ import { SearchuserPage } from './searchuser';
   imports: [
     IonicPageModule.forChild(SearchuserPage),
   ],
+  exports: [
+    SearchuserPage
+  ],
+  entryComponents: [
+    SearchuserPage
+  ]
 })
 export class SearchuserPageModule {}

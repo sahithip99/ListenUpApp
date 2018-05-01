@@ -8,14 +8,21 @@ page-profile {
 	ion-title{
 		font-family: "Comic Sans MS"
 	}
-	 img{
+	 .profile-photo{
 		margin: auto;
 		width: 130px;
         height: 130px;
         object-fit: cover;
         border-radius: 70px;
         display: block;
-}
+	}
+
+	.first-still{
+		margin: auto;
+		display: block;
+		padding-top: 3em;
+	}
+
   h2{
   	text-align: center;
 		color: #76a5af;

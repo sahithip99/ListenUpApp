@@ -11,8 +11,10 @@
 
 <ion-content padding>
 
-  <img  [src] = "captureDataUrl ? captureDataUrl : userPhoto" (click) = "setPhoto()">
+  <img class="profile-photo" [src] = "captureDataUrl ? captureDataUrl : userPhoto" (click) = "setPhoto()">
   <h2> {{firstName}} {{lastName}} <div id = "A1">NotedID: {{userName}}</div></h2>
+
+  <img class="first-still" src="assets/imgs/firstStill.png" (click)="toFeedback()">
 
 
 
