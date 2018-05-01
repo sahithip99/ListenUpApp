@@ -34,7 +34,7 @@ page-sendfeed {
 		position: relative;
 		margin: auto;
 		width: 50%;
-		top: 10px;
+		top: 30px;
 		display: block;
 		color: #55575b; 
 	}
@@ -46,7 +46,7 @@ page-sendfeed {
 		width: 300px;
 		height: 200px;
 		top: 0px;
-		border: 0.1em solid gray;
+		border: 0.1em solid;
 		color: #55575b; 	
 		border-radius: 5px;
 	}
@@ -58,8 +58,7 @@ page-sendfeed {
 		width: 300px;
 		height: 60px;
 		top:-30px;
-		border: 0.1em solid gray;
-		font-size: 20px;
+		border: 0.1em solid;
 		color: #55575b; 
 		border-radius: 5px;
 	}
@@ -78,5 +77,19 @@ page-sendfeed {
 	span{
 		color: white;
 	}
+
+	input::-webkit-input-placeholder {
+font-size: 40px;
+display: block;
+position: relative;
+left: 110px;
+top: -8px;
+z-index: 4;
+}
+ 
+
+input[type="text"] {
+font-size:40px;
+}
 
 }
