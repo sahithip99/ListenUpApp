@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { MessagePage } from './message';
-import { IonicImageLoader } from 'ionic-image-loader';
+// import { IonicImageLoader } from 'ionic-image-loader';
 
 
 @NgModule({
@@ -10,7 +10,7 @@ import { IonicImageLoader } from 'ionic-image-loader';
   ],
   imports: [
     IonicPageModule.forChild(MessagePage),
-    IonicImageLoader
+    // IonicImageLoader
   ],
   exports: [
       MessagePage

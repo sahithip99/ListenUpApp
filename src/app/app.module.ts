@@ -26,7 +26,7 @@ import { Camera } from '@ionic-native/camera';
 import { PipesModule } from '../pipes/pipes.module';
 import { ChatInfoProvider } from '../providers/chat-info/chat-info';
 
-import { IonicImageLoader } from 'ionic-image-loader';
+// import { IonicImageLoader } from 'ionic-image-loader';
 
 
 
@@ -55,7 +55,7 @@ import { IonicImageLoader } from 'ionic-image-loader';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     PipesModule,
-    IonicImageLoader.forRoot()
+    // IonicImageLoader.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
