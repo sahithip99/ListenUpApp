@@ -20,13 +20,15 @@
 <ion-label floating>Email Address</ion-label>
 <ion-input type="text" [(ngModel)]="user.email"></ion-input>
 </ion-item>
-
+<div class = "password_field">
 <ion-item>
 <ion-label floating>Password</ion-label>
 <ion-input type="password" [(ngModel)]="user.password"></ion-input>
 </ion-item>
-<button ion-button (click)="login(user)">Login</button>
-<button ion-button color="light" (click)="register()">Register</button>
-
+</div>
+<div class = "Login-Register-Button">
+<button name = "LoginButton" ion-button (click)="login(user)" >Login</button>
+<button  ion-button color="light" (click)="register()">Register</button>
+</div>
 
 </ion-content>
