@@ -114,5 +114,34 @@ alertControl(){
  alertCtrl.present();
  }
 }
+
+//--------BLOCK USERS----------
+blockUser(){
+   let alert = this.alertCtrl.create({
+     title: 'Block this User?',
+     message: 'If the blocked user is not annonymous, you can unblock him later by going to your blacklist in the menu',
+     buttons: [
+     {
+       text: 'No',
+       role: 'cancel',
+       handler: () =>{
+         console.log("cancel clicked");
+       }
+     },
+     {
+       text: 'Yes',
+       handler: () =>{
+         console.log("blocked user");
+         var blockedusers = {};
+         blockedusers[this.param.id] = this.param.username;
+         this.afData.database.ref('users').child(this.curUser.id).update({blockedusers});
+         this.navCtrl.pop();
+       }
+     }
+     ]
+   });
+   this.uInfo.setUsers();
+   alert.present();
+  }
 }
 

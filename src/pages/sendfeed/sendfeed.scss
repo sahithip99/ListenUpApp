@@ -1,14 +1,19 @@
 page-sendfeed {
 
     ion-header{
+         #Block-Button{
+                font-size: 20px;
+                float: right;
+                top: -47px;
+        }
         .profile-container{
             position: relative;
-            top: -30px;
+            top: -15px;
             text-align: center;
         }
 
         .profile-pic{
-            margin: auto;
+            margin-left: 60px;
             width: 85px;
             height: 85px;
             object-fit: cover;
@@ -21,7 +26,7 @@ page-sendfeed {
             color: color($colors, gray);
             margin-top: 0;
         }
-
+            
     }
 
 
