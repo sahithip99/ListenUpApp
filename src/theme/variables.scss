@@ -19,7 +19,7 @@ $app-direction: ltr;
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/ ,
 
 
 
@@ -32,8 +32,12 @@ $app-direction: ltr;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+// ion-content{
+//     background-image: url('https://cdn.discordapp.com/attachments/428950648449662977/442429635020718100/1157b6fd85f1ff2.jpg');
+// }
+
 $colors: (
-  primary:    #76a5af,
+  primary:    #3a3535,   
   light:      #fff,
   gray:  	  #757575,
   danger:     #f53d3d,

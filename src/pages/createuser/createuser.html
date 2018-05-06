@@ -29,9 +29,12 @@
   <ion-label floating> Last Name</ion-label>
   <ion-input type = "text" [(ngModel)] = "user.lastname"></ion-input>
   </ion-item>
-
-
-  <button ion-button (click)="finishReg()">Finish your setup!</button>
-
-
+  <div class ="Terms-of-Agreement">
+    <ion-item>
+      <ion-label >By signing up, you agree to our 
+        <button ion-button clear (click) = "presentTerms()"> <u><b>Term of Services</b></u></button>
+    </ion-label>
+  </ion-item>
+  </div>
+  <button id = "RegisterButton" ion-button (click)="finishReg()">Finish your setup!</button>
 </ion-content>

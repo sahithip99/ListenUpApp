@@ -18,6 +18,7 @@ import {FeedbackinfoPage} from '../pages/feedbackinfo/feedbackinfo'
 import {CreateuserPage} from '../pages/createuser/createuser';
 import {BlockusersPage} from '../pages/blockusers/blockusers';
 import {HeaderMenuComponent} from '../components/header-menu/header-menu';
+import {TermsOfServicesPage} from '../pages/terms-of-services/terms-of-services';
 
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
 import { Camera } from '@ionic-native/camera';
@@ -44,7 +45,8 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     FeedbackinfoPage,
     CreateuserPage,
     BlockusersPage,
-    HeaderMenuComponent
+    HeaderMenuComponent,
+    TermsOfServicesPage
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     PipesModule,
+    
     // IonicImageLoader.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -67,7 +70,9 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     FeedbackinfoPage,
     CreateuserPage,
     BlockusersPage,
-    LoginPage
+    LoginPage,
+    TermsOfServicesPage
+    
   ],
   providers: [
     StatusBar,
@@ -78,7 +83,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     UserInfoProvider,
     // SearchuserPage,
     Camera,
-    ChatInfoProvider
+    ChatInfoProvider,
   ]
 })
 export class AppModule {}

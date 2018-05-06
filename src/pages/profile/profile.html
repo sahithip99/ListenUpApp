@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color = "primary">
-    <ion-title>Feedback Noted</ion-title>
+    <ion-title>Listen Up</ion-title>
     <ion-buttons right>
       <button ion-button icon-only menuToggle>
         <ion-icon name = 'menu'></ion-icon>
@@ -13,11 +13,11 @@
 
   <img class="profile-photo" [src] = "captureDataUrl ? captureDataUrl : userPhoto" (click) = "setPhoto()">
   <h1> {{firstName}} {{lastName}}</h1>
-  <h2>NotedID: </h2>
+  <h2>Username: </h2>
   <h2 id="A1">{{userName}}</h2>
-
-  <img class="first-still" src="assets/imgs/firstStill.png" (click)="toFeedback()">
-
+<!--   <p id = "Introduction">The Easiest Way to Send a</p> -->
+ <img class="first-still" src="assets/imgs/SendMeFeed.png" (click)="toFeedback()">
+ <img id = "ur-code" src="assets/imgs/comingsoon.png" (click)="toFeedback()">
 
 
 </ion-content>

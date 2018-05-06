@@ -4,7 +4,8 @@ import {TabsPage} from '../tabs/tabs';
 import {UserInfoProvider} from "../../providers/userInfo/userInfo";
 import { AngularFireDatabase } from 'angularfire2/database';
 import {AngularFireAuth } from "angularfire2/auth";
-
+import {ModalController} from 'ionic-angular';
+import {TermsOfServicesPage} from '../terms-of-services/terms-of-services';
 import{LoginPage} from '../login/login';
 
 @IonicPage()
@@ -24,7 +25,13 @@ export class CreateuserPage {
 		firstname: "",
 		lastname: ""
 	}
-  constructor(public navCtrl: NavController, public navParams: NavParams, public uInfo: UserInfoProvider, public afData: AngularFireDatabase, public afAuth: AngularFireAuth)  {
+  constructor(public navCtrl: NavController,
+   public navParams: NavParams, 
+   public uInfo: UserInfoProvider, 
+   public afData: AngularFireDatabase, 
+   public afAuth: AngularFireAuth,
+   public mdCtrl: ModalController,
+  )  {
   	this.setNameInfo();
   	this.getTempInfo();
   }
@@ -95,6 +102,11 @@ var infoObj = {
     return;
   }
 
+}
+
+presentTerms(){
+  let termModal = this.mdCtrl.create(TermsOfServicesPage)
+   termModal.present();
 }
 
 }

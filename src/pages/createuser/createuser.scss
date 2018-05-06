@@ -1,3 +1,17 @@
 page-createuser {
-
+	.Terms-of-Agreement{
+		ion-item{
+			ion-label{
+				button{
+					float:left;
+				}
+			}
+		}
+	}
+	#RegisterButton{
+		display: block;
+		position: relative;
+		left: 29%;
+		top: 80px;
+	}
 }
