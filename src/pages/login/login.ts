@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {User } from "../../models/user";
 import {AngularFireAuth} from 'angularfire2/auth';
 import { Platform } from 'ionic-angular';
-
+import { MenuController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import {CreateuserPage} from '../createuser/createuser';
@@ -31,7 +31,11 @@ export class LoginPage {
   rootPage: any = LoginPage;
   user = {} as User;
   constructor(private afAuth: AngularFireAuth,
-    public navCtrl: NavController, public navParams: NavParams, public platform : Platform, public uInfo: UserInfoProvider) {
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public platform : Platform, 
+    public uInfo: UserInfoProvider,
+    public menuCtrl: MenuController) {
      
 
       // Okay, so the platform is ready and our plugins are available.
@@ -39,6 +43,7 @@ export class LoginPage {
     //this.usrInfo = this.uInfo.getUserInfo();
    // this.allUsers = this.uInfo.allUsers();
    // this.loadUserInfo();
+      this.menuCtrl.swipeEnable(false);
   }
 
   async login(user: User) {

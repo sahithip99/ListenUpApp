@@ -5,7 +5,9 @@ import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ActionSheetController } from 'ionic-angular';
 import * as firebase from 'firebase';
-
+import {LoginPage} from '../../pages/login/login';
+import { App,MenuController } from 'ionic-angular';
+import {AngularFireAuth} from 'angularfire2/auth';
 @IonicPage()
 @Component({
   selector: 'page-profile',
@@ -24,7 +26,9 @@ export class ProfilePage {
     private Camera: Camera,
     public navParams : NavParams,
     private afData: AngularFireDatabase,
-    private actSheet: ActionSheetController) {
+    private actSheet: ActionSheetController,
+    private afAuth: AngularFireAuth,
+    private app: App) {
     this.loadUserInfo();
   }
 
@@ -107,6 +111,15 @@ setPhoto(){
 
 toFeedback(){
   this.navCtrl.push("SearchuserPage")
+}
+
+
+logoutClicked(){
+  console.log('Logout...')
+  this.afAuth.auth.signOut();
+  this.uInfo.clearUserInfo();
+  var nav = this.app.getRootNav();
+  nav.setRoot(LoginPage);
 }
 
 

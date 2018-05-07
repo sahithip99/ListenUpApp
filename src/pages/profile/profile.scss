@@ -62,11 +62,15 @@ page-profile {
     top: -60px;
   }
     .menu-button{
-    position: relative;
-    right: 290px;
     background-color: white;
     color: color($colors, primary) !important;
     height: 20px;
-    width: 100px;
+    width: 80px;
+    margin: auto;
+    margin-top: -30px; 
+  }
+    .log-out{
+    font-size: 35px;
+    padding-bottom: 10px;
   }
 }

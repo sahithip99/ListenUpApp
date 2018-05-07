@@ -6,12 +6,11 @@ page-message {
     h2{
     			color: color($colors,primary);
     }
-     .menu-button{
-    position: relative;
-    right: 290px;
+    .menu-button{
     background-color: white;
     color: color($colors, primary) !important;
     height: 20px;
-    width: 100px;
+    width: 80px;
+    margin: auto;
   }
 }
