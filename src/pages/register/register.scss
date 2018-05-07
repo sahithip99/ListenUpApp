@@ -9,7 +9,15 @@ page-register {
      text-align: center;
      margin:0 auto;
      margin-top: 5px
-
    }
+    .Terms-of-Agreement{
+    ion-item{
+      ion-label{
+        button{
+          float:left;
+        }
+      }
+    }
+  }
   // .button {border-radius: 12px;}
 }

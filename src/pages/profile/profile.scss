@@ -61,4 +61,12 @@ page-profile {
     position: relative;
     top: -60px;
   }
+    .menu-button{
+    position: relative;
+    right: 290px;
+    background-color: white;
+    color: color($colors, primary) !important;
+    height: 20px;
+    width: 100px;
+  }
 }
