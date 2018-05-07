@@ -104,9 +104,4 @@ var infoObj = {
 
 }
 
-presentTerms(){
-  let termModal = this.mdCtrl.create(TermsOfServicesPage)
-   termModal.present();
-}
-
 }

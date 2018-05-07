@@ -4,6 +4,8 @@ import {AngularFireAuth } from "angularfire2/auth";
 import{AngularFireDatabase} from 'angularfire2/database';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import {CreateuserPage} from '../createuser/createuser';
+import {ModalController} from 'ionic-angular';
+import {TermsOfServicesPage} from '../terms-of-services/terms-of-services';
 
 @IonicPage()
 @Component({
@@ -27,7 +29,11 @@ usrInfo: any;
   //CONSTRUCTOR: all the things that have to be loaded to run the page
 
   constructor(private afAuth: AngularFireAuth,
-    public navCtrl: NavController, public navParams: NavParams, public afData: AngularFireDatabase, public uInfo: UserInfoProvider) {
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public afData: AngularFireDatabase, 
+    public uInfo: UserInfoProvider,
+    public mdCtrl: ModalController,) {
   }
 
 registerPeople(){
@@ -49,4 +55,9 @@ registerPeople(){
        return;
   }
 }
+presentTerms(){
+  let termModal = this.mdCtrl.create(TermsOfServicesPage)
+   termModal.present();
+}
+
 }

@@ -62,6 +62,13 @@ page-feedback {
 	ion-list{
 		border-color: #00ba99;
 	}
-
+	 .menu-button{
+    position: relative;
+    right: 310px;
+    background-color: white;
+    color: color($colors, primary) !important;
+    height: 20px;
+    width: 80px;
+  }
 
 }
