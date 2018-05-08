@@ -18,7 +18,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class MessagePage {
 
-  
+
   chatArray: any[] = []
   usrId: string;
 
@@ -53,22 +53,23 @@ export class MessagePage {
         this.uInfo.getOtherUserInfo(otherID).take(1).subscribe(otherInfo=> {
           chat.otherInfo = otherInfo
         })
-        // console.log(chat.payload.val())
-        
-      })
-   
-    })
+         console.log("ok",chat.payload.val())
 
-    
-    
+      })
+
+    })
+    console.log("cahts are here",this.chatArray)
+
+
+
   }
 
   goToChatDetail(chatID: string, otherID: string){
     this.navCtrl.push("MessageDetailPage", {chatID: chatID, otherID: otherID})
   }
 
-  ionViewDidLeave() {  
-   
+  ionViewDidLeave() {
+
   }
 
 }
