@@ -7,13 +7,14 @@
     </ion-buttons>
   </ion-navbar>
 
-  <ion-toolbar color = "primary" style="min-height: 3rem;">
+  <ion-toolbar no-border-top no-border-bottom color = "primary" style="min-height: 3rem;">
   	<ion-segment [(ngModel)]="feedbackTab" color = "light">
   		<ion-segment-button value="Public" (click) = "clickPub()"  class = "segment-button-left">Public</ion-segment-button>
 
   		<ion-segment-button value="Anonymous" Anonymous (click) = "clickAnnon()"  class = "segment-button-right"> Anonymous </ion-segment-button>
   	</ion-segment>
   </ion-toolbar>
+
 </ion-header>
 
 
