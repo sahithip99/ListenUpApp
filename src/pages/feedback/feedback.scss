@@ -1,11 +1,13 @@
 page-feedback {
 
 	ion-header{
-		
+
 		// .toolbar-background{
 		// 	// border: none;
 		// }
-
+		.fabpicture{
+			position: "absolute";
+		}
 		.bar-header {
     border: 0px !important;
     border-bottom-color: transparent !important;
@@ -78,8 +80,9 @@ page-feedback {
     color: color($colors, primary) !important;
     height: 20px;
     width: 80px;
-    margin: auto; 
+    margin: auto;
   }
+
 
 
 }
