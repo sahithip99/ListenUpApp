@@ -9,11 +9,11 @@ page-feedback {
 			position: "absolute";
 		}
 		.bar-header {
-    border: 0px !important;
-    border-bottom-color: transparent !important;
-    background-image: none !important;
-    border-bottom: none !important;
-}
+		    border: 0px !important;
+		    border-bottom-color: transparent !important;
+		    background-image: none !important;
+		    border-bottom: none !important;
+		}
 
 		.toolbar-ios .segment-button{
 			height: 3rem;
@@ -82,7 +82,9 @@ page-feedback {
     width: 80px;
     margin: auto;
   }
-
+  .fab{
+  	font-size: 80px;
+  }
 
 
 }
