@@ -51,15 +51,6 @@ export class HeaderMenuComponent {
     }
   }
 
-logoutClicked(){
-	console.log('Logout...')
-	this.afAuth.auth.signOut();
-  this.uInfo.clearUserInfo();
-	this.menuCtrl.close();
-	var nav = this.app.getRootNav();
-	nav.setRoot(LoginPage);
-}
-
 blocked(){
   for(var i in this.usrInfo.blockedusers){
     var unique = true;
