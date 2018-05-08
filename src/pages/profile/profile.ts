@@ -8,6 +8,7 @@ import * as firebase from 'firebase';
 import {LoginPage} from '../../pages/login/login';
 import { App,MenuController } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
+
 @IonicPage()
 @Component({
   selector: 'page-profile',
@@ -28,7 +29,8 @@ export class ProfilePage {
     private afData: AngularFireDatabase,
     private actSheet: ActionSheetController,
     private afAuth: AngularFireAuth,
-    private app: App) {
+    private app: App,
+    private alertCtrl: AlertController) {
     this.loadUserInfo();
   }
 
@@ -115,12 +117,24 @@ toFeedback(){
 
 
 logoutClicked(){
-  console.log('Logout...')
-  this.afAuth.auth.signOut();
-  this.uInfo.clearUserInfo();
-  var nav = this.app.getRootNav();
-  nav.setRoot(LoginPage);
+  var alertCtrl = this.alertCtrl.create({
+    title: 'Are you sure you want to log out?',
+    buttons:[{
+      text: "Logout",
+      role: "Logout",
+      handler: () => {
+          console.log('Logout...')
+          this.afAuth.auth.signOut();
+          this.uInfo.clearUserInfo();
+          var nav = this.app.getRootNav();
+          nav.setRoot(LoginPage);
+      }
+    },
+    {
+      text: "Cancel",
+      role: "cancel"
+    }
+    ]});
+  alertCtrl.present();
 }
-
-
 }
