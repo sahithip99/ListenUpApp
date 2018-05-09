@@ -6,10 +6,16 @@
   	</ion-list-header>
   	<ion-item (click) = "blocked()">Blocked Users</ion-item>
 
-  	<ion-item>
+  	<ion-item >
   		<ion-label> Allow anonymous</ion-label> 	
   		<ion-toggle [(ngModel)] = "annonStatus" (ngModelChange) = "allowAnnon($event)"></ion-toggle> 
   	</ion-item>
+    <ion-item no-lines >
+      Contact Developers:  
+    </ion-item>
+    <ion-item >
+        <span id = "email">drealityllc@gmail.com</span>
+    </ion-item>
     <!-- <ion-item *ngIf = "annonStatus">
       <ion-label> Block Annon Feedback</ion-label>  
       <ion-toggle [(ngModel)] = "annonStatus" (ngModelChange) = "allowAnnon($event)" checked = "false"></ion-toggle> 
