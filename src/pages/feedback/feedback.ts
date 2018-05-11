@@ -94,16 +94,16 @@ clickAnnon(){
 async setUserInfo(){
 		await this.afData.database.ref('users/' + this.usrId).once('value',dataSnap =>{
 			this.usrData = dataSnap.val();
+      this.pubMes = this.usrData.publicfeedbacks;
+      this.annonMes = this.usrData.anonfeedbacks;
+      this.setFeedback();
 			console.log("reloading data", this.usrData);
 		});
 }
 
  doRefresh(refresher){
- 	console.log('Begin async operation',refresher);
- 	this.setUserInfo();
- 	this.pubMes = this.usrData.publicfeedbacks;
-  	this.annonMes = this.usrData.anonfeedbacks;
-  	this.setFeedback();
+   this.setUserInfo();
+ 	  console.log('Begin async operation',refresher);
   	 setTimeout(() => {
   	 	console.log('Async operation has ended');
   	 	refresher.complete();
@@ -126,7 +126,7 @@ async setUserInfo(){
      {
        text: "yes",
        handler: () => {
-         this.afData.database.ref('users').child(this.usrId).child(mes.type).child(mes.key).remove();
+          this.delFromList(mes);
        }
      }
      ]
@@ -134,6 +134,7 @@ async setUserInfo(){
    alertCtrl.present();
  }
  flagUser(mes){
+   var index = this.delFromList(mes)
    let alert = this.alertCtrl.create();
    alert.addInput({
      type: "checkbox",
@@ -179,15 +180,16 @@ async setUserInfo(){
          offenderid: mes.id,
          reasons: data
        });
+        this.delFromList(mes);
      }
    });
-
    alert.present().then(() => {
      this.checkboxOpen = true;
    })
  }
 
  blockUser(mes){
+   var index = this.delFromList(mes);
    let alert = this.alertCtrl.create({
      title: 'Block this User?',
      message: 'If the blocked user is not annonymous, you can unblock him later by going to your blacklist in the menu',
@@ -206,17 +208,42 @@ async setUserInfo(){
          var blockedusers = {};
          blockedusers[mes.id] = mes.username;
          this.afData.database.ref('users').child(this.usrData.id).update({blockedusers});
-         if(mes.type == "publicfeedbacks"){
-                this.afData.database.ref('users').child(this.usrData.id).child(mes.type).child(mes.key).remove();
-         }
-         else if(mes.type = "anonfeedbacks"){
-             this.afData.database.ref('users').child(mes.id).child(mes.type).child(mes.key).remove();
-         }
+         this.delFromList(mes);
        }
      }
      ]
    });
    alert.present();
+  }
+
+  delFromList(user){
+    var index = null
+      if(user.type == "publicfeedbacks"){
+           for(var i in this.pubArray){
+                 if(this.pubArray[i].id == user.id){
+                      index = i
+                  }
+           }
+             this.afData.database.ref('users').child(this.usrData.id).child(user.type).child(user.key).remove();
+             this.pubArray.splice(index,1);
+             this.curList = this.pubArray;   
+      }  
+     else{
+           for(var i in this.annonArray){
+                 if(this.annonArray[i].id == user.id){
+                       index = i
+                     }
+                } 
+             this.afData.database.ref('users').child(user.id).child(user.type).child(user.key).remove(); 
+             this.annonArray.splice(index,1);
+             this.curList = this.annonArray;
+          }
+         // if(user.type == "publicfeedbacks"){
+
+         // }
+         // else if(user.type = "anonfeedbacks"){
+
+         // }
   }
 
 

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dreality.notedapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Noted</name>
+<widget id="com.dreality.listenup" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ListenUp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="lixinwei123@yahoo.com" href="http://ionicframework.com/">Dreality Team</author>
     <content src="index.html" />
