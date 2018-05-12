@@ -139,7 +139,6 @@ async setUserInfo(){
    alertCtrl.present();
  }
  flagUser(mes){
-   var index = this.delFromList(mes)
    let alert = this.alertCtrl.create();
    alert.addInput({
      type: "checkbox",
@@ -194,7 +193,6 @@ async setUserInfo(){
  }
 
  blockUser(mes){
-   var index = this.delFromList(mes);
    let alert = this.alertCtrl.create({
      title: 'Block this User?',
      message: 'If the blocked user is not annonymous, you can unblock him later by going to your blacklist in the menu',

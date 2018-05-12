@@ -1,4 +1,11 @@
 page-message-detail {
+	ion-header{
+		#flag-Button{
+            font-size: 20px;
+            float: right;
+            top: -47px;
+        }
+	}
     ion-card {
         border-radius: 1em !important;
     }
