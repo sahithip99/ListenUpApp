@@ -47,27 +47,25 @@ export class MessagePage {
   loadDMs(){
     this.chatList$ = this.afData.list(`users/${this.usrId}/chats/DMs`).snapshotChanges()
     this.chatListSubscription = this.chatList$.subscribe(chatArr=> {
-      this.chatArray = chatArr
+      this.chatArray = chatArr;
       this.chatArray.forEach(chat=> {
         let otherID = chat.key
         this.uInfo.getOtherUserInfo(otherID).take(1).subscribe(otherInfo=> {
           chat.otherInfo = otherInfo
         })
          console.log("ok",chat.payload.val())
-
       })
-
+      console.log("cahts are here",this.chatArray)
     })
-    console.log("cahts are here",this.chatArray)
-
-
-
   }
 
+deleteChat(chat){
+  this.afData.database.ref('users').child(this.usrId).child('chats').child('DMS').child(chat.key).remove();
+  this.chatArray.splice(chat.key,1)
+}
   goToChatDetail(chatID: string, otherID: string){
     this.navCtrl.push("MessageDetailPage", {chatID: chatID, otherID: otherID})
   }
-
   ionViewDidLeave() {
 
   }

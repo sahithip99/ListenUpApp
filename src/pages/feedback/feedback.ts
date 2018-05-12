@@ -61,7 +61,12 @@ export class FeedbackPage {
 	  for(var i in this.annonMes){
 			this.annonArray.push(this.annonMes[i]);
 		}
-		this.curList = this.pubArray;
+    if(this.feedbackTab == "Public"){
+       this.curList = this.pubArray;
+    }
+    else{
+      this.curList = this.annonArray;
+    }
 	}
 
 
