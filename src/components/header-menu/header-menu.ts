@@ -41,6 +41,7 @@ export class HeaderMenuComponent {
  loadUserInfo(){
     this.usrInfo = this.uInfo.getUserInfo();
     if (this.usrInfo == undefined){
+      console.log("try again on header menu page");
       setTimeout(() => {
         this.loadUserInfo();
       },1000);

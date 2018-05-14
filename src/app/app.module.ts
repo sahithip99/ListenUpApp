@@ -57,7 +57,8 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     BrowserModule,
     IonicModule.forRoot(MyApp,{
         mode: 'ios',
-        iconMode: 'ios'
+        iconMode: 'ios',
+        backButtonText: ''
     }),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,

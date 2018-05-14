@@ -21,6 +21,9 @@ export class MessagePage {
 
   chatArray: any[] = []
   usrId: string;
+  usrData: any;
+  constArray: any;
+  q: any;
 
   //Observables
   chatList$: Observable<any[]>;
@@ -53,19 +56,48 @@ export class MessagePage {
         this.uInfo.getOtherUserInfo(otherID).take(1).subscribe(otherInfo=> {
           chat.otherInfo = otherInfo
         })
-         console.log("ok",chat.payload.val())
       })
-      console.log("cahts are here",this.chatArray)
+      console.log("cahts are here",this.chatArray);
+      this.constArray = this.chatArray
     })
   }
 
 deleteChat(chat){
-  this.afData.database.ref('users').child(this.usrId).child('chats').child('DMS').child(chat.key).remove();
-  this.chatArray.splice(chat.key,1)
+  var position = null
+  this.afData.database.ref('users').child(this.usrId).child('chats').child('DMs').child(chat.key).remove();
+  for(var i in this.chatArray){
+    if (this.chatArray[i].key == chat.key){
+        position = i;
+    }
+  }
+  this.chatArray.splice(position,1);
 }
+
   goToChatDetail(chatID: string, otherID: string){
     this.navCtrl.push("MessageDetailPage", {chatID: chatID, otherID: otherID})
   }
+
+  searchMessage(searchbar){
+    this.chatArray = this.constArray 
+     this.q = searchbar.srcElement.value;
+    console.log('searching...',this.q);
+    if (!this.q) {
+      return};
+
+    if (String(this.q).replace(/\s/g,"").length ==0){
+      return true;
+    }
+    this.chatArray = this.chatArray.filter((v) => {
+      if(v.otherInfo.username && v.otherInfo.email && this.q){
+        if (v.otherInfo.username .toLowerCase().indexOf(this.q.toLowerCase()) > -1 ||
+          v.otherInfo.email.toLowerCase().indexOf(this.q.toLowerCase()) > -1){
+          return true;
+        }
+        return false;
+        }
+    });
+  }
+
   ionViewDidLeave() {
 
   }

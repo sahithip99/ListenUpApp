@@ -79,7 +79,7 @@ alertControl(){
      this.alertControl();
  }
  //---------------SENDING PRIVATE FEEDBACK----------------
- 	else if(this.param.allowAnnon && this.annon == true){
+ 	else if(this.param.allowAnnon && this.annon){
      var obj2 = {
      type: "anonfeedbacks",
      title: this.mesData.title,
@@ -97,7 +97,6 @@ alertControl(){
      this.alertControl();
  }
  else{
-   
     var alertCtrl = this.alertCtrl.create({
    title: "the user does not accept annonymous feedback",
    buttons: [

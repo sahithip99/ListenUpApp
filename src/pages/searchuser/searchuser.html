@@ -6,10 +6,15 @@
 -->
 <ion-header>
   <ion-navbar color = "primary">
-    <ion-toolbar color = "white">
-	<ion-searchbar autocomplete autocorrect placeholder = "Search Users, enter either email or username" (ionInput) = "searchUsers($event)"></ion-searchbar>
-	</ion-toolbar>
+
+  	<!-- <ion-toolbar color = "white"> -->
+  	<ion-title>
+		<ion-searchbar autocomplete autocorrect placeholder = "Search Users, enter either email/username" (ionInput) = "searchUsers($event)"></ion-searchbar>
+	<!-- </ion-toolbar> -->
+	</ion-title>
+
   </ion-navbar>
+
 </ion-header>
 
 <ion-content>
