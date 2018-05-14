@@ -223,8 +223,9 @@ async setUserInfo(){
     var index = null
       if(user.type == "publicfeedbacks"){
            for(var i in this.pubArray){
-                 if(this.pubArray[i].id == user.id){
-                      index = i
+                 if(this.pubArray[i].key == user.key){
+                      index = i;
+                      break
                   }
            }
              this.afData.database.ref('users').child(this.usrData.id).child(user.type).child(user.key).remove();
@@ -233,8 +234,9 @@ async setUserInfo(){
       }  
      else{
            for(var i in this.annonArray){
-                 if(this.annonArray[i].id == user.id){
+                 if(this.annonArray[i].key == user.key){
                        index = i
+                       break;
                      }
                 } 
              this.afData.database.ref('users').child(user.id).child(user.type).child(user.key).remove(); 
