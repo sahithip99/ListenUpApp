@@ -8,6 +8,7 @@ import * as firebase from 'firebase';
 import {LoginPage} from '../../pages/login/login';
 import { App,MenuController } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 
 @IonicPage()
 @Component({
@@ -15,6 +16,10 @@ import {AngularFireAuth} from 'angularfire2/auth';
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
+  options: BarcodeScannerOptions;
+  encodText:string='';
+  encodedData:any={};
+  scannedData:any={};
   firstName: any;
   lastName: any;
   userName: any;
@@ -22,6 +27,8 @@ export class ProfilePage {
   param: any;
   userPhoto: any;
   captureDataUrl: string;
+
+
   constructor(public navCtrl: NavController,
     public uInfo: UserInfoProvider,
     private Camera: Camera,
@@ -30,10 +37,27 @@ export class ProfilePage {
     private actSheet: ActionSheetController,
     private afAuth: AngularFireAuth,
     private app: App,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,public scanner:BarcodeScanner) {
     this.loadUserInfo();
   }
+    scan(){
+      this.options={
+        prompt: 'Scan your Barcode'
+      };
+      this.scanner.scan(this.options).then((data) => {
+        this.scannedData = data;
 
+      }, (err) => {
+        console.log('Error :',err);
+      })
+    }
+    encode(){
+      this.scanner.encode(this.scanner.Encode.TEXT_TYPE, this.encodText).then((data) => {
+        this.encodedData = data;
+      }, (err) => {
+          console.log('Error :',err);
+      })
+    }
 
   loadUserInfo(){
     this.usrInfo = this.uInfo.getUserInfo();
