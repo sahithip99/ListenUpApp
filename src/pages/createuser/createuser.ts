@@ -23,6 +23,8 @@ export class CreateuserPage {
 		firstname: "",
 		lastname: ""
 	}
+  regUser: RegExp = /^[a-z0-9]+$/i
+  regName: RegExp = /^[a-z]+$/i
   constructor(public navCtrl: NavController,
    public navParams: NavParams, 
    public uInfo: UserInfoProvider, 
@@ -79,9 +81,12 @@ var infoObj = {
       email: this.tempInfo.email,
       username: this.user.username,
       allowAnnon: true,
+      feedbacks: null,
       photourl: "https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181"
 }
-  if(checkEmpty(this.user) && this.uniqueUser){
+  if(checkEmpty(this.user) && this.uniqueUser && this.regUser.test(this.user.username)
+    && this.regName.test(this.user.firstname)
+    && this.regName.test(this.user.lastname)){
     this.afData.database.ref('users').child(this.tempInfo.id).update(infoObj
      ).then(winning => {
       console.log("all is done");
