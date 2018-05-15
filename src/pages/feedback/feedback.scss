@@ -1,86 +1,68 @@
 page-feedback {
-
 	ion-header{
-
-		// .toolbar-background{
-		// 	// border: none;
-		// }
-
 		.bar-header {
-    border: 0px !important;
-    border-bottom-color: transparent !important;
-    background-image: none !important;
-    border-bottom: none !important;
-}
-
+    		border: 0px !important;
+    		border-bottom-color: transparent !important;
+    		background-image: none !important;
+    		border-bottom: none !important;
+		}
 		.toolbar-ios .segment-button{
+			max-width: 100% !important;
+			border: none !important;
 			height: 3rem;
 			font-size: 1.7rem;
 			line-height: 3rem;
+			
 		}
-
-		.segment-button-left{
-			// color: color($colors, light) !important;
-			max-width: 100% !important;
-			border: none !important;
-			border-top-left-radius: 0 !important;
-			border-bottom-left-radius: 0 !important;
-			border-top-right-radius: 10px !important;
-		}
-
 		.segment-button-right{
-			// color: color($colors, light) !important;
-			max-width: 100% !important;
-			border: none !important;
-			border-top-right-radius: 0 !important;
-			border-bottom-right-radius: 0 !important;
 			border-top-left-radius: 10px !important;
+			border-bottom-right-radius: 0 !important;
+			border-top-right-radius: 0 !important;
+		}
+		.segment-button-left{
+			border-top-right-radius: 10px !important;
+			border-bottom-left-radius: 0 !important;
+			border-top-left-radius: 0 !important;
+		}
+		.menu-button{
+	    	background-color: white;
+	    	color: color($colors, primary) !important;
+	    	height: 20px;
+	    	width: 80px;
+	    	margin: auto;
+  		}
+	}
+	ion-content{
+		.feedback-cards{
+			position: relative;
+				ion-avatar img{
+					position: relative;
+					width: 50px ; 
+		        	height: 50px ;
+		        	object-fit: cover ;
+		        	border-radius: 70px ;
+		        	top: 20px ;
+				}
+			.title-pic-container{
+				position: relative;
+			    left: 100px;
+			    top: -20px;
+
+				.title-and-name{
+					left: 100px ;
+					top: -30px ;			
+				}
+				#user-name{
+					left: 0px ;
+					top: 0px ;
+				}
+			}
+		}
+		ion-list{
+			border-color: #00ba99;
+		}
+		ion-item{
+			height: 80px;
 		}
 	}
-
-	#A img{
-		position: relative;
-		display: block;
-		width: 50px;
-        height: 50px;
-        object-fit: cover;
-        border-radius: 70px;
-        top: 20px;
-	}
-
-	ion-item{
-		height: 80px;
-	}
-	#A1{
-		display: block;
-		position: relative;
-		left: 100px;
-		color: color($colors,primary);
-		top: -30px;
-	}
-	#A2{
-		display: block;
-		position: relative;
-		left: 100px;
-		top: -30px;
-	}
-	#A3{
-		display: block;
-		position: relative;
-		left: 0px;
-		top: 0px;
-	}
-	ion-list{
-		border-color: #00ba99;
-	}
-	 .menu-button{
-    background-color: white;
-    color: color($colors, primary) !important;
-    height: 20px;
-    width: 80px;
-    margin: auto;
-  }
-
-  
-
 }
