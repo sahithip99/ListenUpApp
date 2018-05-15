@@ -20,6 +20,25 @@
   
 <ion-content padding >
 
+ 
+   <!--  <button ion-button (click) =  > -->
+       <!-- <ion-fab (click) = "toSendfeed()" name = "ios-add-circle" class = "search-user"> -->
+      <!-- <ion-icon color="primary" name = "noted-logo" ></ion-icon> -->
+      <!-- </ion-icon> -->
+
+<!--       <ion-fab right bottom>
+        <button ion-fab mini color="primary"  (click)="toSendfeed()"><ion-icon name="ios-add-circle"></ion-icon></button> -->
+        
+<!--     <ion-fab-list side="left">
+          <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+        </ion-fab-list> -->
+
+
+<!--       </ion-fab> -->
+
   <ion-fab right bottom (click) = "clickPub()" >
     <button ion-fab color="light" (click) = "toSendfeed()" >
       <!-- <ion-icon color="primary" name = "noted-logo" ></ion-icon> -->
@@ -27,7 +46,7 @@
     </button>
   </ion-fab>
 
-
+<!--     </button> -->
   <ion-refresher pulling-text="Pull to refresh..." (ionRefresh) = "doRefresh($event)">
      <ion-refresher-content
       pullingIcon="arrow-dropdown"
