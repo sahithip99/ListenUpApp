@@ -256,9 +256,15 @@ async setUserInfo(){
   activateDropdown(mes){
     if (mes.dropdown == true){
       mes.dropdown = false;
+
     }
     else {
       mes.dropdown = true;
+        for(var i in this.curList){
+          if(this.curList[i].key != mes.key){
+                this.curList[i].dropdown = false;
+            }
+        }
     }
   }
 

@@ -89,10 +89,10 @@ var infoObj = {
     })
    //------------ADD THIS USERNAME TO THE LIST OF USERNAMES FOR CHECKING UNIQUE USERNAMES LATER
   var obj ={};
-      obj[this.tempInfo.id] = this.user.username
+      obj[this.tempInfo.id] = this.user.username;
       this.afData.database.ref('usernames').update(obj);
-         this.afAuth.auth.signOut();
-         this.navCtrl.setRoot(LoginPage);
+         this.uInfo.setUserInfoById(this.tempInfo.id);
+         this.loadUserInfo();
   }
   else{
     console.log("something happend! fix itttttt");
@@ -100,5 +100,20 @@ var infoObj = {
   }
 
 }
+  loadUserInfo(){
+    this.usrInfo = this.uInfo.getUserInfo();
+    var length =  Object.keys(this.usrInfo).length;
+    console.log("length",length);
+     if(length == 2){
+       setTimeout(() => {
+        this.loadUserInfo();
+      },1000);
+    }
+    else{
+        this.navCtrl.setRoot(TabsPage);
+    }
+  }
+
+
 
 }
