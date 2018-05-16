@@ -4,8 +4,6 @@ import {TabsPage} from '../tabs/tabs';
 import {UserInfoProvider} from "../../providers/userInfo/userInfo";
 import { AngularFireDatabase } from 'angularfire2/database';
 import {AngularFireAuth } from "angularfire2/auth";
-import {ModalController} from 'ionic-angular';
-import {TermsOfServicesPage} from '../terms-of-services/terms-of-services';
 import{LoginPage} from '../login/login';
 
 @IonicPage()
@@ -25,12 +23,13 @@ export class CreateuserPage {
 		firstname: "",
 		lastname: ""
 	}
+  regUser: RegExp = /^[a-z0-9]+$/i
+  regName: RegExp = /^[a-z]+$/i
   constructor(public navCtrl: NavController,
    public navParams: NavParams, 
    public uInfo: UserInfoProvider, 
    public afData: AngularFireDatabase, 
    public afAuth: AngularFireAuth,
-   public mdCtrl: ModalController,
   )  {
   	this.setNameInfo();
   	this.getTempInfo();
@@ -82,9 +81,12 @@ var infoObj = {
       email: this.tempInfo.email,
       username: this.user.username,
       allowAnnon: true,
+      feedbacks: null,
       photourl: "https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181"
 }
-  if(checkEmpty(this.user) && this.uniqueUser){
+  if(checkEmpty(this.user) && this.uniqueUser && this.regUser.test(this.user.username)
+    && this.regName.test(this.user.firstname)
+    && this.regName.test(this.user.lastname)){
     this.afData.database.ref('users').child(this.tempInfo.id).update(infoObj
      ).then(winning => {
       console.log("all is done");
@@ -92,10 +94,10 @@ var infoObj = {
     })
    //------------ADD THIS USERNAME TO THE LIST OF USERNAMES FOR CHECKING UNIQUE USERNAMES LATER
   var obj ={};
-      obj[this.tempInfo.id] = this.user.username
+      obj[this.tempInfo.id] = this.user.username;
       this.afData.database.ref('usernames').update(obj);
-         this.afAuth.auth.signOut();
-         this.navCtrl.setRoot(LoginPage);
+         this.uInfo.setUserInfoById(this.tempInfo.id);
+         this.loadUserInfo();
   }
   else{
     console.log("something happend! fix itttttt");
@@ -103,5 +105,20 @@ var infoObj = {
   }
 
 }
+  loadUserInfo(){
+    this.usrInfo = this.uInfo.getUserInfo();
+    var length =  Object.keys(this.usrInfo).length;
+    console.log("length",length);
+     if(length == 2){
+       setTimeout(() => {
+        this.loadUserInfo();
+      },1000);
+    }
+    else{
+        this.navCtrl.setRoot(TabsPage);
+    }
+  }
+
+
 
 }

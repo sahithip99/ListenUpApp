@@ -35,13 +35,15 @@
   <ion-input type="password" [(ngModel)]="user.repass"></ion-input>
   </ion-item>
 
-  <!-- term of service -->
-<div class ="terms">
-<p style="font-size: 1.3rem;">By clicking continue, you are agreeing <br>
-  to Listen Up's <span (click)="showTermofServiceModal()"><u><i>terms of service</i></u>.</span></p>
-</div>
-  <button ion-button (click)="registerPeople()" color = "#3a3535">Continue</button>
-
+ <div class ="Terms-of-Agreement">
+    <ion-item>
+      <ion-label >By signing up, you agree to our 
+        <button ion-button clear (click) = "presentTerms()"> <u><b>Term of Services</b></u></button>
+    </ion-label>
+  </ion-item>
+  </div>
+  
+  <button ion-button (click)="registerPeople()" color = "#76a5af">Continue</button>
 
 
 </ion-content>

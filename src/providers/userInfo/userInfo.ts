@@ -26,6 +26,15 @@ export class UserInfoProvider{
 		});
 	}
 
+		 setUserInfoById(id){
+		 return this.afData.database.ref('users/' + id).once('value',dataSnap =>{
+			this.usrData = dataSnap.val();
+			this.usrId = id
+			console.log("loaded current user: ", this.usrData);
+
+		});
+	}
+
 	clearUserInfo(){
 		this.usrData = null;
 		this.usrId = null;
