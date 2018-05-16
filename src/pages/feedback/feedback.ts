@@ -3,7 +3,7 @@ import { IonicPage,NavController } from 'ionic-angular';
 
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import {ChatInfoProvider} from '../../providers/chat-info/chat-info';
-import {FeedbackinfoPage} from '../feedbackinfo/feedbackinfo';
+//simport {FeedbackinfoPage} from '../feedbackinfo/feedbackinfo';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
@@ -230,16 +230,16 @@ async setUserInfo(){
            }
              this.afData.database.ref('users').child(this.usrData.id).child(user.type).child(user.key).remove();
              this.pubArray.splice(index,1);
-             this.curList = this.pubArray;   
-      }  
+             this.curList = this.pubArray;
+      }
      else{
            for(var i in this.annonArray){
                  if(this.annonArray[i].key == user.key){
                        index = i
                        break;
                      }
-                } 
-             this.afData.database.ref('users').child(user.id).child(user.type).child(user.key).remove(); 
+                }
+             this.afData.database.ref('users').child(user.id).child(user.type).child(user.key).remove();
              this.annonArray.splice(index,1);
              this.curList = this.annonArray;
           }
@@ -312,7 +312,7 @@ async setUserInfo(){
           text: 'OK',
           handler: () => {
             console.log('OK clicked');
-            
+
             this.enterChat(mes)
 
           }
@@ -339,7 +339,7 @@ async setUserInfo(){
         })
       }
     })
-   
+
   }
 
 

@@ -34,10 +34,10 @@ export class MessagePage {
 
   constructor(
     public navCtrl: NavController
-    ,private chatInfo: ChatInfoProvider
+    //private chatInfo: ChatInfoProvider
     ,private uInfo: UserInfoProvider
     ,private afData: AngularFireDatabase
-    ,private afAuth: AngularFireAuth
+    //,private afAuth: AngularFireAuth
   ) {
     //Initialize variables
     this.usrId = this.uInfo.getUserInfo().id
@@ -78,7 +78,7 @@ deleteChat(chat){
   }
 
   searchMessage(searchbar){
-    this.chatArray = this.constArray 
+    this.chatArray = this.constArray
      this.q = searchbar.srcElement.value;
     console.log('searching...',this.q);
     if (!this.q) {

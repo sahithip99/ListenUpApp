@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
-import * as firebase from 'firebase';
+//import * as firebase from 'firebase';
 // import{SendfeedPage} from '../sendfeed/sendfeed';
 
 /**
@@ -17,7 +17,7 @@ import * as firebase from 'firebase';
 
 })
 export class SearchuserPage {
-
+  i = 0
 	userList: any;
 	curUser: any;
   q: any;
@@ -63,7 +63,7 @@ export class SearchuserPage {
   			}
   			return false;
   			}
-  		
+
   	});
   }
 //-------------GO TO SENDFEED PAGE---------------
@@ -75,4 +75,3 @@ export class SearchuserPage {
 }
 
 }
-	
