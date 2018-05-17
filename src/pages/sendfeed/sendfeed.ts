@@ -139,7 +139,7 @@ blockUser(){
      }
      ]
    });
-   this.uInfo.setUsers();
+   // this.uInfo.setUsers();
    alert.present();
   }
 }
