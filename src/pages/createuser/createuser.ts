@@ -5,7 +5,7 @@ import {UserInfoProvider} from "../../providers/userInfo/userInfo";
 import { AngularFireDatabase } from 'angularfire2/database';
 import {AngularFireAuth } from "angularfire2/auth";
 import{LoginPage} from '../login/login';
-
+import * as firebase from 'firebase';
 @IonicPage()
 @Component({
   selector: 'page-createuser',
@@ -31,7 +31,7 @@ export class CreateuserPage {
    public afData: AngularFireDatabase, 
    public afAuth: AngularFireAuth,
   )  {
-  	this.setNameInfo();
+  	// this.setNameInfo();
   	this.getTempInfo();
   }
 
@@ -42,29 +42,51 @@ export class CreateuserPage {
    	})
    }
  //----------------------CREATE AN ARRAY OF ALL THE USERNAMES-------------------
-   async setNameInfo(){
-		await this.afData.database.ref('usernames').once('value',dataSnap =>{
-			this.usrNames = dataSnap.val();
-			this.usrNames = Object.keys(this.usrNames).map(key => this.usrNames[key]).map(x => x.substr(0,x.length));
-		});
-	}
+ //   async setNameInfo(){
+	// 	await this.afData.database.ref('usernames').once('value',dataSnap =>{
+	// 		this.usrNames = dataSnap.val();
+	// 		this.usrNames = Object.keys(this.usrNames).map(key => this.usrNames[key]).map(x => x.substr(0,x.length));
+	// 	});
+	// }
+ checkUnique(){
+  var ref = firebase.database().ref("usernames");
+ ref.orderByChild("username").equalTo(this.user.username).once("value", snapshot => {
+  console.log('snapshot value',snapshot.val().username )
+ if(snapshot.val()){
+   this.uniqueUser = false;
+   console.log("not unique username");
+ }
+ else{
+   this.uniqueUser = true;
+ }
+});
+}
 
 finishReg(){
 //-----------CHECK UNIQUE USERNAMES------------
- for(var i in this.usrNames){
- 	this.uniqueUser = true;
-    if(this.user.username == this.usrNames[i]){
-      console.log("user name has already being taken");
-      this.uniqueUser = false;
-      return;
-    }
-    else{
-      console.log("unique user name!");
-    }
+  if(!this.uniqueUser){
+    setTimeout(() => {
+      this.checkUnique
+    })
+    this.checkUnique();
   }
+
+
+ // for(var i in this.usrNames){
+ // 	this.uniqueUser = true;
+ //    if(this.user.username == this.usrNames[i]){
+ //      console.log("user name has already being taken");
+ //      this.uniqueUser = false;
+ //      return;
+ //    }
+ //    else{
+ //      console.log("unique user name!");
+ //    }
+ //  }
 
 //----------------CHECK TO SEE IF THE USER ENTERED ANYTHING---------------
  function checkEmpty(user){
+
     for(var i in user){
     	console.log(user[i]);
       if(user[i] == '' || user[i] == " " || !(user[i])){
@@ -75,13 +97,12 @@ finishReg(){
   }
 //---------------IF THE ENTERED FIELD IS NOT EMPTY, UPDATE THE USER INFORMATION
 var infoObj = {
-     id: this.tempInfo.id,
+     //id: this.tempInfo.id,
       firstname: this.user.firstname,
       lastname: this.user.lastname,
-      email: this.tempInfo.email,
+      //email: this.tempInfo.email,
       username: this.user.username,
       allowAnnon: true,
-      feedbacks: null,
       photourl: "https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181"
 }
   if(checkEmpty(this.user) && this.uniqueUser && this.regUser.test(this.user.username)
@@ -118,7 +139,4 @@ var infoObj = {
         this.navCtrl.setRoot(TabsPage);
     }
   }
-
-
-
 }

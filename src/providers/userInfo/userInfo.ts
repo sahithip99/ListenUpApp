@@ -40,17 +40,17 @@ export class UserInfoProvider{
 		this.usrId = null;
 	}
 //---------------ALL OF THE USERS---------------------------
-	async setUsers(){
-    await this.afData.database.ref('users').once('value',dataSnap =>{
-      this.usrGroup = dataSnap.val();
-      console.log('All the users:',this.usrGroup);
-      this.usrArray = [];
-      for(var i in this.usrGroup){
-  		this.usrArray.push(this.usrGroup[i]);
-  	}
-    })
-    return this.usrArray
-  }
+	// async setUsers(){
+ //    await this.afData.database.ref('users').once('value',dataSnap =>{
+ //      this.usrGroup = dataSnap.val();
+ //      console.log('All the users:',this.usrGroup);
+ //      this.usrArray = [];
+ //      for(var i in this.usrGroup){
+ //  		this.usrArray.push(this.usrGroup[i]);
+ //  	}
+ //    })
+ //    return this.usrArray
+ //  }
   async setPhoto(id){
     await firebase.storage().ref('profiles').child(id + '.jpg').getDownloadURL().then(success =>{
       this.userPhoto = success;
@@ -85,12 +85,12 @@ getPhoto(){
 getUserId(){
 	return this.usrId;
 }
-allUsers(){
-	return this.usrGroup;
-}
-usersArray(){
-	return this.usrArray;
-}
+// allUsers(){
+// 	return this.usrGroup;
+// }
+// usersArray(){
+// 	return this.usrArray;
+// }
 getUserNames(){
 	return this.usrNames;
 }

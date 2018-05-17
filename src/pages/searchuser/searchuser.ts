@@ -24,7 +24,7 @@ export class SearchuserPage {
   userPhoto: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public uInfo: UserInfoProvider) {
         var usrId = this.uInfo.getUserInfo().id;
-  	    this.userList = this.uInfo.usersArray();
+  	    // this.userList = this.uInfo.usersArray();
         for(var i in this.userList){
           if (this.userList[i].id == usrId){
             this.userList.splice(i,1);
@@ -44,7 +44,7 @@ export class SearchuserPage {
 
   //------------SEARCHING USERS--------------------
   searchUsers(searchbar){
-  	this.userList = this.uInfo.usersArray();
+  	// this.userList = this.uInfo.usersArray();
   	 this.q = searchbar.srcElement.value;
   	console.log('searching...',this.q);
   	if (!this.q) {

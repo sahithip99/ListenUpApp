@@ -45,12 +45,12 @@ export class FeedbackPage {
 
   }
 //---------------REFRESH LIST WHENEVER YOU LOAD THIS PAGE:
- ionViewCanEnter(){
-   this.setUserInfo();
-   this.pubMes = this.usrData.publicfeedbacks;
-   this.annonMes = this.usrData.anonfeedbacks;
+ // ionViewCanEnter(){
+ //   this.setUserInfo();
+ //   this.pubMes = this.usrData.publicfeedbacks;
+ //   this.annonMes = this.usrData.anonfeedbacks;
 
- }
+ // }
 //------------INITIALIZE ARRAYS AND SET DEFAULT PAGE AS PUBLIC-------------------
 	 setFeedback(){
 		this.pubArray = [];
