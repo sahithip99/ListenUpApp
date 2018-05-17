@@ -38,7 +38,7 @@ usrInfo: any;
   }
 
 registerPeople(){
-  if(this.user.password == this.user.repass && this.user.cEmail == this.user.email && this.regPass.test(this.user.password)){
+  if(this.user.password == this.user.repass && this.user.cEmail == this.user.email /*&& this.regPass.test(this.user.password)*/){
        this.afAuth.auth.createUserWithEmailAndPassword(this.user.email,this.user.password).then(success => {
        this.infoVar = {
        id: success.uid,
