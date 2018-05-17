@@ -42,16 +42,6 @@ export class CreateuserPage {
    		this.tempInfo = datasnap.val();
    	})
    }
- //----------------------CREATE AN ARRAY OF ALL THE USERNAMES-------------------
- //   async setNameInfo(){
-	// 	await this.afData.database.ref('usernames').once('value',dataSnap =>{
-	// 		this.usrNames = dataSnap.val();
-	// 		this.usrNames = Object.keys(this.usrNames).map(key => this.usrNames[key]).map(x => x.substr(0,x.length));
-	// 	});
-	// }
- checkUnique(){
-
-}
 
  finishReg(){
     var ref = firebase.database().ref("usernames");
@@ -64,10 +54,8 @@ export class CreateuserPage {
    this.uniqueUser = true;
    console.log("Unique username");
    var infoObj = {
-     //id: this.tempInfo.id,
       firstname: this.user.firstname,
       lastname: this.user.lastname,
-      //email: this.tempInfo.email,
       username: this.user.username,
       allowAnnon: true,
       photourl: "https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181"
@@ -93,28 +81,6 @@ export class CreateuserPage {
   }''
  }
 });
-   // if(!this.uniqueUser){
-   //   setTimeout(() =>{
-   //     this.checkUnique(),2000
-   //   })
-   // }
-//-----------CHECK UNIQUE USERNAMES------------
-
- // for(var i in this.usrNames){
- // 	this.uniqueUser = true;
- //    if(this.user.username == this.usrNames[i]){
- //      console.log("user name has already being taken");
- //      this.uniqueUser = false;
- //      return;
- //    }
- //    else{
- //      console.log("unique user name!");
- //    }
- //  }
-
-//----------------CHECK TO SEE IF THE USER ENTERED ANYTHING---------------
-//---------------IF THE ENTERED FIELD IS NOT EMPTY, UPDATE THE USER INFORMATION
-
 
 }
 

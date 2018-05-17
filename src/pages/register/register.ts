@@ -17,7 +17,7 @@ usrNames: any;
 uniqueUser: any;
 infoVar: any;
 usrInfo: any;
-regPass: RegExp = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
+// regPass: RegExp = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
   //VARIABLES TO BE USED
   user:any = {
     email: "",

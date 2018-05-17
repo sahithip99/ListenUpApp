@@ -18,7 +18,7 @@ export class UserInfoProvider{
 
 //-----------------SET CURRENT USER'S INFORMATION--------------------
 	 setUserInfo(user){
-		 return this.afData.database.ref('users/' + user.uid).once('value',dataSnap =>{
+		 return this.afData.database.ref('users/' + user.uid).on('value',dataSnap =>{
 			this.usrData = dataSnap.val();
 			this.usrId = user.uid
 			console.log("loaded current user: ", this.usrData);
@@ -27,7 +27,7 @@ export class UserInfoProvider{
 	}
 
 		 setUserInfoById(id){
-		 return this.afData.database.ref('users/' + id).once('value',dataSnap =>{
+		 return this.afData.database.ref('users/' + id).on('value',dataSnap =>{
 			this.usrData = dataSnap.val();
 			this.usrId = id
 			console.log("loaded current user: ", this.usrData);
