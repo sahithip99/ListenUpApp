@@ -33,6 +33,7 @@ export class CreateuserPage {
   )  {
   	// this.setNameInfo();
   	this.getTempInfo();
+    this.uniqueUser = false;
   }
 
  //----------------------GETTING TEMPORARY VALUE OF THE USER FOR LATER ADDING IT TO THE OBJECT OF ALL THE INFORMATION OF USER---
@@ -49,28 +50,55 @@ export class CreateuserPage {
 	// 	});
 	// }
  checkUnique(){
-  var ref = firebase.database().ref("usernames");
+
+}
+
+ finishReg(){
+    var ref = firebase.database().ref("usernames");
  ref.orderByChild("username").equalTo(this.user.username).once("value", snapshot => {
-  console.log('snapshot value',snapshot.val().username )
  if(snapshot.val()){
    this.uniqueUser = false;
    console.log("not unique username");
  }
  else{
    this.uniqueUser = true;
+   console.log("Unique username");
+   var infoObj = {
+     //id: this.tempInfo.id,
+      firstname: this.user.firstname,
+      lastname: this.user.lastname,
+      //email: this.tempInfo.email,
+      username: this.user.username,
+      allowAnnon: true,
+      photourl: "https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181"
+}
+  if(this.checkEmpty(this.user) && this.uniqueUser && this.regUser.test(this.user.username)
+    && this.regName.test(this.user.firstname)
+    && this.regName.test(this.user.lastname)){
+    this.afData.database.ref('users').child(this.tempInfo.id).update(infoObj
+     ).then(winning => {
+      console.log("all is done");
+      return;
+    })
+   //------------ADD THIS USERNAME TO THE LIST OF USERNAMES FOR CHECKING UNIQUE USERNAMES LATER
+  var obj ={};
+      obj["username"] = this.user.username;
+      this.afData.database.ref('usernames').child(this.tempInfo.id).update(obj);
+         this.uInfo.setUserInfoById(this.tempInfo.id);
+         this.loadUserInfo();
+  }
+  else{
+    console.log("something happend! fix itttttt");
+    return;
+  }''
  }
 });
-}
-
-finishReg(){
+   // if(!this.uniqueUser){
+   //   setTimeout(() =>{
+   //     this.checkUnique(),2000
+   //   })
+   // }
 //-----------CHECK UNIQUE USERNAMES------------
-  if(!this.uniqueUser){
-    setTimeout(() => {
-      this.checkUnique
-    })
-    this.checkUnique();
-  }
-
 
  // for(var i in this.usrNames){
  // 	this.uniqueUser = true;
@@ -85,47 +113,22 @@ finishReg(){
  //  }
 
 //----------------CHECK TO SEE IF THE USER ENTERED ANYTHING---------------
- function checkEmpty(user){
+//---------------IF THE ENTERED FIELD IS NOT EMPTY, UPDATE THE USER INFORMATION
+
+
+}
+
+checkEmpty(user){
 
     for(var i in user){
-    	console.log(user[i]);
+      console.log(user[i]);
       if(user[i] == '' || user[i] == " " || !(user[i])){
         return false;
       }
     }
     return true;
   }
-//---------------IF THE ENTERED FIELD IS NOT EMPTY, UPDATE THE USER INFORMATION
-var infoObj = {
-     //id: this.tempInfo.id,
-      firstname: this.user.firstname,
-      lastname: this.user.lastname,
-      //email: this.tempInfo.email,
-      username: this.user.username,
-      allowAnnon: true,
-      photourl: "https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181"
-}
-  if(checkEmpty(this.user) && this.uniqueUser && this.regUser.test(this.user.username)
-    && this.regName.test(this.user.firstname)
-    && this.regName.test(this.user.lastname)){
-    this.afData.database.ref('users').child(this.tempInfo.id).update(infoObj
-     ).then(winning => {
-      console.log("all is done");
-      return;
-    })
-   //------------ADD THIS USERNAME TO THE LIST OF USERNAMES FOR CHECKING UNIQUE USERNAMES LATER
-  var obj ={};
-      obj[this.tempInfo.id] = this.user.username;
-      this.afData.database.ref('usernames').update(obj);
-         this.uInfo.setUserInfoById(this.tempInfo.id);
-         this.loadUserInfo();
-  }
-  else{
-    console.log("something happend! fix itttttt");
-    return;
-  }
 
-}
   loadUserInfo(){
     this.usrInfo = this.uInfo.getUserInfo();
     var length =  Object.keys(this.usrInfo).length;
