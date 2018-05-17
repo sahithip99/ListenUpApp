@@ -4,7 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // Providers
 import { ChatInfoProvider } from '../../providers/chat-info/chat-info';
 import { UserInfoProvider } from '../../providers/userInfo/userInfo';
-import { UserInfo } from '@firebase/auth-types';
+//import { UserInfo } from '@firebase/auth-types';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
@@ -51,7 +51,7 @@ export class MessageDetailPage {
     console.log("what is other id",this.otherID);
     this.usrID = this.uInfo.getUserInfo().id;
     //Call functions here
-    this.getOtherInfo()  
+    this.getOtherInfo()
     this.loadMessages();
     this.loadOtherInfo();
   }
@@ -74,7 +74,7 @@ export class MessageDetailPage {
 
   loadMessages(){
     this.chatData = this.chatInfo.loadMessages(this.chatID);
-    
+
   }
 
   loadOtherInfo(){

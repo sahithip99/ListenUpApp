@@ -27,6 +27,7 @@ export class ProfilePage {
   param: any;
   userPhoto: any;
   captureDataUrl: string;
+  usrId: any;
 
 
   constructor(public navCtrl: NavController,
@@ -52,7 +53,7 @@ export class ProfilePage {
       })
     }
     encode(){
-      this.scanner.encode(this.scanner.Encode.TEXT_TYPE, this.encodText).then((data) => {
+      this.scanner.encode(this.scanner.Encode.TEXT_TYPE, this.usrInfo.id).then((data) => {
         this.encodedData = data;
       }, (err) => {
           console.log('Error :',err);
