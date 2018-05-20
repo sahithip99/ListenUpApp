@@ -34,7 +34,23 @@ export class FeedbackPage {
     , private chatInfo: ChatInfoProvider
     , public afData: AngularFireDatabase
     , private alertCtrl: AlertController) {
+    this.pubArray = [];
+    this.annonArray = [];
+
   	this.reloadUser();
+    this.reloadFeed();
+      //          this.watcherFeed('publicfeedbacks',this.pubArray);
+      // this.watcherFeed('anonfeedbacks',this.annonArray);
+    // if( !this.usrData ){
+    //   setTimeout(() =>{
+    //     console.log("waiting for data...");
+    //   },2000)
+    // }
+    // else{
+    //   this.watcherFeed('publicfeedbacks',this.pubArray);
+    //   this.watcherFeed('anonfeedbacks',this.annonArray);
+    // }
+
     console.log("usrData undefined?",this.usrData);
     // if(this.usrData.feedbacks){
       
@@ -45,6 +61,49 @@ export class FeedbackPage {
     this.feedbackTab = "Public";
 
 
+  }
+
+  reloadFeed(){
+    this.usrData = this.uInfo.getUserInfo();
+    if(!this.usrData){
+      setTimeout(() => {
+        this.reloadFeed() ,1000;
+      })
+    }
+    else{
+
+    this.afData.database.ref('users').child(this.usrData.id).child('feedbacks').child('anonfeedbacks').on('child_added', addPub => {
+      var value = addPub.val() //addPub.key
+      var key = addPub.key;
+      value['key'] = key;
+      // var key = this.reloadKey(value,'anonfeedbacks')
+      console.log("finally got key!",key);
+      console.log("data changed!");
+       this.curListType();
+       this.annonArray.push(value);
+    });
+        this.afData.database.ref('users').child(this.usrData.id).child('feedbacks').child('publicfeedbacks').on('child_added', addAnon => {
+        var value = addAnon.val()
+        var key =  addAnon.key; //this.reloadKey(value,'publicfeedbacks')
+        value['key'] = key;
+        console.log("finally got key!",key);
+        console.log("data changed!");
+       this.curListType();
+       this.pubArray.push(value);
+    });
+    }
+  }
+  reloadKey(value,type){
+    this.usrData = this.uInfo.getUserInfo();
+    console.log("attempting reload...",this.usrData);
+     if(!this.usrData.feedbacks.type[value.id].key){
+         setTimeout(() => {
+           this.reloadKey(value,type),2000
+         });
+     }
+     else{
+       return this.usrData.feedbacks.anonfeedbacks[value.id].key
+     }
   }
   reloadUser(){
     this.usrData = this.uInfo.getUserInfo();
@@ -58,7 +117,6 @@ export class FeedbackPage {
          this.pubMes = this.usrData.feedbacks.publicfeedbacks;
          this.annonMes = this.usrData.feedbacks.anonfeedbacks;
       }
-      this.usrId = this.usrData.id;
     }
   }
 //---------------REFRESH LIST WHENEVER YOU LOAD THIS PAGE:
@@ -80,12 +138,7 @@ export class FeedbackPage {
     for(var i in this.annonMes){
       this.annonArray.push(this.annonMes[i]);
     }
-    if(this.feedbackTab == "Public"){
-       this.curList = this.pubArray;
-    }
-    else{
-      this.curList = this.annonArray;
-    }
+       this.curListType();
    }
    else{
        this.pubArray = [];
@@ -133,8 +186,16 @@ clickAnnon(){
 
  doRefresh(refresher){
    if(this.usrData.feedbacks){
+      this.usrData = this.uInfo.getUserInfo();
       this.pubMes = this.usrData.feedbacks.publicfeedbacks;
       this.annonMes = this.usrData.feedbacks.anonfeedbacks;
+      if(this.feedbackTab == "Public"){
+         this.curList = this.pubArray;
+         console.log("data changed!",this.curList);
+      }
+      else{
+      this.curList = this.annonArray;
+      }
    }
    
    // this.setUserInfo();
@@ -272,7 +333,7 @@ clickAnnon(){
                        break;
                      }
                 }
-             this.afData.database.ref('users').child(user.id).child('feedbacks').child(user.type).child(user.key).remove();
+             this.afData.database.ref('users').child(this.usrData.id).child('feedbacks').child(user.type).child(user.key).remove();
              this.annonArray.splice(index,1);
              this.curList = this.annonArray;
           }
@@ -357,8 +418,36 @@ clickAnnon(){
     })
 
     alert.present();
-
   }
+
+  curListType(){
+      if(this.feedbackTab == "Public"){
+          this.curList = this.pubArray;
+      }
+      else{
+           this.curList = this.annonArray;
+      }
+  }
+
+  // watcherFeed(type,type2){
+  //      this.afData.database.ref('users').child(this.usrData.id).child('feedbacks').child(type).on('child_added', addFeed => {
+  //        if(!addFeed.val().key){
+  //          // setTimeout(() => {
+  //          //   this.,1500;
+  //          // })
+  //        }
+  //        else{
+  //           this.afData.database.ref('users').child(this.usrData.id).child('feedbacks').child(type).child('key').on('child_added', furtherFeed => {
+  //           var obj = addFeed.val();
+
+  //           obj['key'] = furtherFeed.val();
+  //           type2.push(addFeed.val());
+  //           console.log("updated array?",type);
+  //           this.curListType();
+  //       });
+  //        }
+  //         });
+  // }
   //NavParams: chatID which is the ID of the chat itself, and otherID which is the ID of the other person
   enterChat(feedback){
     let chatKey = this.chatInfo.checkChat(this.usrId, feedback.id);
