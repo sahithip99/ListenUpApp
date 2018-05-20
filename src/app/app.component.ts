@@ -16,7 +16,7 @@ import {CreateuserPage} from '../pages/createuser/createuser';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage: any;
   usrInfo: any;
   constructor(platform: Platform, statusBar: StatusBar,
     splashScreen: SplashScreen, private afAuth: AngularFireAuth, private uInfo:UserInfoProvider) {

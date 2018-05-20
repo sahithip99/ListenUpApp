@@ -1,16 +1,20 @@
 page-sendfeed {
 
     ion-header{
+        h2{
+            position: relative;
+            top: -40px;
+            left: 41%;
+            color: color($colors, light);;
+        }
          #Block-Button{
                 font-size: 20px;
                 float: right;
                 top: -47px;
+                background-color: transparent;
+                color: black;
         }
-        .profile-container{
-            position: relative;
-            top: -15px;
-            text-align: center;
-        }
+        
 
         .profile-pic{
             margin: -20px 0px 5px 60px;
@@ -20,19 +24,61 @@ page-sendfeed {
             height: 85px;
             object-fit: cover;
             border-radius: 70px;
-            border: 4px solid color($colors, primary);
+            position: relative;
+            top: 70px;
+            left: -30px
             
         }
 
         .profile-name{
-            color: color($colors, gray);
+            color: color($colors, light);
             margin-top: 0;
+            font-size: 1.5em;
+            position: relative;
+            top: 70px;
         }
+        .username{
+            position:relative;
+            top:60px;
+            color: color($colors, light);
+        }
+
+            .profile-container{
+            h2{
+
+            }
+            position: relative;
+            top: -90px;
+            text-align: center;
+            z-index: 0;
+        }
+            .profile-blur {
+          position: fixed;
+          left: 0;
+          right: 0;
+          z-index: -1;
+          display: block;
+          background-image: url("https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181");
+          width: 100%;
+          height: 230px;
+          background-repeat: no-repeat;
+        background-size:cover !important;
+        background-position-y: 20% !important;
+
+
+          -webkit-filter: blur(5px);
+          -moz-filter: blur(5px);
+          -o-filter: blur(5px);
+          -ms-filter: blur(5px);
+          filter: blur(5px);
+        }
+        
             
     }
 
 
     ion-content{
+
         position: fixed;
         top: -20px;
 
@@ -41,6 +87,9 @@ page-sendfeed {
             margin-right: 9rem;
             padding-right: 30px;
             padding-left: 50px;
+            position: relative;
+            top: 60px;
+
         }
 
         .text-inputs{
@@ -64,6 +113,63 @@ page-sendfeed {
                  background: transparent;
                  border-bottom: 1px solid color($colors, primary);
                  margin-bottom: 26px !important;
+            }
+        }
+        .private-public{
+            ion-icon{
+                font-size: 3rem;
+            }
+            position: relative;
+            top: 80px;
+
+            #feedback{
+                color: color($colors, light);
+                width: 40%;
+                height: 70px;
+                background-color: color($colors, blue);
+                left: 30px;
+                border-radius: 20px;
+                h1{
+                    margin-top: 1rem;
+                    font-size: 1.8rem;
+                }
+                h2{
+                    font-size: 1.5rem;
+                    color: black;
+                    margin-top: -1rem;
+                    margin-left: -2rem;
+                }
+            }
+            #review{
+                color: color($colors, light);
+                font-weight: 2px;
+                padding-right: 40%;
+                height: 70px;
+                width: 80px;
+                left: 200px;
+                top: -70px;
+                background-color: color($colors, primary);
+                border-radius: 20px;
+                h1{
+                    margin-top: 1rem;
+                    font-size: 1.8rem;
+                    margin-left: 4rem;
+
+                }
+                h2{
+                    font-size: 1.5rem;
+                    color: black;
+                    position: relative;
+                    margin-left: 3rem;
+                    margin-top: -1rem;
+                }
+            }
+        }
+        .reviews{
+            padding-left: 10px;
+            color: color($colors, primary);
+            ion-card{
+                color: black;
             }
         }
     }

@@ -20,9 +20,15 @@ $app-direction: ltr;
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/ ,
+ $font-path: "../assets/fonts";
+ @font-face {
+ font-family: GlobalFont;
+ src: url("../assets/fonts/comfortaa/Comfortaa-Regular.ttf");
+ }
 
+ body, span, button, h1, h2, h3, h4, h5, h6, p, ion-item, ion-title {
 
-
+font-family: 'GlobalFont' !important; };
 
 // Named Color Variables
 // --------------------------------------------------
@@ -38,11 +44,12 @@ $app-direction: ltr;
 // $fab-mini-size: 40px;
 
 $colors: (
-  primary:    #3a3535,
-  light:      #fff,
-  gray:  	  #757575,
+  primary:    #F57C00,
+  light:      #ffffff,
+  blue:  #61a0e2,
+  gray:  	  #3a3535, 
   danger:     #f53d3d,
-  dark:       #222
+  dark:       #222,
 );
 
 

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color = "primary">
+  <ion-navbar color = "light">
     <ion-buttons >
        <button ion-button (click) =  "logoutClicked();" ion-button class = "log-out" >
         <ion-icon name = "md-exit"></ion-icon>
@@ -9,18 +9,17 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-
   <img class="profile-photo" [src] = "captureDataUrl ? captureDataUrl : userPhoto" (click) = "setPhoto()">
   <h1> {{firstName}} {{lastName}}</h1>
   <h2>Username: </h2>
   <h2 id="A1">{{userName}}</h2>
-<!--   <p id = "Introduction">The Easiest Way to Send a</p> -->
- <img class="first-still" src="assets/imgs/SendMeFeed.png">
+</ion-header>
+
+<ion-content padding>
+
+  
  <!-- <img class = "ur-code" src="assets/imgs/qrcode.png" (click)="toFeedback()">-->
- <div>
+<!--  <div>
  <ion-input style="background-color:#808080" type = "text" [(ngModel)]="encodText"> </ion-input>
  <button ion-button block (click)="encode()" >Encode</button>
 </div>
@@ -31,6 +30,6 @@
  <br>
  <span>{{scannedData.text}}</span>
 </div>
-</div>
+</div> -->
 
 </ion-content>

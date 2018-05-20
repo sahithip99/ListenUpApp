@@ -1,4 +1,4 @@
- import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import{AngularFireDatabase} from 'angularfire2/database';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
@@ -33,6 +33,7 @@ export class SendfeedPage {
   	public uInfo: UserInfoProvider,
   	private alertCtrl: AlertController) {
   	this.param = this.navParams.get('param1');
+    console.log("param",this.param);
   	this.usrData = this.uInfo.getUserInfo();
   	this.annon = false;
     this.receivePho = this.param.photourl

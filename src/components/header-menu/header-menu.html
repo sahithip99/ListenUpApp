@@ -1,21 +1,52 @@
 <!-- Generated template for the HeaderMenuComponent component -->
-<div>
-  <ion-list>
-  	<ion-list-header>
-  		Settings
-  	</ion-list-header>
-  	<ion-item (click) = "blocked()">Blocked Users</ion-item>
+<div class = "listItem">
+  <ion-list >
+  	<ion-item (click) = "blocked()" >Blocked Users</ion-item>
 
   	<ion-item >
   		<ion-label> Allow anonymous</ion-label> 	
   		<ion-toggle [(ngModel)] = "annonStatus" (ngModelChange) = "allowAnnon($event)"></ion-toggle> 
-  	</ion-item>
-    <ion-item no-lines >
+  	</ion-item >
+   
+    <ion-item >
+      <ion-label>   <ion-icon name = "ios-settings-outline"> </ion-icon>Settings</ion-label>   
+    </ion-item >
+
+
+    <ion-item >
+      <ion-label> Sent Feedbacks</ion-label>   
+    </ion-item >
+
+
+    <ion-item >
+      <ion-label>Saved Feedbacks</ion-label>   
+    </ion-item >
+
+    <ion-item >
+      <ion-label>Contact Support</ion-label>   
+    </ion-item >
+
+    <ion-item >
+      <ion-label>QR Code</ion-label>   
+    </ion-item >
+
+    <ion-item >
+      <ion-label>Invite Friends</ion-label>   
+    </ion-item >
+
+    <ion-item >
+      <ion-label>Upgrade to Pro</ion-label>   
+    </ion-item >
+
+    <ion-item >
+      <ion-label>Log Out</ion-label>   
+    </ion-item >
+    <!-- <ion-item no-lines >
       Contact Developers:  
     </ion-item>
     <ion-item >
         <span id = "email">drealityllc@gmail.com</span>
-    </ion-item>
+    </ion-item> -->
     <!-- <ion-item *ngIf = "annonStatus">
       <ion-label> Block Annon Feedback</ion-label>  
       <ion-toggle [(ngModel)] = "annonStatus" (ngModelChange) = "allowAnnon($event)" checked = "false"></ion-toggle> 
