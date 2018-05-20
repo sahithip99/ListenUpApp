@@ -20,7 +20,6 @@ export class BlockusersPage {
   blockedArray: any;
   filterArray: any;
 	// blockedObj: any;
-	blocked = true;
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams, 
   	private afData: AngularFireDatabase, 
@@ -38,15 +37,10 @@ export class BlockusersPage {
         this.filterArray.push(this.usrData.blockedUsers[i]);
       }
     }
-  	// this.blockedUsers = this.navParams.get("param");
-  	// this.blockedObj = this.navParams.get("param1");
-  	// console.log("blocked guy",this.blockedUsers);
-  	// console.log("blocked obj",this.blockedObj);
-        console.log("blocked users obj",this.blockedArray);
+    
   }
   ionViewDidLoad() {
     
-    console.log('ionViewDidLoad BlockusersPage');
   }
 
   searchUsers(searchbar){
