@@ -16,20 +16,36 @@ import {UserInfoProvider} from '../../providers/userInfo/userInfo';
   templateUrl: 'blockusers.html',
 })
 export class BlockusersPage {
-	blockedUsers: any;
-	blockedObj: any;
+	usrData: any;
+  blockedArray: any;
+  filterArray: any;
+	// blockedObj: any;
 	blocked = true;
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams, 
   	private afData: AngularFireDatabase, 
   	private alertCtrl: AlertController,
   	private uInfo: UserInfoProvider) {
-  	this.blockedUsers = this.navParams.get("param");
-  	this.blockedObj = this.navParams.get("param1");
-  	console.log("blocked guy",this.blockedUsers);
-  	console.log("blocked obj",this.blockedObj);
+    this.usrData = this.uInfo.getUserInfo();
+    this.blockedArray = this.usrData.blockedUsers;
+    this.filterArray = [];
+
+
+    for(var i in this.usrData.blockedUsers){
+      if(this.usrData.blockedUsers[i] != "annonymous"){
+        var obj = {};
+        obj[i] = this.usrData.blockedUsers[i];
+        this.filterArray.push(this.usrData.blockedUsers[i]);
+      }
+    }
+  	// this.blockedUsers = this.navParams.get("param");
+  	// this.blockedObj = this.navParams.get("param1");
+  	// console.log("blocked guy",this.blockedUsers);
+  	// console.log("blocked obj",this.blockedObj);
+        console.log("blocked users obj",this.blockedArray);
   }
   ionViewDidLoad() {
+    
     console.log('ionViewDidLoad BlockusersPage');
   }
 
@@ -40,7 +56,7 @@ export class BlockusersPage {
   	if(String(q).replace(/\s/g,"").length ==0){
   		return true;
   	}
-  	this.blockedUsers = this.blockedUsers.filter((v) => {
+  	this.filterArray = this.filterArray.filter((v) => {
   		if(v && q){
   			if (v.toLowerCase().indexOf(q.toLowerCase()) > -1){
   				return true;
@@ -53,8 +69,8 @@ export class BlockusersPage {
   unblock(user){
   	console.log("user",user);
   	var uid = ""
-  	for(var i in this.blockedObj){
-  		if(this.blockedObj[i] == user){
+  	for(var i in this.blockedArray){
+  		if(this.blockedArray[i] == user){
   			console.log("i is", i);
   			uid = i;
   			break;
@@ -75,10 +91,11 @@ export class BlockusersPage {
   			text:'yes',
   			handler: () =>{
   				console.log("unblocked user");
-  				this.afData.database.ref('users').child(this.uInfo.getUserInfo().id).child("blockedusers").child(uid).remove();
-  				this.blocked = false;
-  				var index = this.blockedUsers.indexOf(user);
-  				this.blockedUsers.splice(index,1);
+  				this.afData.database.ref('users').child(uid).child("blocked").child(this.usrData.id).remove();
+          this.afData.database.ref('users').child(this.usrData.id).child("blockedUsers").child(uid).remove();
+  				// this.blocked = false;
+  				var index = this.filterArray.indexOf(user);
+  				this.filterArray.splice(index,1);
   			}
   		}
   		]

@@ -17,7 +17,7 @@
 
 <ion-content padding>
 <ion-list>
-	<ion-item *ngFor = "let user of blockedUsers">
+	<ion-item *ngFor = "let user of filterArray">
 		@{{user}} <button *ngIf = "blocked" ion-button (click) = "unblock(user)">Unblock</button>
 	</ion-item>
 </ion-list>

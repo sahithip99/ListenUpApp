@@ -70,7 +70,7 @@ export class UserInfoProvider{
 
  //----------------------ALL OF THE USERNAMES-------------------
   async setNameInfo(){
-		await this.afData.database.ref('usernames').once('value',dataSnap =>{
+		await this.afData.database.ref('usernames').on('value',dataSnap =>{
 			this.usrNames = dataSnap.val();
 		})
 	}

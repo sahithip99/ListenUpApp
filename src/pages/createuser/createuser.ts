@@ -58,6 +58,7 @@ export class CreateuserPage {
       lastname: this.user.lastname,
       username: this.user.username,
       allowAnnon: true,
+      blocked: {'user': "id"},
       photourl: "https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181"
 }
   if(this.checkEmpty(this.user) && this.uniqueUser && this.regUser.test(this.user.username)

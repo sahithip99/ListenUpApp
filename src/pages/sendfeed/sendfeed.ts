@@ -17,29 +17,33 @@ import {AlertController} from 'ionic-angular';
 })
 export class SendfeedPage {
 	 annon: boolean;
-	 curUser: any;
+	 usrData: any;
 	 param: any; //PARAMETER PASSED FROM THE PREVIOUS PAGE
 	 mesData: any = {
 	 title: "",
 	 message: ""
 	 }
    receivePho: any;
+   targetFirst: any;
+   targetLast: any;
+   targetedUser: any;
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams, 
   	public afData: AngularFireDatabase, 
   	public uInfo: UserInfoProvider,
   	private alertCtrl: AlertController) {
   	this.param = this.navParams.get('param1');
-  	this.curUser = this.uInfo.getUserInfo();
+  	this.usrData = this.uInfo.getUserInfo();
   	this.annon = false;
     this.receivePho = this.param.photourl
-    console.log("sending feedback to", this.param);
-  }
-
-
-
-
-
+    // this.targetedUser = ;
+    afData.database.ref('users').child(this.param.id).child('firstname').on("value", datasnap =>{
+      this.targetFirst = datasnap.val();
+    });
+     afData.database.ref('users').child(this.param.id).child('lastname').on("value", datasnap =>{
+      this.targetLast = datasnap.val();
+    });
+}
 alertControl(){
    var alertCtrl = this.alertCtrl.create({
    title: "Feedback Sent!",
@@ -64,16 +68,16 @@ alertControl(){
  		type: "publicfeedbacks",
  		title: this.mesData.title,
  		message: this.mesData.message,
- 		id: this.curUser.id,
- 		firstname: this.curUser.firstname,
- 		lastname: this.curUser.lastname,
- 		username: this.curUser.username,
+ 		id: this.usrData.id,
+ 		 firstname: this.usrData.firstname,
+ 		 lastname: this.usrData.lastname,
+ 		 username: this.usrData.username,
  		timeStamp: timeStamp,
-    photourl: this.curUser.photourl
+    photourl: this.usrData.photourl
  	}
- 	this.afData.database.ref("users").child(this.param.id).child("publicfeedbacks").push(obj).then(success => {
+ 	this.afData.database.ref("users").child(this.param.id).child('feedbacks').child("publicfeedbacks").push(obj).then(success => {
  		var key = success.key;
- 	this.afData.database.ref("users").child(this.param.id).child("publicfeedbacks").child(key).update({key: key});
+ 	this.afData.database.ref("users").child(this.param.id).child('feedbacks').child("publicfeedbacks").child(key).update({key: key});
  	});
  		//photo url
      this.alertControl();
@@ -90,9 +94,9 @@ alertControl(){
      timestamp:timeStamp,
      photourl: "https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181"
      }
-   this.afData.database.ref("users").child(this.param.id).child("anonfeedbacks").push(obj2).then(success => {
+   this.afData.database.ref("users").child(this.param.id).child('feedbacks').child("anonfeedbacks").push(obj2).then(success => {
    var key = success.key;
-   this.afData.database.ref("users").child(this.param.id).child("anonfeedbacks").child(key).update({key: key});
+   this.afData.database.ref("users").child(this.param.id).child('feedbacks').child("anonfeedbacks").child(key).update({key: key});
    });
      this.alertControl();
  }
@@ -131,9 +135,12 @@ blockUser(){
        text: 'Yes',
        handler: () =>{
          console.log("blocked user");
-         var blockedusers = {};
-         blockedusers[this.param.id] = this.param.username;
-         this.afData.database.ref('users').child(this.curUser.id).update({blockedusers});
+         var blocked = {};
+         var blockedUsers = {};
+         blockedUsers[this.param.id] = this.param.username;
+         blocked[this.usrData.id] = this.usrData.username;
+         this.afData.database.ref('users').child(this.param.id).child('blocked').update({blocked});
+         this.afData.database.ref('users').child(this.usrData.id).child("blockedUsers").update(blockedUsers);
          this.navCtrl.pop();
        }
      }

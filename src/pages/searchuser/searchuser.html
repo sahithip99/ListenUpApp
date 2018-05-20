@@ -9,7 +9,7 @@
 
   	<!-- <ion-toolbar color = "white"> -->
   	<ion-title>
-		<ion-searchbar autocomplete autocorrect placeholder = "Search Users, enter either email/username" (ionInput) = "searchUsers($event)"></ion-searchbar>
+		<ion-searchbar autocomplete autocorrect placeholder = "Search Users, enter either email/username" (ionInput) = "searchUsers($event)" ></ion-searchbar>
 	<!-- </ion-toolbar> -->
 	</ion-title>
 
@@ -21,7 +21,7 @@
 	<h5 id = "A3"></h5>
 	<ion-list>
 		<ion-item ion-item *ngFor = "let user of userList" (click) = "goToSend(user)">
-			 <img [src] = "user.photourl"> <h3 id = "A1">{{user.firstname}} {{user.lastname}}</h3><p id = "A2">@{{user.username}}</p>
+			 <img [src] = "user.photourl"> <!-- <h3 id = "A1">{{user.firstname}} {{user.lastname}}</h3> --><p id = "A2">@{{user.username}}</p>
 		</ion-item>
 	</ion-list>
 </ion-content>

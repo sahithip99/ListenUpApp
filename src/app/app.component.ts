@@ -26,16 +26,12 @@ export class MyApp {
          if(user){
            this.uInfo.setUserInfo(user)
            this.loadUserInfo();
+           this.uInfo.setNameInfo();
          }
          else{
             this.rootPage = LoginPage;
          }
-         // if(user != null){
-         //.then(success =>{
-
            console.log("auth state",user);
-         //});
-       // }
       });
       statusBar.styleDefault();
       splashScreen.hide();
@@ -44,34 +40,22 @@ export class MyApp {
   }
 loadUserInfo(){
     this.usrInfo = this.uInfo.getUserInfo();
-    // this.uInfo.setUsers();
     if(this.usrInfo){
-           this.uInfo.setPhoto(this.usrInfo.id);
+        this.uInfo.setPhoto(this.usrInfo.id);
     }
-
-    // if (user == null){
-    //     //user logged out
-    //       this.rootPage = LoginPage;
-    //  }
      if (this.usrInfo == undefined || this.uInfo.getPhoto() == undefined ){
       setTimeout(() => {
         this.loadUserInfo();
       },1000);
     }
-    // else{
-       // if(user){
-          //user logged in
-        else{
+
+     else{
           if(this.usrInfo.username){
               this.rootPage = TabsPage;
           }
-                    else {
+          else {
             this.rootPage = CreateuserPage;
           }
         }
-          // }
-   
-  // }
-
-}
+  }
 }

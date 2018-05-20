@@ -34,39 +34,64 @@ export class FeedbackPage {
     , private chatInfo: ChatInfoProvider
     , public afData: AngularFireDatabase
     , private alertCtrl: AlertController) {
-  	this.usrData = this.uInfo.getUserInfo();
-  	this.pubMes = this.usrData.publicfeedbacks;
-  	this.annonMes = this.usrData.anonfeedbacks;
-  	this.usrId = this.usrData.id;
-  	this.setFeedback();
+  	this.reloadUser();
+    console.log("usrData undefined?",this.usrData);
+    // if(this.usrData.feedbacks){
+      
+    // }
+
+  	// this.setFeedback();
     this.reply = true;
     this.feedbackTab = "Public";
 
 
   }
+  reloadUser(){
+    this.usrData = this.uInfo.getUserInfo();
+    if(this.usrData == undefined){
+      setTimeout(() => {
+        this.usrData = this.uInfo.getUserInfo(),2000;
+      })
+    }
+    else{
+      if(this.usrData.feedbacks){
+         this.pubMes = this.usrData.feedbacks.publicfeedbacks;
+         this.annonMes = this.usrData.feedbacks.anonfeedbacks;
+      }
+      this.usrId = this.usrData.id;
+    }
+  }
 //---------------REFRESH LIST WHENEVER YOU LOAD THIS PAGE:
- // ionViewCanEnter(){
+ ionViewCanEnter(){
+       this.setFeedback();
  //   this.setUserInfo();
  //   this.pubMes = this.usrData.publicfeedbacks;
  //   this.annonMes = this.usrData.anonfeedbacks;
 
- // }
+  }
 //------------INITIALIZE ARRAYS AND SET DEFAULT PAGE AS PUBLIC-------------------
 	 setFeedback(){
-		this.pubArray = [];
-		this.annonArray = [];
-	  for(var i in this.pubMes){
-		  this.pubArray.push(this.pubMes[i]);
-	}
-	  for(var i in this.annonMes){
-			this.annonArray.push(this.annonMes[i]);
-		}
+   if(this.usrData.feedbacks){
+       this.pubArray = [];
+      this.annonArray = [];
+    for(var i in this.pubMes){
+      this.pubArray.push(this.pubMes[i]);
+  }
+    for(var i in this.annonMes){
+      this.annonArray.push(this.annonMes[i]);
+    }
     if(this.feedbackTab == "Public"){
        this.curList = this.pubArray;
     }
     else{
       this.curList = this.annonArray;
     }
+   }
+   else{
+       this.pubArray = [];
+      this.annonArray = [];
+   }
+
 	}
 
 
@@ -96,18 +121,23 @@ clickAnnon(){
   this.reply = false;
 }
 //-----------------------REFRESH MESSAGE-----------------------
-async setUserInfo(){
-		await this.afData.database.ref('users/' + this.usrId).once('value',dataSnap =>{
-			this.usrData = dataSnap.val();
-      this.pubMes = this.usrData.publicfeedbacks;
-      this.annonMes = this.usrData.anonfeedbacks;
-      this.setFeedback();
-			console.log("reloading data", this.usrData);
-		});
-}
+// async setUserInfo(){
+// 		await this.afData.database.ref('users/' + this.usrId).once('value',dataSnap =>{
+// 			this.usrData = dataSnap.val();
+//       this.pubMes = this.usrData.publicfeedbacks;
+//       this.annonMes = this.usrData.anonfeedbacks;
+//       this.setFeedback();
+// 			console.log("reloading data", this.usrData);
+// 		});
+// }
 
  doRefresh(refresher){
-   this.setUserInfo();
+   if(this.usrData.feedbacks){
+      this.pubMes = this.usrData.feedbacks.publicfeedbacks;
+      this.annonMes = this.usrData.feedbacks.anonfeedbacks;
+   }
+   
+   // this.setUserInfo();
  	  console.log('Begin async operation',refresher);
   	 setTimeout(() => {
   	 	console.log('Async operation has ended');
@@ -208,9 +238,12 @@ async setUserInfo(){
        text: 'Yes',
        handler: () =>{
          console.log("blocked user");
-         var blockedusers = {};
-         blockedusers[mes.id] = mes.username;
-         this.afData.database.ref('users').child(this.usrData.id).update({blockedusers});
+         var blocked = {};
+         var blockedUsers = {};
+         blockedUsers[mes.id] = mes.username;
+         blocked[this.usrData.id] = mes.type;
+         this.afData.database.ref('users').child(mes.id).child("blocked").update({blocked});
+         this.afData.database.ref('users').child(this.usrData.id).child('blockedUsers').update(blockedUsers);
          this.delFromList(mes);
        }
      }
@@ -228,7 +261,7 @@ async setUserInfo(){
                       break
                   }
            }
-             this.afData.database.ref('users').child(this.usrData.id).child(user.type).child(user.key).remove();
+             this.afData.database.ref('users').child(this.usrData.id).child('feedbacks').child(user.type).child(user.key).remove();
              this.pubArray.splice(index,1);
              this.curList = this.pubArray;
       }
@@ -239,7 +272,7 @@ async setUserInfo(){
                        break;
                      }
                 }
-             this.afData.database.ref('users').child(user.id).child(user.type).child(user.key).remove();
+             this.afData.database.ref('users').child(user.id).child('feedbacks').child(user.type).child(user.key).remove();
              this.annonArray.splice(index,1);
              this.curList = this.annonArray;
           }
@@ -267,9 +300,6 @@ async setUserInfo(){
         }
     }
   }
-
-
-
   clickMessage(mes){
     console.log(mes);
     var alertCtrl = this.alertCtrl.create({
@@ -329,7 +359,6 @@ async setUserInfo(){
     alert.present();
 
   }
-
   //NavParams: chatID which is the ID of the chat itself, and otherID which is the ID of the other person
   enterChat(feedback){
     let chatKey = this.chatInfo.checkChat(this.usrId, feedback.id);
@@ -345,8 +374,5 @@ async setUserInfo(){
         })
       }
     })
-
   }
-
-
 }

@@ -53,22 +53,22 @@ export class HeaderMenuComponent {
   }
 
 blocked(){
-  for(var i in this.usrInfo.blockedusers){
-    var unique = true;
-    for(var j in this.blockedUsers){
-      if(this.usrInfo.blockedusers[i] == this.blockedUsers[j]){
-        unique = false;
-      }
-    }
-    if(this.usrInfo.blockedusers[i] != "annonymous" && unique ){
-      this.blockedObj[i] = this.usrInfo.blockedusers[i];
-        this.blockedUsers.push(this.usrInfo.blockedusers[i]);
-      }
-  }
-console.log("blocked users");
+//   for(var i in this.usrInfo.blocked){
+//     var unique = true;
+//     for(var j in this.blockedUsers){
+//       if(this.usrInfo.blockedusers[i] == this.blockedUsers[j]){
+//         unique = false;
+//       }
+//     }
+//     if(this.usrInfo.blockedusers[i] != "annonymous" && unique ){
+//       this.blockedObj[i] = this.usrInfo.blockedusers[i];
+//         this.blockedUsers.push(this.usrInfo.blockedusers[i]);
+//       }
+//   }
+// console.log("blocked users");
 this.menuCtrl.close();
 var nav = this.app.getRootNav();
-nav.push(BlockusersPage,{param1:this.blockedObj,param: this.blockedUsers});
+nav.push(BlockusersPage/*,{param1:this.blockedObj,param: this.blockedUsers}*/);
 //this.navCtrl.push(BlockusersPage,{param:this.blockedUsers});
 }
 
