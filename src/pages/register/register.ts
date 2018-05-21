@@ -39,23 +39,26 @@ usrInfo: any;
 
 registerPeople(){
   if(this.user.password == this.user.repass && this.user.cEmail == this.user.email /*&& this.regPass.test(this.user.password)*/){
-       this.afAuth.auth.createUserWithEmailAndPassword(this.user.email,this.user.password).then(success => {
+    this.afAuth.auth.createUserWithEmailAndPassword(this.user.email,this.user.password)
+      .then(success => {
        this.infoVar = {
        id: success.uid,
        email: this.user.email,
        }
        this.afData.database.ref('users').child(this.infoVar.id).update(this.infoVar);
        this.navCtrl.setRoot(CreateuserPage);
-    }).then(winning => {
-       console.log("all is done");
-       return;
-    });
+      })
+    .catch(err=> {
+      console.log(err.message)
+    })
+    ;
   }
   else{
        console.log("something happend! fix itttttt");
        return;
   }
 }
+
 showTermofServiceModal(){
   let modal = this.mdCtrl.create(TermsOfServiceModal);
   //
