@@ -1,12 +1,15 @@
 <ion-header >
-	<div class ="profile-blur" [style.background]="'url('+ receivePho +')'" ></div>
+
+		<div class ="profile-blur" [style.background]="'url('+ receivePho +')'" ></div>
+
 		<ion-navbar color = "light" transparent>
 		</ion-navbar>
 		<button ion-button small id = "Block-Button" (click) = "blockUser()">
-		<ion-icon name="ios-flag"></ion-icon>
+				<ion-icon name="ios-flag"></ion-icon>
 		</button>
+	
 	<!-- profile pic -->
-	<h2> Profile</h2>
+	<h2 id = "profile-name"> Profile</h2>
 	<div class = "profile-container">
 
 			<img class="profile-pic" [src] = "receivePho">

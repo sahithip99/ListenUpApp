@@ -1,7 +1,8 @@
 page-sendfeed {
 
     ion-header{
-        h2{
+
+        #profile-name{
             position: relative;
             top: -40px;
             left: 41%;
@@ -25,7 +26,7 @@ page-sendfeed {
             object-fit: cover;
             border-radius: 70px;
             position: relative;
-            top: 70px;
+            top: 40px;
             left: -30px
             
         }
@@ -35,20 +36,17 @@ page-sendfeed {
             margin-top: 0;
             font-size: 1.5em;
             position: relative;
-            top: 70px;
+            top: 40px;
         }
         .username{
             position:relative;
-            top:60px;
+            top:30px;
             color: color($colors, light);
         }
 
             .profile-container{
-            h2{
-
-            }
             position: relative;
-            top: -90px;
+            top: -50px;
             text-align: center;
             z-index: 0;
         }
@@ -167,6 +165,7 @@ page-sendfeed {
         }
         .reviews{
             padding-left: 10px;
+            padding-top: 20px;
             color: color($colors, primary);
             ion-card{
                 color: black;
