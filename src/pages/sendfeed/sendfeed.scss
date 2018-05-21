@@ -13,7 +13,7 @@ page-sendfeed {
                 float: right;
                 top: -47px;
                 background-color: transparent;
-                color: black;
+                color: white;
         }
         
 
@@ -89,81 +89,63 @@ page-sendfeed {
             top: 60px;
 
         }
-
-        .text-inputs{
-            color: color($colors,primary);
-            padding-left: 60px;
-            padding-right: 47px;
-
-            textarea{
-                width: 100%;
-                height: 200px;
-                border: 0.1em solid;
-                border-radius: 5px;
-            }
-
-            ion-input{
-                margin-bottom: 10px;
-                font-size: 2.5rem;
-                text-align: center;
-                border: 0;
-                  outline: 0;
-                 background: transparent;
-                 border-bottom: 1px solid color($colors, primary);
-                 margin-bottom: 26px !important;
-            }
-        }
         .private-public{
             ion-icon{
                 font-size: 3rem;
             }
             position: relative;
             top: 80px;
+            left: 5%;
 
             #feedback{
                 color: color($colors, light);
-                width: 40%;
+                width: 30%;
                 height: 70px;
                 background-color: color($colors, blue);
                 left: 30px;
+                padding-right: 30%;
                 border-radius: 20px;
                 h1{
-                    margin-top: 1rem;
                     font-size: 1.8rem;
+                    margin-top: -1.5rem;
+                    margin-left: 40%;
+                    position: fixed;
                 }
                 h2{
                     font-size: 1.5rem;
                     color: black;
-                    margin-top: -1rem;
-                    margin-left: -2rem;
-                }
-            }
-            #review{
-                color: color($colors, light);
-                font-weight: 2px;
-                padding-right: 40%;
-                height: 70px;
-                width: 80px;
-                left: 200px;
-                top: -70px;
-                background-color: color($colors, primary);
-                border-radius: 20px;
-                h1{
                     margin-top: 1rem;
+                    position: fixed;
+                    margin-left: 40%;
+            }
+        }
+            #review{
+                    color: #ffffff;
+                    padding-right: 30%;
+                    height: 70px;
+                    width: 20px;
+                    left: 10%;
+                    border-radius: 20px;
+                h1{
+                    margin-top: -1.5rem;
                     font-size: 1.8rem;
-                    margin-left: 4rem;
+                    margin-left: 40%;
+                    position: fixed;
 
                 }
                 h2{
                     font-size: 1.5rem;
                     color: black;
-                    position: relative;
-                    margin-left: 3rem;
-                    margin-top: -1rem;
+                    position: fixed;
+                    margin-left: 40%;
+                    margin-top: 1rem;
                 }
             }
-        }
-        .reviews{
+        
+    }
+            .reviews{
+            margin-top: 8rem;
+            position: fixed;
             padding-left: 10px;
             padding-top: 20px;
             color: color($colors, primary);
@@ -171,11 +153,15 @@ page-sendfeed {
                 color: black;
             }
         }
-    }
 
 
     input::-webkit-input-placeholder {
         font-size: 2.3rem;
     }
+.toolbar-ios-light .toolbar-title-ios, .toolbar-ios-light .bar-button-clear-ios, .toolbar-ios-light .bar-button-default-ios {
+    color: #fff;
+}
+
+}
 
 }

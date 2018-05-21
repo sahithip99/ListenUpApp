@@ -30,14 +30,14 @@
 </ion-item>
 
 <ion-buttons class = "private-public">
-	<ion-segment-button id = "feedback">
+	<button ion-button id = "feedback" (click) = "goToTitlePage();"> 
 	<h1><b>Feedback</b></h1>
-	<h2><ion-icon name="ios-lock-outline"></ion-icon> Private</h2>
-	</ion-segment-button>
-	<ion-segment-button id = "review">
-	<h1><b>Review</b></h1>
-	<h2><ion-icon name="md-globe"></ion-icon> Public</h2>
-	</ion-segment-button>
+	<h2><ion-icon name="ios-lock-outline" style = " display: inline;"></ion-icon> Private</h2>
+	</button>
+	<button ion-button id = "review" *ngIf = "!annon">
+	<h1><b>Review</b> </h1>
+	<h2> <ion-icon name="md-globe" style = "display: inline;"></ion-icon> Public</h2>
+	</button>
 </ion-buttons>
 <div class ="reviews">
 <h3 >Reviews </h3>

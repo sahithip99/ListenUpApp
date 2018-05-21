@@ -4,6 +4,8 @@ import{AngularFireDatabase} from 'angularfire2/database';
 import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import * as firebase from 'firebase';
 import {AlertController} from 'ionic-angular';
+import {FeedbacktitlePage} from '../../pages/feedbacktitle/feedbacktitle';
+
 /**
  * Generated class for the SendfeedPage page.
  *
@@ -150,5 +152,11 @@ blockUser(){
    // this.uInfo.setUsers();
    alert.present();
   }
+
+goToTitlePage(){
+  this.navCtrl.push(FeedbacktitlePage,{param:this.param,
+    firstName: this.targetFirst,
+    lastName: this.targetLast});
+}
 }
 

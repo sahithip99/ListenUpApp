@@ -15,7 +15,6 @@ import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 // import {SendfeedPage} from '../pages/sendfeed/sendfeed';
 // import {SearchuserPage} from '../pages/searchuser/searchuser';
-import {FeedbackinfoPage} from '../pages/feedbackinfo/feedbackinfo'
 import {CreateuserPage} from '../pages/createuser/createuser';
 import {BlockusersPage} from '../pages/blockusers/blockusers';
 import {HeaderMenuComponent} from '../components/header-menu/header-menu';
@@ -27,7 +26,7 @@ import {TermsOfServiceModal} from '../pages/register/termsofservice-modal';
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
 import { Camera } from '@ionic-native/camera';
 
-
+ import {FeedbacktitlePage} from '../pages/feedbacktitle/feedbacktitle';
 import { PipesModule } from '../pipes/pipes.module';
 import { ChatInfoProvider } from '../providers/chat-info/chat-info';
 
@@ -44,9 +43,9 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     RegisterPage,
     TabsPage,
     LoginPage,
+    FeedbacktitlePage,
     // SendfeedPage,
     // SearchuserPage,
-    FeedbackinfoPage,
     CreateuserPage,
     BlockusersPage,
     HeaderMenuComponent,
@@ -71,9 +70,9 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     MyApp,
     RegisterPage,
     TabsPage,
+    FeedbacktitlePage,
     // SendfeedPage,
     // SearchuserPage,
-    FeedbackinfoPage,
     CreateuserPage,
     BlockusersPage,
     LoginPage,

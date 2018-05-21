@@ -1,0 +1,95 @@
+page-feedbacktitle {
+
+    ion-header{
+
+        #profile-name{
+            position: relative;
+            top: -40px;
+            left: 41%;
+            color: color($colors, light);;
+        }
+        .profile-pic{
+            margin: -20px 0px 5px 60px;
+    //             margin-top: -20px;
+    // margin-bottom: 5px;
+            width: 85px;
+            height: 85px;
+            object-fit: cover;
+            border-radius: 70px;
+            position: relative;
+            top: 40px;
+            left: -30px
+            
+        }
+
+        .profile-name{
+            color: color($colors, light);
+            margin-top: 0;
+            font-size: 1.5em;
+            position: relative;
+            top: 40px;
+        }
+        .username{
+            position:relative;
+            top:30px;
+            color: color($colors, light);
+        }
+
+            .profile-container{
+            position: relative;
+            top: -50px;
+            text-align: center;
+            z-index: 0;
+        }
+            .profile-blur {
+          position: fixed;
+          left: 0;
+          right: 0;
+          z-index: -1;
+          display: block;
+          background-image: url("https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181");
+          width: 100%;
+          height: 250px;
+          background-repeat: no-repeat;
+        background-size:cover !important;
+        background-position-y: 40% !important;
+
+
+          -webkit-filter: blur(5px);
+          -moz-filter: blur(5px);
+          -o-filter: blur(5px);
+          -ms-filter: blur(5px);
+          filter: blur(5px);
+        }      
+    }
+    ion-content{
+    	   .scroll-content{
+   		background:  radial-gradient(white,color($colors,blue));
+   }
+
+        .text-inputs{
+            color: color($colors,primary);
+            padding-left: 60px;
+            padding-right: 47px;
+
+            textarea{
+                width: 100%;
+                height: 200px;
+                border: 0.1em solid;
+                border-radius: 5px;
+            }
+
+            ion-input{
+                margin-bottom: 10px;
+                font-size: 2.5rem;
+                text-align: center;
+                border: 0;
+                  outline: 0;
+                 background: transparent;
+                 border-bottom: 1px solid color($colors, primary);
+                 margin-bottom: 26px !important;
+            }
+        }
+    }
+
+}

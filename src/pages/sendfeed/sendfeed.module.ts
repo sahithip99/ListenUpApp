@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SendfeedPage } from './sendfeed';
-
+//import {FeedbacktitlePage} from '../../pages/feedbacktitle/feedbacktitle';
 @NgModule({
   declarations: [
     SendfeedPage,

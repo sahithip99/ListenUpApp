@@ -31,6 +31,7 @@ export class SearchuserPage {
         var usrId = this.uInfo.getUserInfo().id;
         this.usrData = this.uInfo.getUserInfo();
   	     this.userList = this.uInfo.getUserNames();
+
           this.objKeys = Object.keys(this.userList)
           this.blockKeys = Object.keys(this.usrData.blocked)
          this.getPhotos();
@@ -92,7 +93,7 @@ export class SearchuserPage {
  async getPhotos(){
     this.userPhoto = [];
      for(var i in this.objKeys){
-         await firebase.storage().ref('profiles').child(i + ".jpg").getDownloadURL().then(success =>{
+         await firebase.storage().ref('profiles').child(this.objKeys[i] + ".jpg").getDownloadURL().then(success =>{
              this.userPhoto[this.objKeys[i]] = success;
        },
        fail =>{
