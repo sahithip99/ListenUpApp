@@ -37,7 +37,7 @@ page-profile {
 
   h2{
   	text-align: center;
-		color: color($colors,primary);
+		color: color($colors,light);
   }
 
   h1{
@@ -53,7 +53,7 @@ page-profile {
   	// position: relative;
   	// top: 10px;
   	color: white;
-  	background-color: color($colors,primary);
+  	// background-color: color($colors,primary);
   	width: 80%;
   	margin: auto;
   	// left: 20%;
@@ -75,10 +75,11 @@ page-profile {
   //   margin-top: -30px;
   // }
     .menu-button{
-    font-size: 25px;
+    font-size: 2em;
     padding-bottom: 10px;
     position: fixed;
     top: -50px;
+
 
 }
   

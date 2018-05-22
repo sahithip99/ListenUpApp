@@ -1,4 +1,5 @@
 page-feedback {
+
 	  ion-content{
    	 background: $app-background !important;
 	}
@@ -10,12 +11,12 @@ page-feedback {
 		ion-navbar{
 			#Listen-Up{
 					margin-top: 2rem;
-				    font-size: 1.8rem;
+				    font-size: 2.5rem;
 				    width: 50%;
 				    float: right;
 				    position: relative;
-				    top: -15px;
-				    left: -40px;
+				    top: -7px;
+				    left: -55px;
 				    color: white;
 			}
 		}
@@ -50,6 +51,11 @@ page-feedback {
 	 //    	width: 80px;
 	 //    	margin: auto;
   // 		}
+
+  			.menu-button{
+  				font-size: 2em;
+  			}
+
 	}
 	ion-content{  
     background: $app-background;

@@ -1,11 +1,17 @@
 header-menu {
+.toolbar-background {
+    border: none;
+}
 	#email{
 		color: color($colors,primary) !important;
 	}
 	// .listItem{
 	// 	background-color: color($colors,gray) !important;
 	// }
-	ion-item{
+	ion-list{
+		position: relative;
+		top: -200px;
+		ion-item{
 		padding-left: 50px !important;
 	}
 	.listItem{
@@ -18,4 +24,6 @@ header-menu {
 		}
 		  
 	}
+	}
+
 }

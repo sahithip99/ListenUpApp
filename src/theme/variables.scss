@@ -53,9 +53,25 @@ $colors: (
 );
 
 
-$app-background: linear-gradient(to bottom, #93dbf2 0%, #b3bde2 100%);
+$app-background: linear-gradient(#000000, #d8730f);
 $background-color: white;
 $toolbar-background: transparent;
+
+
+// Use the primary color as the background for the toolbar-md-background
+$toolbar-md-background:                   color($colors, primary);
+
+// Use the default background for the tabbar since it inherits from toolbar
+$tabbar-md-background:                   linear-gradient(#402507, #291204);
+
+// Change the color of the tabs text
+$tab-button-md-active-color:              color($colors, primary);
+$tab-button-md-inactive-color:            #8c8c8c;
+
+// Change the color of the segment button text
+$toolbar-md-active-color:                 #fff;
+$toolbar-md-inactive-color:               #fff;
+$segment-button-md-text-color-activated:  #fff;
 // $background-color: linear-gradient(to bottom, #7bcbe5 0%,  100%); 
 // App iOS Variables
 // --------------------------------------------------
