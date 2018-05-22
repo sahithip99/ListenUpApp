@@ -63,10 +63,17 @@ page-feedbacktitle {
         }      
     }
     ion-content{
-    	   .scroll-content{
-   		background:  radial-gradient(white,color($colors,blue));
+  background: linear-gradient(to bottom, #93dbf2 0%, #b3bde2 100%) !important;
+   //  	   .scroll-content{
+   // 		background: linear-gradient(to bottom, #93dbf2 0%, #b3bde2 100%) !important;
+   // }
+   //      background: linear-gradient(to bottom, #93dbf2 0%, #b3bde2 100%) !important;
+   // .content-ios{
+   //    background: linear-gradient(to bottom, #93dbf2 0%, #b3bde2 100%) !important;
+   // }
+   .fixed-content {
+      background: linear-gradient(to bottom, #93dbf2 0%, #b3bde2 100%) !important;
    }
-
         .text-inputs{
             color: black;
             padding-left: 60px;
