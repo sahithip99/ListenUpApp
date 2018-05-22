@@ -49,7 +49,7 @@ page-feedbacktitle {
           display: block;
           background-image: url("https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181");
           width: 100%;
-          height: 250px;
+          height: 230px;
           background-repeat: no-repeat;
         background-size:cover !important;
         background-position-y: 40% !important;
@@ -68,7 +68,7 @@ page-feedbacktitle {
    }
 
         .text-inputs{
-            color: color($colors,primary);
+            color: black;
             padding-left: 60px;
             padding-right: 47px;
 
@@ -84,10 +84,12 @@ page-feedbacktitle {
                 font-size: 2.5rem;
                 text-align: center;
                 border: 0;
-                  outline: 0;
+                 outline: 0;
                  background: transparent;
                  border-bottom: 1px solid color($colors, primary);
                  margin-bottom: 26px !important;
+                 top: 180px;
+                 position: relative;
             }
         }
     }

@@ -1,5 +1,20 @@
 page-feedback {
 	ion-header{
+		// .toolbar-content-ios {
+		// 	height: px;
+		// }
+		ion-navbar{
+			#Listen-Up{
+					margin-top: 2rem;
+				    font-size: 1.8rem;
+				    width: 50%;
+				    float: right;
+				    position: relative;
+				    top: -15px;
+				    left: -40px;
+				    color: white;
+			}
+		}
 		.bar-header {
     		border: 0px !important;
     		border-bottom-color: transparent !important;
@@ -24,13 +39,13 @@ page-feedback {
 			border-bottom-left-radius: 0 !important;
 			border-top-left-radius: 0 !important;
 		}
-		.menu-button{
-	    	background-color: white;
-	    	color: color($colors, primary) !important;
-	    	height: 20px;
-	    	width: 80px;
-	    	margin: auto;
-  		}
+		// .menu-button{
+	 //    	background-color: white;
+	 //    	color: color($colors, primary) !important;
+	 //    	height: 20px;
+	 //    	width: 80px;
+	 //    	margin: auto;
+  // 		}
 	}
 	ion-content{
 		.feedback-cards{

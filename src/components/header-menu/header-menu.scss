@@ -8,4 +8,14 @@ header-menu {
 	ion-item{
 		padding-left: 50px !important;
 	}
+	.listItem{
+		ion-icon{
+			display: inline-block;
+    		font-size: 1.8em;
+    		position: fixed;
+    		left: 8px;
+    		top: 4px;
+		}
+		  
+	}
 }

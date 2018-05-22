@@ -62,18 +62,21 @@ page-profile {
     position: relative;
     top: -60px;
   }
+  //   .menu-button{
+  //   background-color: white;
+  //   color: color($colors, primary) !important;
+  //   height: 20px;
+  //   width: 80px;
+  //   margin: auto;
+  //   margin-top: -30px;
+  // }
     .menu-button{
-    background-color: white;
-    color: color($colors, primary) !important;
-    height: 20px;
-    width: 80px;
-    margin: auto;
-    margin-top: -30px;
-  }
-    .log-out{
     font-size: 25px;
     padding-bottom: 10px;
-  }
+    position: fixed;
+    top: -45px;
+}
+  
 	.ur-code{
 	  height:auto;
 		width:80px;

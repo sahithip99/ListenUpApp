@@ -1,5 +1,5 @@
 <!-- Generated template for the HeaderMenuComponent component -->
-<div class = "listItem">
+<div class = "listItem"> 
   <ion-list >
   	<ion-item (click) = "blocked()" ><ion-icon name = "ios-close-circle-outline"> </ion-icon> Blocked Users</ion-item>
 
@@ -38,8 +38,8 @@
       <ion-label><ion-icon name = "ios-pricetag-outline"> </ion-icon> Upgrade to Pro</ion-label>   
     </ion-item >
 
-    <ion-item >
-      <ion-label><ion-icon name = "ios-log-out-outline"> </ion-icon> Log Out</ion-label>   
+    <ion-item (click) = "logoutClicked();">
+      <ion-label><ion-icon name = "ios-log-out-outline" > </ion-icon> Log Out</ion-label> 
     </ion-item >
     <!-- <ion-item no-lines >
       Contact Developers:  
