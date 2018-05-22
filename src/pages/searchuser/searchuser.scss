@@ -13,8 +13,11 @@ page-searchuser {
 	.toolbar-ios ion-title{
 		padding: 0px 10px 0px 20px;
 	}
+	ion-content{
+		    background: $app-background;
+	}
 ion-card{
-	height: 50px; 
+	height: 50px;
 }
 	#A1{
 		color:  color($colors,primary);

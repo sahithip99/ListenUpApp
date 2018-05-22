@@ -30,12 +30,12 @@ export class HeaderMenuComponent {
               private afData: AngularFireDatabase,
               private uInfo: UserInfoProvider,
               public alertCtrl: AlertController
-              /*public navCtrl: NavController, 
+              /*public navCtrl: NavController,
     public navParams: NavParams */) {
     console.log('Hello HeaderMenuComponent Component');
     this.text = 'Hello World';
     this.loadUserInfo();
-    
+
     //this.blocked();
   }
 
@@ -74,7 +74,7 @@ nav.push(BlockusersPage/*,{param1:this.blockedObj,param: this.blockedUsers}*/);
 }
 
 allowAnnon(){
-  if(this.annonStatus){ 
+  if(this.annonStatus){
     this.afData.database.ref('users').child(this.uInfo.getUserId()).update({allowAnnon: true});
     //this.annonStatus = false
       console.log("disabled annon");

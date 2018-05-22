@@ -30,7 +30,7 @@
       </ion-card>
 
       <!-- If you're the receiver -->
-      <ion-card text-wrap *ngIf="chat.receiver == usrID">
+      <ion-card text-wrap class = "message-receiver" *ngIf="chat.receiver == usrID">
           <ion-card-content>{{chat.text}}</ion-card-content>
       </ion-card>
 

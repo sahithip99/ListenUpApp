@@ -1,7 +1,7 @@
 page-message {
       ion-content{
     background: $app-background;
-}   
+}
     .img-loaded + ion-spinner {
         display:none;
       }
@@ -15,4 +15,5 @@ page-message {
     width: 80px;
     margin: auto;
   }
+  
 }
