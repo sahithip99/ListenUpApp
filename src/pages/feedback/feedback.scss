@@ -1,4 +1,8 @@
 page-feedback {
+	  ion-content{
+   	 background: $app-background !important;
+	}
+  
 	ion-header{
 		// .toolbar-content-ios {
 		// 	height: px;
@@ -49,7 +53,10 @@ page-feedback {
 	}
 	ion-content{  
     background: $app-background;
-
+    	.item-ios{
+    		color: white;
+    		background-color: transparent;
+    	}
 		.feedback-cards{
 			position: relative;
 				ion-avatar img{
@@ -82,4 +89,7 @@ page-feedback {
 			height: 80px;
 		}
 	}
+.list-ios ion-item-sliding {
+	background-color: transparent !important;
+}
 }

@@ -1,0 +1,69 @@
+<ion-header >
+
+		<div class ="profile-blur" [style.background]="'url('+ receivePho +')'" ></div>
+
+		<ion-navbar color = "light" transparent>
+		</ion-navbar>
+		<button ion-button small id = "Block-Button" (click) = "blockUser()">
+				<ion-icon name="ios-flag"></ion-icon>
+		</button>
+	
+	<!-- profile pic -->
+	<h2 id = "profile-name"> Profile</h2>
+	<div class = "profile-container">
+
+			<img class="profile-pic" [src] = "receivePho">
+		 <h1 class="profile-name">{{targetFirst}} {{targetLast}}</h1>
+		 <p class = "username"> @{{param.username}}</p>
+ 	</div>
+
+</ion-header>
+
+
+
+<ion-content fullscreen>
+	
+<!-- Anonymous Toggle -->
+<ion-item no-lines class = "anonymous-toggle">
+		<ion-label>Anonymous?</ion-label>
+		<ion-toggle [(ngModel)] = "annon" ></ion-toggle>
+</ion-item>
+
+<ion-buttons class = "private-public">
+	<button ion-button id = "feedback" (click) = "goToTitlePage();"> 
+	<h1><b>Feedback</b></h1>
+	<h2><ion-icon name="ios-lock-outline" style = " display: inline;"></ion-icon> Private</h2>
+	</button>
+	<button ion-button id = "review" *ngIf = "!annon">
+	<h1><b>Review</b> </h1>
+	<h2> <ion-icon name="md-globe" style = "display: inline;"></ion-icon> Public</h2>
+	</button>
+</ion-buttons>
+<div class ="reviews">
+<h3 >Reviews </h3>
+<ion-card>
+	<ion-card-content>
+		Killing it!
+	</ion-card-content>
+</ion-card>
+</div>
+<!--  feedback in textbox and title inputs -->
+
+<!-- <div class = "text-inputs">
+		<ion-input floating autocorrect  type = "text"
+						[(ngModel)] = "mesData.title" 
+						placeholder = "Title">
+		</ion-input>
+
+		<textarea type="text" [(ngModel)] = "mesData.message"></textarea>
+</div> -->
+
+<!-- sending feedback button -->
+
+<!-- <div style = "text-align: center; margin-top:10px;">
+		<button ion-button color = "primary" (click) = "sendMessage()" >
+		send message
+		</button>
+</div>
+ -->
+</ion-content>
