@@ -47,7 +47,9 @@ page-feedback {
 	 //    	margin: auto;
   // 		}
 	}
-	ion-content{
+	ion-content{  
+    background: $app-background;
+
 		.feedback-cards{
 			position: relative;
 				ion-avatar img{

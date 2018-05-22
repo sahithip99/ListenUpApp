@@ -1,7 +1,11 @@
 page-profile {
-	.toolbar-background{
-		background-color: #15a88b;
-	}
+  ion-content{
+    background: $app-background;
+}
+  
+	// .toolbar-background{
+	// 	background-color: #15a88b;
+	// }
 	ion-navbar{
 		height: 50px;
     color: white;
