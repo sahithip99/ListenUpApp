@@ -1,17 +1,24 @@
 <ion-header>
   <ion-navbar color = "light">
+  <h1>ListenUp</h1>
     <ion-buttons >
-       <button ion-button icon-only menuToggle class = "log-out" >
+<!-- <<<<<<< HEAD
+       <button ion-button icon-only menuToggle class = "menu-button" side="left" class = "menu-button" >
+        <ion-icon name = "ios-menu"></ion-icon>
+======= -->
+       <button ion-button icon-only menuToggle class = "menu-button">
         <ion-icon name = "ios-menu-outline"></ion-icon>
       </button>
       <!-- <button ion-button (click) =  "logoutClicked();" ion-button class = "log-out". >
           <ion-icon name = "ios-menu-outline"></ion-icon>
         </button> -->
-      <button ion-button icon-only menuToggle class = "menu-button" side="left">
-        Listen Up
-      </button>
+ <!--      <button ion-button icon-only menuToggle class = "menu-button" side="left"> -->
+   <!--      Listen Up
+>>>>>>> bd879bc56a45e414e970cbbbd2657ca166c5e42b -->
+<!--       </button> -->
     </ion-buttons>
   </ion-navbar>
+
   <img class="profile-photo" [src] = "captureDataUrl ? captureDataUrl : userPhoto" (click) = "setPhoto()">
   <h1> {{firstName}} {{lastName}}</h1>
   <h2>Username: </h2>

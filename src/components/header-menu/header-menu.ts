@@ -4,7 +4,7 @@ import {LoginPage} from '../../pages/login/login';
 import { App,MenuController } from 'ionic-angular';
 import{AngularFireDatabase} from 'angularfire2/database';
 //import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {AlertController} from 'ionic-angular';
 import{UserInfoProvider} from '../../providers/userInfo/userInfo';
 import{BlockusersPage} from "../../pages/blockusers/blockusers";
 /**
@@ -29,6 +29,7 @@ export class HeaderMenuComponent {
               public app: App,
               private afData: AngularFireDatabase,
               private uInfo: UserInfoProvider,
+              public alertCtrl: AlertController
               /*public navCtrl: NavController, 
     public navParams: NavParams */) {
     console.log('Hello HeaderMenuComponent Component');
@@ -83,5 +84,28 @@ allowAnnon(){
       console.log("enabled annon");
         //this.annonStatus = true
   }
+}
+
+
+logoutClicked(){
+  var alertCtrl = this.alertCtrl.create({
+    title: 'Are you sure you want to log out?',
+    buttons:[{
+      text: "Logout",
+      role: "Logout",
+      handler: () => {
+          console.log('Logout...')
+          this.afAuth.auth.signOut();
+          this.uInfo.clearUserInfo();
+          var nav = this.app.getRootNav();
+          nav.setRoot(LoginPage);
+      }
+    },
+    {
+      text: "Cancel",
+      role: "cancel"
+    }
+    ]});
+  alertCtrl.present();
 }
 }
