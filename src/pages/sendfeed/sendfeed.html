@@ -22,7 +22,7 @@
 
 
 <ion-content fullscreen>
-	<ion-slides pager>
+	<ion-slides >
 
   <ion-slide>
    <ion-item no-lines class = "anonymous-toggle">
@@ -31,11 +31,11 @@
 </ion-item>
 
 <ion-buttons class = "private-public">
-	<button ion-button id = "feedback" (click) = "goToSlide1();"> 
+	<button ion-button id = "feedback" (click) = "goToSlide(1);"> 
 	<h1><b>Feedback</b></h1>
 	<h2><ion-icon name="ios-lock-outline" style = " display: inline;"></ion-icon> Private</h2>
 	</button>
-	<button ion-button id = "review" *ngIf = "!annon">
+	<button ion-button id = "review" *ngIf = "!annon" (click) = "goToSlide(1);">
 	<h1><b>Review</b> </h1>
 	<h2> <ion-icon name="md-globe" style = "display: inline;"></ion-icon> Public</h2>
 	</button>
@@ -51,17 +51,16 @@
   </ion-slide>
 
   <ion-slide>
+  	<button ion-button class = "go-back-button" (click) = "goBackSlide(0);">	<ion-icon name = "ios-arrow-back"></ion-icon></button>
 	<div class = "text-inputs">
-		<ion-input floating autocorrect  type = "text"[(ngModel)] = "mesData.title"
-						 
-						placeholder = "Title">
-		</ion-input>
-
+		<ion-input floating autocorrect  type = "text"[(ngModel)] = "mesData.title" placeholder = "Title">
+		</ion-input> <button ion-button *ngIf = "mesData.title" class = "go-back-button" (click) = "goToSlide(2);"> <ion-icon name = "ios-arrow-forward-outline"> </ion-icon> </button>
 	</div>
   </ion-slide>
 
-  <ion-slide>
+  <ion-slide id = "lastSlide">
 		<textarea type="text" [(ngModel)] = "mesData.message" class = "messageBox" placeholder="Send your candid feedback/review here!"></textarea>
+		<button ion-button class = "go-back-button" (click) = "goBackSlide(1);">	<ion-icon name = "ios-arrow-back"></ion-icon></button>
   </ion-slide>
 
 </ion-slides>

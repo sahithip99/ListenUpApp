@@ -27,9 +27,16 @@ export class SendfeedPage {
   // lockSlide(){
   //       this.slides.lockSwipeToNext() = true;
   // }
-  goToSlide1() {
+  goToSlide(index) {
     this.slides.lockSwipeToNext(false)
-    this.slides.slideTo(1, 500);
+    this.slides.slideTo(index, 500);
+    this.slides.lockSwipeToNext(true);
+    this.slides.lockSwipeToPrev(true);
+  }
+  goBackSlide(index){
+     this.slides.lockSwipeToPrev(false);
+     this.slides.slideTo(index, 500);
+     this.slides.lockSwipeToNext(true);
   }
 
 
@@ -83,6 +90,7 @@ alertControl(){
 //-------------SENDING PUBLIC FEEDBACK--------------------
 ionViewDidLoad(){
       this.slides.lockSwipeToNext(true);
+      this.slides.lockSwipeToPrev(true);
 }
  sendMessage(){
  	var timeStamp =  firebase.database.ServerValue.TIMESTAMP;

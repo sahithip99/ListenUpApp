@@ -1,5 +1,9 @@
 page-sendfeed {
-
+   .swiper-pagination-bullets {
+    left: none !important;
+    bottom: none !important;
+    width: none !important;
+}
     ion-header{
 
         #profile-name{
@@ -97,6 +101,16 @@ page-sendfeed {
             top: -130px;
             left: -10%;
 
+            // #feedback {
+            //       background-position: center;
+            //       transition: background 0.8s;
+            // }
+            // #feedback {
+            //       color: white;
+            //       background-color: color($colors, primary);;
+            //       background-size: 100%;
+            //       transition: background 0s;
+            // }
             #feedback{
                 color: color($colors, light);
                 width: 30%;
@@ -174,9 +188,39 @@ page-sendfeed {
                  margin-bottom: 26px !important;
                  position: relative;
             }
+            button{
+                margin-top: -231px;
+                margin-left: 120px;
+                background-position: center;
+                transition: background 0.8s;
+            }
         }
-
-
+        .go-back-button {
+              background-position: center;
+              transition: background 0.8s;
+        }
+        .go-back-button:active {
+              color: white;
+              background-color: color($colors, primary);;
+              background-size: 100%;
+              transition: background 0s;
+        }
+        .go-back-button{
+            position: fixed;
+            margin-left: -190px;
+            margin-top: -150px;
+            background-color: transparent;
+            color: black;
+            ion-icon{
+                font-size: 5em;
+            }
+        }
+        #lastSlide{
+            button{
+                margin-left: -290px;
+                margin-top: -170px;
+            }
+        }
     input::-webkit-input-placeholder {
         font-size: 2.3rem;
     }
