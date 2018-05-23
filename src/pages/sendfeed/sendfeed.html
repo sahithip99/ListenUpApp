@@ -31,11 +31,12 @@
 </ion-item>
 
 <ion-buttons class = "private-public">
-	<button ion-button id = "feedback" (click) = "goToSlide(1);"> 
+	<button ion-button id = "feedback" (click) = "goToSlide(1,1);"> 
 	<h1><b>Feedback</b></h1>
 	<h2><ion-icon name="ios-lock-outline" style = " display: inline;"></ion-icon> Private</h2>
 	</button>
-	<button ion-button id = "review" *ngIf = "!annon" (click) = "goToSlide(1);">
+
+	<button ion-button id = "review" *ngIf = "!annon" (click) = "goToSlide(1,0);">
 	<h1><b>Review</b> </h1>
 	<h2> <ion-icon name="md-globe" style = "display: inline;"></ion-icon> Public</h2>
 	</button>
@@ -61,6 +62,18 @@
   <ion-slide id = "lastSlide">
 		<textarea type="text" [(ngModel)] = "mesData.message" class = "messageBox" placeholder="Send your candid feedback/review here!"></textarea>
 		<button ion-button class = "go-back-button" (click) = "goBackSlide(1);">	<ion-icon name = "ios-arrow-back"></ion-icon></button>
+		<div class = "lightning">
+		<ion-icon [name]="oneStar" (click)  = "clickStar('one')"></ion-icon> 
+		<ion-icon [name]="twoStar" (click)  = "clickStar('two')"></ion-icon> 
+		<ion-icon [name]="threeStar" (click)  = "clickStar('three')"></ion-icon> 
+		<ion-icon [name]="fourStar" (click)  = "clickStar('four')"></ion-icon> 
+		<ion-icon [name]="fiveStar" (click)  = "clickStar('five')"></ion-icon> 
+		</div>
+		<div style = "text-align: center; margin-top:10px;">
+		<button *ngIf = "mesData.message" ion-button color = "primary" id = "submit" (click) = "sendMessage()" >
+		send message
+		</button>
+		</div>
   </ion-slide>
 
 </ion-slides>
@@ -79,10 +92,5 @@
 
 <!-- sending feedback button -->
 
-<!-- <div style = "text-align: center; margin-top:10px;">
-		<button ion-button color = "primary" (click) = "sendMessage()" >
-		send message
-		</button>
-</div>
- -->
+
 </ion-content>

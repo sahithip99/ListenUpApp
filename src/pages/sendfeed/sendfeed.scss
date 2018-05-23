@@ -201,7 +201,7 @@ page-sendfeed {
         }
         .go-back-button:active {
               color: white;
-              background-color: color($colors, primary);;
+              background-color: color($colors, primary);
               background-size: 100%;
               transition: background 0s;
         }
@@ -218,11 +218,21 @@ page-sendfeed {
         #lastSlide{
             button{
                 margin-left: -290px;
-                margin-top: -170px;
+                margin-top: -120px;
             }
         }
     input::-webkit-input-placeholder {
         font-size: 2.3rem;
+    }
+    .lightning{
+        ion-icon{
+            font-size: 3.5em;
+           color: color($colors, primary);
+        }
+    }
+    #submit{
+        margin-left: 0px !important;
+        margin-top: 0px !important;
     }
 .toolbar-ios-light .toolbar-title-ios, .toolbar-ios-light .bar-button-clear-ios, .toolbar-ios-light .bar-button-default-ios {
     color: #fff;

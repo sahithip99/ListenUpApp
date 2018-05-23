@@ -27,11 +27,19 @@ export class SendfeedPage {
   // lockSlide(){
   //       this.slides.lockSwipeToNext() = true;
   // }
-  goToSlide(index) {
+  goToSlide(index,type = 2) {
     this.slides.lockSwipeToNext(false)
     this.slides.slideTo(index, 500);
     this.slides.lockSwipeToNext(true);
     this.slides.lockSwipeToPrev(true);
+    if(type == 1){
+      this.type = 'feedback'
+      console.log("chose feedback");
+    }
+    else if(type == 0){
+      this.type = 'review'
+      console.log("chose review");
+    }
   }
   goBackSlide(index){
      this.slides.lockSwipeToPrev(false);
@@ -40,6 +48,13 @@ export class SendfeedPage {
   }
 
 
+  //ratings:
+  oneStar: any;
+  twoStar: any;
+  threeStar: any;
+  fourStar: any;
+  fiveStar: any;
+  curRating: any;
 	 annon: boolean;
 	 usrData: any;
 	 param: any; //PARAMETER PASSED FROM THE PREVIOUS PAGE
@@ -47,6 +62,8 @@ export class SendfeedPage {
 	 title: "",
 	 message: ""
 	 }
+
+   type: any;
    receivePho: any;
    targetFirst: any;
    targetLast: any;
@@ -58,6 +75,11 @@ export class SendfeedPage {
   	public afData: AngularFireDatabase, 
   	public uInfo: UserInfoProvider,
   	private alertCtrl: AlertController) {
+    this.oneStar = "ios-flash-outline";
+    this.twoStar = "ios-flash-outline"
+    this.threeStar = "ios-flash-outline"
+    this.fourStar = "ios-flash-outline";
+    this.fiveStar = "ios-flash-outline";
   	this.param = this.navParams.get('param1');
     console.log("param",this.param);
   	this.usrData = this.uInfo.getUserInfo();
@@ -92,7 +114,37 @@ ionViewDidLoad(){
       this.slides.lockSwipeToNext(true);
       this.slides.lockSwipeToPrev(true);
 }
- sendMessage(){
+
+sendMessage(){
+  if(this.type == "feedback"){
+    this.sendFeedback()
+  }
+  else if (this.type == "review"){
+    this.sendReview();
+  }
+}
+
+sendReview(){
+    var timeStamp =  firebase.database.ServerValue.TIMESTAMP;
+   var obj = {
+     title: this.mesData.title,
+     message: this.mesData.message,
+     id: this.usrData.id,
+     star: this.curRating,
+      // firstname: this.usrData.firstname,
+      // lastname: this.usrData.lastname,
+      // username: this.usrData.username,
+     timeStamp: timeStamp,
+    // photourl: this.usrData.photourl
+   }
+   this.afData.database.ref("users").child(this.param.id).child('review').push(obj).then(success => {
+     var key = success.key;
+   this.afData.database.ref("users").child(this.param.id).child('review').child(key).update({key: key});
+   });
+     //photo urlsd
+     this.alertControl();
+}
+ sendFeedback(){
  	var timeStamp =  firebase.database.ServerValue.TIMESTAMP;
  	if(this.annon == false){
  	var obj = {
@@ -149,6 +201,8 @@ ionViewDidLoad(){
  }
 }
 
+
+
 //--------BLOCK USERS----------
 blockUser(){
    let alert = this.alertCtrl.create({
@@ -186,6 +240,48 @@ goToTitlePage(){
     firstName: this.targetFirst,
     lastName: this.targetLast});
 }
-
+ 
+clickStar(star){
+  if(star == "one"){
+    this.oneStar = "ios-flash";
+    this.twoStar = "ios-flash-outline"
+    this.threeStar = "ios-flash-outline"
+    this.fourStar = "ios-flash-outline";
+    this.fiveStar = "ios-flash-outline";
+    this.curRating = 1;
+  }
+  else if(star == "two"){
+     this.oneStar = "ios-flash";
+    this.twoStar = "ios-flash";
+    this.threeStar = "ios-flash-outline"
+    this.fourStar = "ios-flash-outline";
+    this.fiveStar = "ios-flash-outline";
+    this.curRating = 2;
+  }
+    else if(star == "three"){
+     this.oneStar = "ios-flash";
+    this.twoStar = "ios-flash";
+    this.threeStar = "ios-flash"
+    this.fourStar = "ios-flash-outline";
+    this.fiveStar = "ios-flash-outline";
+    this.curRating = 3;
+  }
+     else if(star == "four"){
+     this.oneStar = "ios-flash";
+    this.twoStar = "ios-flash";
+    this.threeStar = "ios-flash"
+    this.fourStar = "ios-flash";
+    this.fiveStar = "ios-flash-outline";
+    this.curRating = 4;
+  }
+     else if(star == "five"){
+     this.oneStar = "ios-flash";
+    this.twoStar = "ios-flash";
+    this.threeStar = "ios-flash"
+    this.fourStar = "ios-flash";
+    this.fiveStar = "ios-flash";
+    this.curRating = 5;
+  }
+}
 }
 
