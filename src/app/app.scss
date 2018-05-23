@@ -16,12 +16,10 @@
 // automatically applied to the <body> element in the app.
 @import '../theme/icons.scss';
 	.tabs-ios .tabbar {
-		background: black;
-    // background: linear-gradient(#402507, #291204) !important;
+background: black;
 }
 	.toolbar-ios-primary .toolbar-background-ios {
-		background: black;
-		// background:linear-gradient(#402507, #291204);
+background: black;
 	}
 .header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
     border-style: none;

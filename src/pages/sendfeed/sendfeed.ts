@@ -5,6 +5,9 @@ import {UserInfoProvider} from '../../providers/userInfo/userInfo';
 import * as firebase from 'firebase';
 import {AlertController} from 'ionic-angular';
 import {FeedbacktitlePage} from '../../pages/feedbacktitle/feedbacktitle';
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
+
 
 /**
  * Generated class for the SendfeedPage page.
@@ -12,12 +15,24 @@ import {FeedbacktitlePage} from '../../pages/feedbacktitle/feedbacktitle';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
 @IonicPage()
 @Component({
   selector: 'page-sendfeed',
   templateUrl: 'sendfeed.html',
 })
 export class SendfeedPage {
+   @ViewChild(Slides) slides: Slides; 
+  
+  // lockSlide(){
+  //       this.slides.lockSwipeToNext() = true;
+  // }
+  goToSlide1() {
+    this.slides.lockSwipeToNext(false)
+    this.slides.slideTo(1, 500);
+  }
+
+
 	 annon: boolean;
 	 usrData: any;
 	 param: any; //PARAMETER PASSED FROM THE PREVIOUS PAGE
@@ -29,6 +44,8 @@ export class SendfeedPage {
    targetFirst: any;
    targetLast: any;
    targetedUser: any;
+   slideOptions: any;
+   slider: any;
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams, 
   	public afData: AngularFireDatabase, 
@@ -64,6 +81,9 @@ alertControl(){
  alertCtrl.present();
 }
 //-------------SENDING PUBLIC FEEDBACK--------------------
+ionViewDidLoad(){
+      this.slides.lockSwipeToNext(true);
+}
  sendMessage(){
  	var timeStamp =  firebase.database.ServerValue.TIMESTAMP;
  	if(this.annon == false){
@@ -82,7 +102,7 @@ alertControl(){
  		var key = success.key;
  	this.afData.database.ref("users").child(this.param.id).child('feedbacks').child("publicfeedbacks").child(key).update({key: key});
  	});
- 		//photo url
+ 		//photo urlsd
      this.alertControl();
  }
  //---------------SENDING PRIVATE FEEDBACK----------------
@@ -158,5 +178,6 @@ goToTitlePage(){
     firstName: this.targetFirst,
     lastName: this.targetLast});
 }
+
 }
 

@@ -9,7 +9,8 @@ import {AngularFireAuth } from "angularfire2/auth";
 import { MyApp } from './app.component';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
 import{AngularFireDatabaseModule} from 'angularfire2/database';
-
+import { Slides } from 'ionic-angular';
+import { ViewChild } from '@angular/core';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
@@ -77,7 +78,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     BlockusersPage,
     LoginPage,
     // TermsOfServicesPage,
-    TermsOfServiceModal
+    TermsOfServiceModal,
 
   ],
   providers: [
@@ -91,6 +92,8 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     Camera,
     ChatInfoProvider,
     BarcodeScanner,
+    // Slides,
+    // ViewChild
   ]
 })
 export class AppModule {}

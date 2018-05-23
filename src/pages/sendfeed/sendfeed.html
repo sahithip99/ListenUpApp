@@ -22,15 +22,16 @@
 
 
 <ion-content fullscreen>
-	
-<!-- Anonymous Toggle -->
-<ion-item no-lines class = "anonymous-toggle">
+	<ion-slides pager>
+
+  <ion-slide>
+   <ion-item no-lines class = "anonymous-toggle">
 		<ion-label>Anonymous?</ion-label>
 		<ion-toggle [(ngModel)] = "annon" ></ion-toggle>
 </ion-item>
 
 <ion-buttons class = "private-public">
-	<button ion-button id = "feedback" (click) = "goToTitlePage();"> 
+	<button ion-button id = "feedback" (click) = "goToSlide1();"> 
 	<h1><b>Feedback</b></h1>
 	<h2><ion-icon name="ios-lock-outline" style = " display: inline;"></ion-icon> Private</h2>
 	</button>
@@ -43,10 +44,29 @@
 <h3 >Reviews </h3>
 <ion-card>
 	<ion-card-content>
-		Killing it!
+		Kevin is a fantastic pianist. I went to listen to his recital the other day and he played Chopin flawlessly. He indeed is one of the greatest pianist in the 20th century. Definitely recommend goto one of his recitals!He played Chopin's 2nd concerto and Ballade No.1 He is fantastic. He is a great guy as well!
 	</ion-card-content>
 </ion-card>
 </div>
+  </ion-slide>
+
+  <ion-slide>
+	<div class = "text-inputs">
+		<ion-input floating autocorrect  type = "text"[(ngModel)] = "mesData.title"
+						 
+						placeholder = "Title">
+		</ion-input>
+
+	</div>
+  </ion-slide>
+
+  <ion-slide>
+		<textarea type="text" [(ngModel)] = "mesData.message" class = "messageBox" placeholder="Send your candid feedback/review here!"></textarea>
+  </ion-slide>
+
+</ion-slides>
+<!-- Anonymous Toggle -->
+
 <!--  feedback in textbox and title inputs -->
 
 <!-- <div class = "text-inputs">

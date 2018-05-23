@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the FeedbacktitlePage page.
- *
+ *d
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
@@ -19,6 +19,10 @@ firstName: any;
 lastName: any;
 photoUrl: any;
 userName: any;
+mesData: any = {
+   title: "",
+   message: ""
+}
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   	this.firstName = this.navParams.get('firstName');
   	this.lastName = this.navParams.get('lastName');
