@@ -17,7 +17,7 @@ page-feedback {
 				    position: relative;
 				    top: -7px;
 				    left: -55px;
-				    color: white;
+				    color: color($colors,primary);
 			}
 		}
 		.bar-header {
@@ -60,10 +60,13 @@ page-feedback {
 	ion-content{  
     background: $app-background;
     	.item-ios{
-    		color: white;
+    		color: gray;
     		background-color: transparent;
     	}
 		.feedback-cards{
+			ion-card{
+			background-color: transparent !important;
+						}
 			position: relative;
 				ion-avatar img{
 					position: relative;
@@ -79,10 +82,17 @@ page-feedback {
 			    top: -20px;
 
 				.title-and-name{
-					left: 100px ;
-					top: -30px ;			
+					left: 100px;
+					top: -30px;
+
+				p{
+					position: relative !important;
+				    top: 20px !important;
+				    color: gray;
+				}
 				}
 				#user-name{
+					color: #b5b1ad;		
 					left: 0px ;
 					top: 0px ;
 				}
@@ -94,8 +104,19 @@ page-feedback {
 		ion-item{
 			height: 80px;
 		}
+		.message-content{
+			color: gray;
+
+		}
 	}
 .list-ios ion-item-sliding {
 	background-color: transparent !important;
+}
+.card-ios{
+	    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+.item-divider {
+  border-color: gray;
 }
 }

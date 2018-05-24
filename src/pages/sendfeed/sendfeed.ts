@@ -131,9 +131,9 @@ sendReview(){
      message: this.mesData.message,
      id: this.usrData.id,
      star: this.curRating,
-      // firstname: this.usrData.firstname,
-      // lastname: this.usrData.lastname,
-      // username: this.usrData.username,
+     firstname: this.usrData.firstname,
+     lastname: this.usrData.lastname,
+     username: this.usrData.username,
      timeStamp: timeStamp,
     // photourl: this.usrData.photourl
    }

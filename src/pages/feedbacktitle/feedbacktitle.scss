@@ -74,31 +74,7 @@ page-feedbacktitle {
    .fixed-content {
       background: linear-gradient(to bottom, #93dbf2 0%, #b3bde2 100%) !important;
    }
-        .text-inputs{
-            color: black;
-            padding-left: 60px;
-            padding-right: 47px;
 
-            textarea{
-                width: 100%;
-                height: 200px;
-                border: 0.1em solid;
-                border-radius: 5px;
-            }
-
-            ion-input{
-                margin-bottom: 10px;
-                font-size: 2.5rem;
-                text-align: center;
-                border: 0;
-                 outline: 0;
-                 background: transparent;
-                 border-bottom: 1px solid color($colors, primary);
-                 margin-bottom: 26px !important;
-                 top: 180px;
-                 position: relative;
-            }
-        }
     }
 
 }

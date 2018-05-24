@@ -16,14 +16,15 @@
 // automatically applied to the <body> element in the app.
 @import '../theme/icons.scss';
 	.tabs-ios .tabbar {
-background: black;
+background: #f9f9f9;
+border-top: none;
 }
 	.toolbar-ios-primary .toolbar-background-ios {
-background: black;
+background: #f9f9f9;
 	}
-.header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
-    border-style: none;
-    }
+// .header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
+//     border-style: none;
+//     }
 .fab-ios {
     background-color: transparent;
 }

@@ -62,7 +62,7 @@
   <ion-slide id = "lastSlide">
 		<textarea type="text" [(ngModel)] = "mesData.message" class = "messageBox" placeholder="Send your candid feedback/review here!"></textarea>
 		<button ion-button class = "go-back-button" (click) = "goBackSlide(1);">	<ion-icon name = "ios-arrow-back"></ion-icon></button>
-		<div class = "lightning">
+		<div class = "lightning" *ngIf = "type == 'review'">
 		<ion-icon [name]="oneStar" (click)  = "clickStar('one')"></ion-icon> 
 		<ion-icon [name]="twoStar" (click)  = "clickStar('two')"></ion-icon> 
 		<ion-icon [name]="threeStar" (click)  = "clickStar('three')"></ion-icon> 
@@ -70,9 +70,11 @@
 		<ion-icon [name]="fiveStar" (click)  = "clickStar('five')"></ion-icon> 
 		</div>
 		<div style = "text-align: center; margin-top:10px;">
-		<button *ngIf = "mesData.message" ion-button color = "primary" id = "submit" (click) = "sendMessage()" >
+<!-- 		<button *ngIf = "mesData.message" ion-button color = "primary" id = "submit" (click) = "sendMessage()" >
 		send message
-		</button>
+		</button> -->
+		<button ion-button *ngIf = "mesData.message" (click) = "sendMessage();" class = "sendButton"> <ion-icon name = "md-send"> </ion-icon> </button>
+		
 		</div>
   </ion-slide>
 

@@ -37,30 +37,29 @@
   </ion-refresher>
 
   <div class = "feedback-cards">
-      <ion-list>
+      <ion-list >
           <ng-container *ngFor = "let mes of curList">
               <ion-item-sliding >
-                    <ion-item>
-                          <ng-container >
+                    <ion-item >
+                          <ng-container  >
                                 <ion-avatar><img [src] = 'mes.photourl' (click) = "activateDropdown(mes)">
                                  </ion-avatar>
+                                  <p  (click) = "activateDropdown(mes)"  class = "title-and-name"> {{mes.firstname}} </p>
                                  <div class = "title-pic-container">
                                      <h2 (click) = "activateDropdown(mes)" color = "primary"  class = "title-and-name">{{mes.title}}</h2>
-                                     <p  (click) = "activateDropdown(mes)"  class = "title-and-name">from {{mes.firstname}} {{mes.lastname}}
-                                     </p>
-                                     <p id = "user-name" >@{{mes.username}}</p>
+                                     <p id = "user-name">@{{mes.username}}</p>
                                  </div>
                           </ng-container>
-                          <ion-icon item-end name="ios-arrow-down-outline" color="primary" (click) = "activateDropdown(mes)">
-                          </ion-icon>
+<!--                           <ion-icon item-end name="ios-arrow-down-outline" color="light" (click) = "activateDropdown(mes)">
+                          </ion-icon> -->
                     </ion-item>
-                     <ion-item-options>
+                     <ion-item-options >
                           <button ion-button (click)= "deleteMes(mes)">Delete</button>
                     </ion-item-options>
               </ion-item-sliding>
               <!-- Dropdown -->
               <ion-card *ngIf="mes.dropdown">
-                  <ion-card-content>
+                  <ion-card-content class = "message-content">
                     {{mes.message}}
                   </ion-card-content>
                   <ion-row>
