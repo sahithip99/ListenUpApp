@@ -32,7 +32,7 @@ page-feedback {
 			height: 3rem;
 			font-size: 1.7rem;
 			line-height: 3rem;
-			
+			color: #3a3c3f;
 		}
 		.segment-button-right{
 			border-top-left-radius: 10px !important;
@@ -54,8 +54,10 @@ page-feedback {
 
   			.menu-button{
   				font-size: 2em;
+  				ion-icon{
+  					 color: color($colors,gray);
+  				}
   			}
-
 	}
 	ion-content{  
     background: $app-background;
@@ -82,20 +84,20 @@ page-feedback {
 			    top: -20px;
 
 				.title-and-name{
-					left: 100px;
-					top: -30px;
-
-				p{
-					position: relative !important;
-				    top: 20px !important;
-				    color: gray;
-				}
-				}
-				#user-name{
+				    position: relative;
+				    top: -10px;
+				    #user-name{
 					color: #b5b1ad;		
 					left: 0px ;
 					top: 0px ;
 				}
+				}
+
+			}
+			.first-name{
+				position: relative !important;
+			    top: 25px !important;
+			    color: gray;
 			}
 		}
 		ion-list{

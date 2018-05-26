@@ -22,12 +22,16 @@ border-top: none;
 	.toolbar-ios-primary .toolbar-background-ios {
 background: #f9f9f9;
 	}
-// .header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
-//     border-style: none;
-//     }
+.header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
+    border-style: none;
+    }
 .fab-ios {
     background-color: transparent;
 }
 .button-ios.activated{
 	background-color: transparent;
+}
+
+.toolbar-ios-primary .searchbar-ios .searchbar-input {
+    background: rgba(0, 2, 6, 0.55);
 }

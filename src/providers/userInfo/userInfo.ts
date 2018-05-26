@@ -12,6 +12,7 @@ export class UserInfoProvider{
 	usrArray: any;
 	userPhoto: any;
 	usrId: any;
+	defaultBackground: any;
 	constructor(public afAuth: AngularFireAuth, public afData: AngularFireDatabase){
 		console.log('Hello UserInfoProvider Provider');
 	}
@@ -54,9 +55,11 @@ export class UserInfoProvider{
   async setPhoto(id){
     await firebase.storage().ref('profiles').child(id + '.jpg').getDownloadURL().then(success =>{
       this.userPhoto = success;
+      this.defaultBackground = true;
     },
     fail => {
       this.userPhoto = 'https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181'
+      this.defaultBackground = false;
 }
     );
 	}
@@ -84,6 +87,9 @@ getPhoto(){
 }
 getUserId(){
 	return this.usrId;
+}
+getDefault(){
+	return this.defaultBackground;
 }
 // allUsers(){
 // 	return this.usrGroup;

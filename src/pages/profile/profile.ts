@@ -28,8 +28,8 @@ export class ProfilePage {
   userPhoto: any;
   captureDataUrl: string;
   usrId: any;
-
-
+  background: any;
+  receivePho: any;
   constructor(public navCtrl: NavController,
     public uInfo: UserInfoProvider,
     private Camera: Camera,
@@ -40,6 +40,10 @@ export class ProfilePage {
     private app: App,
     private alertCtrl: AlertController,public scanner:BarcodeScanner) {
     this.loadUserInfo();
+    this.background = this.uInfo.getDefault();
+    if(this.background){
+      this.receivePho = this.uInfo.getPhoto();
+    }
   }
     scan(){
       this.options={
@@ -87,6 +91,7 @@ export class ProfilePage {
 
     this.Camera.getPicture(cameraOptions).then((imageData) => {
       this.captureDataUrl = 'data:image/jpeg;base64,'+ imageData;
+      this.receivePho = this.captureDataUrl;
       this.upload();
     }, (err) => {
 

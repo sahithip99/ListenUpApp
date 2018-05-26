@@ -3,21 +3,30 @@ page-profile {
     background: $app-background;
 }
   
-	// .toolbar-background{
-	// 	background-color: #15a88b;
-	// }
+  .profile-blur {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: block;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181");
+    width: 100%;
+    height: 230px;
+    background-repeat: no-repeat;
+  background-size:cover !important;
+  background-position-y: 20% !important;
+
+
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+  }
 	ion-navbar{
 		height: 50px;
-    color: white;
+    color: #3a3c3f;
 
-  //     ion-title{
-  //   border: 5px;
-  //   background-color: color($colors,primary);
-  //   color: white;
-  //   position: relative;
-  //   display: block;
-  //   left: 100%;
-  // }
 	}
 
 	 .profile-photo{
@@ -37,7 +46,7 @@ page-profile {
 
   h2{
   	text-align: center;
-		color: color($colors,light);
+    color: #3a3c3f;
   }
 
   h1{
@@ -52,7 +61,7 @@ page-profile {
   #A1{
   	// position: relative;
   	// top: 10px;
-  	color: white;
+    color: #3a3c3f;
   	// background-color: color($colors,primary);
   	width: 80%;
   	margin: auto;
@@ -66,20 +75,14 @@ page-profile {
     position: relative;
     top: -60px;
   }
-  //   .menu-button{
-  //   background-color: white;
-  //   color: color($colors, primary) !important;
-  //   height: 20px;
-  //   width: 80px;
-  //   margin: auto;
-  //   margin-top: -30px;
-  // }
     .menu-button{
     font-size: 2em;
     padding-bottom: 10px;
     position: fixed;
     top: -50px;
-
+    ion-icon{
+    color: #3a3c3f;
+    }
 
 }
   

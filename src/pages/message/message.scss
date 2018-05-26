@@ -5,15 +5,24 @@ page-message {
     .img-loaded + ion-spinner {
         display:none;
       }
-    h2{
-    			color: color($colors,primary);
+    .list-ios > .item-block:last-child .item-inner, .list-ios > .item-wrapper:last-child .item-block .item-inner {
+        padding-top: 5px;
     }
-    .menu-button{
-    background-color: white;
-    color: color($colors, primary) !important;
-    height: 20px;
-    width: 80px;
-    margin: auto;
-  }
+    .toolbar-ios-primary .searchbar-ios .searchbar-input {
+        color: color($colors,gray);
+    }
+    
+
+
+  //   h2{
+  //   			color: color($colors,primary);
+  //   }
+  //   .menu-button{
+  //   background-color: white;
+  //   color: #3a3c3f;
+  //   height: 20px;
+  //   width: 80px;
+  //   margin: auto;
+  // }
   
 }

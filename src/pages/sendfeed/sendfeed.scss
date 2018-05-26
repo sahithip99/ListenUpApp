@@ -61,18 +61,18 @@ page-sendfeed {
           z-index: -1;
           display: block;
           background-image: url("https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181");
-          width: 100%;
+          width: 150%;
           height: 230px;
           background-repeat: no-repeat;
         background-size:cover !important;
         background-position-y: 20% !important;
 
 
-          -webkit-filter: blur(5px);
-          -moz-filter: blur(5px);
-          -o-filter: blur(5px);
-          -ms-filter: blur(5px);
-          filter: blur(5px);
+          -webkit-filter: blur(10px);
+          -moz-filter: blur(10px);
+          -o-filter: blur(10px);
+          -ms-filter: blur(10px);
+          filter: blur(10px);
         }
         
             

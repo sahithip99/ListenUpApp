@@ -47,7 +47,7 @@ $colors: (
   primary:    #F57C00,
   light:      #ffffff,
   blue:  #61a0e2,
-  gray:  	  #3a3535,
+  gray: #3a3c3f,
   danger:     #f53d3d,
   dark:       #222,
 );
@@ -78,8 +78,8 @@ $segment-button-md-text-color-activated:  #fff;
 // iOS only Sass variables can go here
 
 
-
-
+$text-input-placeholder-color:  #3a3c3f;
+$toolbar-input-placeholder-color: red;
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
