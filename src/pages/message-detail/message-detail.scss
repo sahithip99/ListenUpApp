@@ -9,6 +9,9 @@ page-message-detail {
             top: -47px;
         }
 	}
+    .name-title{
+        color: color($colors, gray) !important;
+    }
     ion-card {
         border-radius: 1em !important;
     }
