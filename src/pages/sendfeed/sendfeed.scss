@@ -30,7 +30,7 @@ page-sendfeed {
             object-fit: cover;
             border-radius: 4.375em; /* 70/16 */
             position: relative;
-            top: 2.5em; /* 40/16 */
+            // top: 2.5em; /* 40/16 */
             left: -1.875em /* 30/16 */
             
         }
@@ -40,17 +40,17 @@ page-sendfeed {
             margin-top: 0;
             font-size: 1.5em;
             position: relative;
-            top: 1.5em; /* 40/16 */
+            // top: 1.5em; /* 40/16 */
         }
         .username{
             position:relative;
-            top:1.3em; /* 30/16 */
+            // top:1.3em; /* 30/16 */
             color: color($colors, light);
         }
 
             .profile-container{
             position: relative;
-            top: -3.125em; /* 50/16 */
+            top: -4.125em; /* 50/16 */
             text-align: center;
             z-index: 0;
         }
@@ -62,7 +62,7 @@ page-sendfeed {
           display: block;
           background-image: url("https://firebasestorage.googleapis.com/v0/b/eoko-cc928.appspot.com/o/profiles%2Fdefault_avatar.jpg?alt=media&token=761a4187-2508-44fb-994c-9bd0b6842181");
           width: 150%;
-          height: 14.375em; /* 230/16 */
+          height: 28vh; /* 230/16 */
           background-repeat: no-repeat;
         background-size:cover !important;
         background-position-y: 20% !important;
@@ -80,17 +80,22 @@ page-sendfeed {
 
 
     ion-content{
-
+        .fixed-content{
+            margin-top: 192px;
+            .scroll-content{
+                margin-top: 181px;
+            }
+        }
         position: relative;
-        top: -1.25em; /* 20/16 */
+        top: -1.25rem; /* 20/16 */
 
         .anonymous-toggle{
             color: color($colors,primary); 
             margin-right: 9rem;
-            padding-right: 1.875em; /* 30/16 */
-            padding-left: 3.125em; /* 50/16 */
+            padding-right: 1.875rem; /* 30/16 */
+            padding-left: 3.125rem; /* 50/16 */
             position: relative;
-            top: -8.75em; /* 140/16 */
+            // top: -6vh; /* 140/16 */
 
         }
         .private-public{
@@ -98,7 +103,7 @@ page-sendfeed {
                 font-size: 3rem;
             }
             position: relative;
-            top: -8.125em; /* 130/16 */
+            // top: -4vh; /* 130/16 */
             left: -10%;
 
             // #feedback {
@@ -114,11 +119,11 @@ page-sendfeed {
             #feedback{
                 color: color($colors, light);
                 width: 30%;
-                height: 4.375em; /* 70/16 */
+                height: 5rem; /* 70/16 */
                 background-color: color($colors, blue);
-                left: 1.875em; /* 30/16 */
+                left: 1.875rem; /* 30/16 */
                 padding-right: 30%;
-                border-radius: 1.25em; /* 20/16 */
+                border-radius: 1.25rem; /* 20/16 */
                 h1{
                     font-size: 1.8rem;
                     margin-top: -1.5rem;
@@ -136,10 +141,10 @@ page-sendfeed {
             #review{
                     color: #ffffff;
                     padding-right: 30%;
-                    height: 4.375em; /* 70/16 */
-                    width: 1.25em; /* 20/16 */
+                    height: 5rem; /* 70/16 */
+                    width: 1.25rem; /* 20/16 */
                     left: 10%;
-                    border-radius: 1.25em; /* 20/16 */
+                    border-radius: 1.25rem; /* 20/16 */
                 h1{
                     margin-top: -1.5rem;
                     font-size: 1.8rem;
@@ -158,8 +163,8 @@ page-sendfeed {
         
     }
             .reviews{
-            position: fixed;
-            top: 10em; /* 160/16 */
+            position: relative;
+            // top: 10rem; /* 160/16 */
             color: color($colors, primary);
             ion-card{
                 color: black;
@@ -167,30 +172,30 @@ page-sendfeed {
         }
             .text-inputs{
             color: black;
-            padding-left: 3.75em; /* 60/16 */
-            padding-right: 2.9375em; /* 47/16 */
+            padding-left: 3.75rem; /* 60/16 */
+            padding-right: 2.9375rem; /* 47/16 */
 
             .messageBox{
                 width: 100%;
-                height: 12.5em; /* 200/16 */
-                border: 1em solid;
-                border-radius: 0.3125em; /* 5/16 */
+                height: 12.5rem; /* 200/16 */
+                border: 1rem solid;
+                border-radius: 0.3125rem; /* 5/16 */
             }
 
             ion-input{
-                margin-bottom: 0.625em; /* 10/16 */
+                margin-bottom: 0.625rem; /* 10/16 */
                 font-size: 2.5rem;
                 text-align: center;
                 border: 0;
                  outline: 0;
                  background: transparent;
-                 border-bottom: 0.0625em solid color($colors, primary); /* 1/16 */
-                 margin-bottom: 1.625em !important; /* 26/16 */
+                 border-bottom: 0.0625rem solid color($colors, primary); /* 1/16 */
+                 margin-bottom: 1.625rem !important; /* 26/16 */
                  position: relative;
             }
             button{
-                margin-top: -14.4375em; /* 231/16 */
-                margin-left: 7.5em; /* 120/16 */
+                margin-top: -14.4375rem; /* 231/16 */
+                margin-left: 7.5rem; /* 120/16 */
                 background-position: center;
                 transition: background 0.8s;
             }
@@ -207,18 +212,18 @@ page-sendfeed {
         }
         .go-back-button{
             position: fixed;
-            margin-left: -11.875em; /* 190/16 */
-            margin-top: -9.375em; /* 150/16 */
+            margin-left: -11.875rem; /* 190/16 */
+            margin-top: -9.375rem; /* 150/16 */
             background-color: transparent;
             color: black;
             ion-icon{
-                font-size: 5em;
+                font-size: 5rem;
             }
         }
         #lastSlide{
             button{
-                margin-left: -18.125em; /* 290/16 */
-                margin-top: -7.5em; /* 120/16 */
+                margin-left: -18.125rem; /* 290/16 */
+                margin-top: -7.5rem; /* 120/16 */
             }
         }
     input::-webkit-input-placeholder {
@@ -226,13 +231,13 @@ page-sendfeed {
     }
     .lightning{
         ion-icon{
-            font-size: 3.5em;
+            font-size: 3.5rem;
            color: color($colors, primary);
         }
     }
     #submit{
-        margin-left: 0em !important; /* 0/16 */
-        margin-top: 0em !important; /* 0/16 */
+        margin-left: 0rem !important; /* 0/16 */
+        margin-top: 0rem !important; /* 0/16 */
     }
 .toolbar-ios-light .toolbar-title-ios, .toolbar-ios-light .bar-button-clear-ios, .toolbar-ios-light .bar-button-default-ios {
     color: #fff;
