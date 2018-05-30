@@ -4,8 +4,10 @@ page-sendfeed {
     bottom: none !important;
     width: none !important;
 }
-    ion-header{
 
+
+    ion-header{
+        height: 30vh;
         #profile-name{
             position: relative;
             top: -2.5em; /* 40/16 */
@@ -19,20 +21,21 @@ page-sendfeed {
                 background-color: transparent;
                 color: white;
         }
-        
+
 
         .profile-pic{
-            margin: -1.25em 0em 0.3125em 3.75em; /* 20/16 */ /* 0/16 */ /* 5/16 */ /* 60/16 */
+            // margin: -1.25em 0em 0.3125em 3.75em; /* 20/16 */ /* 0/16 */ /* 5/16 */ /* 60/16 */
     //             margin-top: -1.25em; /* 20/16 */
     // margin-bottom: 0.3125em; /* 5/16 */
-            width: 5.3125em; /* 85/16 */
-            height: 5.3125em; /* 85/16 */
+            width: 10vh; /* 85/16 */
+            height: 10vh; /* 85/16 */
             object-fit: cover;
             border-radius: 4.375em; /* 70/16 */
             position: relative;
             // top: 2.5em; /* 40/16 */
-            left: -1.875em /* 30/16 */
-            
+            // left: -1.875em /* 30/16 */
+            left: 3vh;
+            top: -1vh;
         }
 
         .profile-name{
@@ -50,9 +53,10 @@ page-sendfeed {
 
             .profile-container{
             position: relative;
-            top: -4.125em; /* 50/16 */
+            top: -5vh; /* 50/16 */
             text-align: center;
             z-index: 0;
+
         }
             .profile-blur {
           position: fixed;
@@ -80,14 +84,20 @@ page-sendfeed {
 
 
     ion-content{
+    textarea{
+        width: 50vh !important;
+        height: 40vh !important; /* 200/16 */
+        border: none;
+        border-radius: 0.3125rem; /* 5/16 */
+    }
         .fixed-content{
             margin-top: 192px;
             .scroll-content{
-                margin-top: 181px;
+                margin-top: 176px !important;
             }
         }
         position: relative;
-        top: -1.25rem; /* 20/16 */
+        // top: -3vh; /* 20/16 */
 
         .anonymous-toggle{
             color: color($colors,primary); 
@@ -95,6 +105,7 @@ page-sendfeed {
             padding-right: 1.875rem; /* 30/16 */
             padding-left: 3.125rem; /* 50/16 */
             position: relative;
+            top: -2vh;
             // top: -6vh; /* 140/16 */
 
         }
@@ -163,11 +174,25 @@ page-sendfeed {
         
     }
             .reviews{
+            height: 30vh;
             position: relative;
             // top: 10rem; /* 160/16 */
             color: color($colors, primary);
             ion-card{
                 color: black;
+            }
+            ion-list{
+                overflow: auto;
+                height: 23vh;
+                ion-card{
+                    margin: none;
+                    height: 10vh;
+                        p{
+                            white-space: normal;
+                            text-align: center;
+                            font-size: 1.5rem;
+                        }
+                }
             }
         }
             .text-inputs{
@@ -175,12 +200,6 @@ page-sendfeed {
             padding-left: 3.75rem; /* 60/16 */
             padding-right: 2.9375rem; /* 47/16 */
 
-            .messageBox{
-                width: 100%;
-                height: 12.5rem; /* 200/16 */
-                border: 1rem solid;
-                border-radius: 0.3125rem; /* 5/16 */
-            }
 
             ion-input{
                 margin-bottom: 0.625rem; /* 10/16 */
@@ -212,8 +231,8 @@ page-sendfeed {
         }
         .go-back-button{
             position: fixed;
-            margin-left: -11.875rem; /* 190/16 */
-            margin-top: -9.375rem; /* 150/16 */
+            margin-left: -20rem; /* 190/16 */
+            margin-top: -18rem; /* 150/16 */
             background-color: transparent;
             color: black;
             ion-icon{
@@ -222,9 +241,17 @@ page-sendfeed {
         }
         #lastSlide{
             button{
-                margin-left: -18.125rem; /* 290/16 */
-                margin-top: -7.5rem; /* 120/16 */
+                margin-left: -38rem;
+                margin-top: -7rem;
+                background-color: transparent;
+                color: gray;
             }
+        }
+        .sendButton{
+            margin-left: 29rem !important;
+            font-size: 4rem;
+            margin-top: 0rem !important;
+            height: 3rem;
         }
     input::-webkit-input-placeholder {
         font-size: 2.3rem;

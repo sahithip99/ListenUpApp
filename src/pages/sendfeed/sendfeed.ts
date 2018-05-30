@@ -54,6 +54,13 @@ export class SendfeedPage {
   threeStar: any;
   fourStar: any;
   fiveStar: any;
+
+  oneLight: any;
+  twoLight: any;
+  threeLight: any;
+  fourLight: any;
+  fiveLight: any;
+
   curRating: any;
 	 annon: boolean;
 	 usrData: any;

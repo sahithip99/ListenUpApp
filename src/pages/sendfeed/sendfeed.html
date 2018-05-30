@@ -9,7 +9,7 @@
 		</button>
 	
 	<!-- profile pic -->
-	<h2 id = "profile-name"> Profile</h2>
+	<h2 id = "profile-name"> </h2>
 	<div class = "profile-container">
 
 			<img class="profile-pic" [src] = "receivePho">
@@ -43,24 +43,57 @@
 </ion-buttons>
 <div class ="reviews">
 <h3 >Reviews </h3>
-<ion-card>
+<ion-list no-lines>
+	<ion-item>
+		<ion-card>
+			<ion-icon [name]="oneLight"></ion-icon> 
+			<ion-icon [name]="twoLight"></ion-icon> 
+			<ion-icon [name]="threeLight"></ion-icon> 
+			<ion-icon [name]="fourLight"></ion-icon> 
+			<ion-icon [name]="fiveLight"></ion-icon> 
+			<p>Fantastic experience, great pianist, a must see!</p>
+			<div> <ion-icon name = ""></ion-icon></div>
+		</ion-card>
+	</ion-item>
+	<ion-item>
+		<ion-card>
+			Good jobbadandlanflasnflasndfaslndflasnfdla
+		</ion-card>
+	</ion-item>
+		<ion-item>
+		<ion-card>
+			Good jobbadandlanflasnflasndfaslndflasnfdla
+		</ion-card>
+	</ion-item>
+		<ion-item>
+		<ion-card>
+			Good jobbadandlanflasnflasndfaslndflasnfdla
+		</ion-card>
+	</ion-item>
+		<ion-item>
+		<ion-card>
+			Good jobbadandlanflasnflasndfaslndflasnfdla
+		</ion-card>
+	</ion-item>
+</ion-list>
+<!-- <ion-card>
 	<ion-card-content>
 		Kevin is a fantastic pianist. I went to listen to his recital the other day and he played Chopin flawlessly. He indeed is one of the greatest pianist in the 20th century. Definitely recommend goto one of his recitals!He played Chopin's 2nd concerto and Ballade No.1 He is fantastic. He is a great guy as well!
 	</ion-card-content>
-</ion-card>
+</ion-card> -->
 </div>
   </ion-slide>
 
   <ion-slide>
   	<button ion-button class = "go-back-button" (click) = "goBackSlide(0);">	<ion-icon name = "ios-arrow-back"></ion-icon></button>
 	<div class = "text-inputs">
-		<ion-input floating autocorrect  type = "text"[(ngModel)] = "mesData.title" placeholder = "Title">
-		</ion-input> <button ion-button *ngIf = "mesData.title" class = "go-back-button" (click) = "goToSlide(2);"> <ion-icon name = "ios-arrow-forward-outline"> </ion-icon> </button>
+		<ion-input floating autocorrect  type = "text"[(ngModel)] = "mesData.title" placeholder = "Title, maximum 100 characters" maxlength="100">
+		</ion-input> <button ion-button *ngIf = "mesData.title" class = "go-back-button" (click) = "goToSlide(2);" style = "margin-top:-25rem; margin-left: 14.5rem;"> <ion-icon name = "ios-arrow-forward-outline"> </ion-icon> </button>
 	</div>
   </ion-slide>
 
   <ion-slide id = "lastSlide">
-		<textarea type="text" [(ngModel)] = "mesData.message" class = "messageBox" placeholder="Send your candid feedback/review here!"></textarea>
+		<textarea type="text" [(ngModel)] = "mesData.message" class = "messageBox" placeholder="Send your candid feedback/review here! Maximum 5000 charaxt" maxlength="5000"></textarea>
 		<button ion-button class = "go-back-button" (click) = "goBackSlide(1);">	<ion-icon name = "ios-arrow-back"></ion-icon></button>
 		<div class = "lightning" *ngIf = "type == 'review'">
 		<ion-icon [name]="oneStar" (click)  = "clickStar('one')"></ion-icon> 
