@@ -4,11 +4,11 @@
 <!--   	<ion-item (click) = "blocked()" ><ion-icon name = "ios-close-circle-outline"> </ion-icon> Blocked Users</ion-item> -->
 
 <!--   	<ion-item >
-  		<ion-label><ion-icon name = "ios-contacts"> </ion-icon> Anonymous Feedback </ion-label> 	
+  		<ion-label><ion-icon name= "ios-contacts"> </ion-icon> Anonymous Feedback </ion-label> 	
   		<ion-toggle [(ngModel)] = "annonStatus" (ngModelChange) = "allowAnnon($event)"></ion-toggle> 
   	</ion-item > -->
    
-    <ion-item >
+    <ion-item (click)="pushSettings()" >
       <ion-label><ion-icon name = "ios-settings-outline"> </ion-icon>  Settings</ion-label>   
     </ion-item >
 

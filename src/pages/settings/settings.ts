@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController} from 'ionic-angular';
+import { App,MenuController, MenuClose } from 'ionic-angular';
 
 /**
  * Generated class for the SettingsPage page.
@@ -15,11 +17,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public app: App,public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController) {
+    //public alertCtrl: AlertController,
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }
 
+
+  pushProfile(){
+    var nav = this.app.getRootNav();
+    nav.setRoot("ProfilePage");
+  }
+
+  pushFeedback(){
+    var nav = this.app.getRootNav();
+    nav.setRoot("FeedbackPage");
+  }
+
+  
+  
 }

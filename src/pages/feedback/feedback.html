@@ -1,81 +1,18 @@
-<ion-header no-border>
-  <ion-navbar color = "primary">
-   
-   <ion-buttons >
-      <h1 color = primary id = "Listen-Up">ListenUp</h1><button  ion-button icon-only menuToggle class = "menu-button" side="left" class = "menu-button" >  
+<!--
+  Generated template for the FeedbackPage page.
 
-        <ion-icon name = "ios-menu"></ion-icon>
-      </button>
-    </ion-buttons>
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Feedback</ion-title>
   </ion-navbar>
-
-  <ion-toolbar color = "primary" style="min-height: 3rem;">
-  	<ion-segment [(ngModel)]="feedbackTab" color = "light" >
-  		<ion-segment-button value="Public" (click) = "clickPub()" class = "segment-button-left">Public</ion-segment-button>
-  		<ion-segment-button value="Anonymous" Anonymous (click) = "clickAnnon()"  class = "segment-button-right"> Anonymous </ion-segment-button>
-  	</ion-segment>
-  </ion-toolbar>
 
 </ion-header>
 
-  
-<ion-content padding >
-  <ion-fab right bottom (click) = "clickPub()" >
-    <button ion-fab color="light" (click) = "toSendfeed()" >
-      <!-- <ion-icon color="primary" name = "noted-logo" ></ion-icon> -->
-      <img src="assets/imgs/fab.png">
-    </button>
-  </ion-fab>
 
-<!--     </button> -->
-  <ion-refresher pulling-text="Pull to refresh..." (ionRefresh) = "doRefresh($event)">
-     <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="Pull to refresh"
-      refreshingSpinner="circles">
-    </ion-refresher-content>
-  </ion-refresher>
+<ion-content padding>
 
-  <div class = "feedback-cards">
-      <ion-list >
-          <ng-container *ngFor = "let mes of curList">
-              <ion-item-sliding >
-                    <ion-item >
-                          <ng-container  >
-                                <ion-avatar><img [src] = 'mes.photourl' (click) = "activateDropdown(mes)">
-                                 </ion-avatar>
-                                  <p  (click) = "activateDropdown(mes)"  class = "first-name"> {{mes.firstname}} </p>
-                                 <div class = "title-pic-container">
-                                     <h2 (click) = "activateDropdown(mes)" color = "primary"  class = "title-and-name">{{mes.title}}</h2>
-                                     <p id = "user-name">@{{mes.username}}</p>
-                                 </div>
-                          </ng-container>
-<!--                           <ion-icon item-end name="ios-arrow-down-outline" color="light" (click) = "activateDropdown(mes)">
-                          </ion-icon> -->
-                    </ion-item>
-                     <ion-item-options >
-                          <button ion-button (click)= "deleteMes(mes)">Delete</button>
-                    </ion-item-options>
-              </ion-item-sliding>
-              <!-- Dropdown -->
-              <ion-card *ngIf="mes.dropdown">
-                  <ion-card-content class = "message-content">
-                    {{mes.message}}
-                  </ion-card-content>
-                  <ion-row>
-                      <ion-col>
-                          <button ion-button icon-left clear small color="danger" (click)="clickMessage(mes)">
-                              <ion-icon name="ios-flag"></ion-icon> Report
-                          </button>
-                      </ion-col>
-                      <ion-col>
-                          <button ion-button icon-right float-right clear small color="primary" (click)="enterChat(mes)">
-                          Message <ion-icon name="ios-chatbubbles" ></ion-icon>
-                          </button>
-                      </ion-col>
-                  </ion-row>
-              </ion-card>
-          </ng-container>
-        </ion-list>
-    </div>
-  </ion-content>
+</ion-content>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -18,8 +18,9 @@ import {RegisterPage} from '../pages/register/register';
 // import {SearchuserPage} from '../pages/searchuser/searchuser';
 import {CreateuserPage} from '../pages/createuser/createuser';
 import {BlockusersPage} from '../pages/blockusers/blockusers';
-import {HeaderMenuComponent} from '../components/header-menu/header-menu';
+import {ComponentsModule} from '../components/components.module';
 import {TermsOfServicesPage} from '../pages/terms-of-services/terms-of-services';
+// import {SettingsPage} from '../pages/settings/settings';
 
 //Import Modal
 import {TermsOfServiceModal} from '../pages/register/termsofservice-modal';
@@ -49,7 +50,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     // SearchuserPage,
     CreateuserPage,
     BlockusersPage,
-    HeaderMenuComponent,
+    // SettingsPage,
     // TermsOfServicesPage,
       TermsOfServiceModal,
   ],
@@ -63,6 +64,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     PipesModule,
+    ComponentsModule,
 
     // IonicImageLoader.forRoot()
   ],
@@ -77,6 +79,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     CreateuserPage,
     BlockusersPage,
     LoginPage,
+    // SettingsPage,
     // TermsOfServicesPage,
     TermsOfServiceModal,
 
