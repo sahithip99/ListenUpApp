@@ -24,6 +24,7 @@ import {TermsOfServicesPage} from '../pages/terms-of-services/terms-of-services'
 
 //Import Modal
 import {TermsOfServiceModal} from '../pages/register/termsofservice-modal';
+import {EditProfilePage} from '../modals/edit-profile/edit-profile';
 
 import { UserInfoProvider } from '../providers/userInfo/userInfo';
 import { Camera } from '@ionic-native/camera';
@@ -53,6 +54,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     // SettingsPage,
     // TermsOfServicesPage,
       TermsOfServiceModal,
+      EditProfilePage,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +84,7 @@ import { ChatInfoProvider } from '../providers/chat-info/chat-info';
     // SettingsPage,
     // TermsOfServicesPage,
     TermsOfServiceModal,
+    EditProfilePage,
 
   ],
   providers: [

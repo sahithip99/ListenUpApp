@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AlertController} from 'ionic-angular';
-import { App,MenuController, MenuClose } from 'ionic-angular';
+import {AlertController, ModalController} from 'ionic-angular';
+import { App, MenuClose } from 'ionic-angular';
 
+import { EditProfilePage } from '../../modals/edit-profile/edit-profile';
 /**
  * Generated class for the SettingsPage page.
  *
@@ -17,7 +18,7 @@ import { App,MenuController, MenuClose } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public app: App,public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController) {
+  constructor(public app: App,public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private modalCtrl: ModalController) {
     //public alertCtrl: AlertController,
   }
 
@@ -36,6 +37,9 @@ export class SettingsPage {
     nav.setRoot("FeedbackPage");
   }
 
+  openModal(){
+    const myModal = this.modalCtrl.create(EditProfilePage);
+    myModal.present();
   
-  
+}
 }

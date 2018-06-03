@@ -6,9 +6,15 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+    <ion-navbar color="primary">
+       <ion-title>Settings</ion-title> 
+    </ion-navbar>
+
+
+  <!--<ion-navbar>
     <ion-title>settings</ion-title>
-  </ion-navbar>
+  </ion-navbar> -->
+
 
 </ion-header>
 
@@ -17,13 +23,14 @@
   <div class = "settings options">
     <ion-list-header>Preferences</ion-list-header>
     <ion-list>
-        <ion-label (click)= "pushProfile()"><ion-icon name = "person"></ion-icon>Edit Profile</ion-label>
+        <ion-label (click)= "openModal()"><ion-icon name = "person"></ion-icon>Edit Profile</ion-label>
     </ion-list>
+    
     <ion-list-header>Information</ion-list-header>
     <ion-list>
-        <ion-item(click) = "pushFeedback()"><ion-icon name = "send"></ion-icon>Send us Feedback</ion-item>
+        <ion-label (click) = "pushFeedback()"><ion-icon name = "send"></ion-icon>Send us Feedback</ion-label>
     </ion-list>
-
+    
 
 
 
